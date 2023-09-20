@@ -1,15 +1,38 @@
 <?php
 
-echo("<h2> Pulsa en el botón para tirar el dado</h2>");
 
-echo("<button onclick='window.location.reload()'> Tirar Dardo </button>"); //window.location.reload() recarga la página
+//Obtener numero aleatorio (1-6)
+//-------------------------------------------------------
+function tirarDado() {
+    $randomImg = rand(1,6); 
 
-echo("<br>");
-echo("<br>");
+    return $randomImg;
+}
 
-$randomImg = rand(1,6); //nos saldrá un numero random del 1 al 6
-echo("<img src='../random/img/" . $randomImg . ".png' width='500' height='600'>"); //pondremos el path donde está la imagen, y en el nombre de la imagen pondremos la variable randomImg que nos devuelve un num random.
-echo($randomImg);
+//Mostrar la imagen del dado segun el numero aleatorio
+//-------------------------------------------------------
+function mostrarDado(int $random) {
+    echo("<img src='../random/img/" . $random . ".png' width='500' height='600'>"); 
+    echo($random);
+}
+
+//Function Main
+//--------------------------------------------------------
+function main():void {
+
+    //Local vars
+    $getRandom = tirarDado();
+
+
+    //Print
+    mostrarDado($getRandom);
+
+
+}
+
+//Web code
+//--------------------------------------------------------
+main();
 
 ?>
 
