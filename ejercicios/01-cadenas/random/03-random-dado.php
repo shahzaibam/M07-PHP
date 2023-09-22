@@ -20,14 +20,15 @@ function mostrarDado(int $random):void {
 
 function calcularGanador(int $getJugador1, int $getJugador2):string {
 
-    
-    if($getJugador1>$getJugador2) {
-        $message = 'El Ganador es el Jugador 1';
-    }else if($getJugador1<$getJugador2){
-        $message = 'El Ganador es el Jugador 2';
-    }else {
-        $message = 'Han quedado empate';
-    }
+    $jugadores = ["Peter" => $getJugador1, "Jhon" => $getJugador2];
+
+        if($getJugador1>$getJugador2) {
+            $message = "El Ganador es Jugador 1";
+        }else if($getJugador1<$getJugador2){
+            $message = 'El Ganador es el Jugador 2';
+        }else {
+            $message = 'Han quedado empate';
+        }
 
     return $message;
 }
