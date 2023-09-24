@@ -15,6 +15,7 @@ function myHeader() {
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Tirar dado</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
     </head>
     CABECERA;
 
@@ -26,26 +27,26 @@ function myHeader() {
 function myMenu() {
     $menu = <<<MENU
 
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="03-index.php"> Home </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="05-juego-1.php"> Juego 1 </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="06-juego-2.php"> Juego 2 </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="07-juego-3.php"> Juego 3 </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
 
-    <div class="menu">
-    <ul class="nav">
-        <li class="nav-item">
-        <a class="nav-link" href="03-home-dado.php"> Home </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="05-juego-1.php"> Juego 1 </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="06-juego-2.php"> Juego 2 </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="07-juego-3.php"> Juego 3 </a>
-        </li>
-    </ul>
-    </div>
-
-
-    MENU;
+MENU;
 
     echo $menu;
 }
@@ -55,27 +56,32 @@ function myMenu() {
 //-------------------------------------------------------
 function myFooter(){
     $footerHTML = <<<MYFOOTER
-        <footer>
+        <footer style="margin-top: 80px;">
             <hr>
-            <p>
-            @Provençana
+            <p class="text-center">
+            &copy;Shah Zaib
             </p>
         </footer>
+
+
+
     MYFOOTER;
-    echo $footerHTML;
-    date_default_timezone_set('Europe/Madrid');
 
     $fechaActual = date("d-m-Y");
     $horaActual = date("h:i:s");
 
-    echo "La fecha es: $fechaActual y la hora es $horaActual " ;
+    echo $footerHTML;
+    // echo "La fecha es: $fechaActual y la hora es $horaActual " ;
+
+
+
 }
 
 
 //Obtener numero aleatorio (1-6)
 //-------------------------------------------------------
 function tirarDado():int {
-    $randomImg = rand(1,6); 
+    $randomImg = rand(1,6);
 
     return $randomImg;
 }
@@ -85,7 +91,7 @@ function tirarDado():int {
 //-------------------------------------------------------
 function mostrarDado(int $random):void {
     $ruta = "../random/img/";
-    echo("<img src='" . $ruta . $random . ".png' width='500' height='600'>"); 
+    echo("<img src='" . $ruta . $random . ".png' width='500' height='600'>");
     // echo($random);
 }
 
