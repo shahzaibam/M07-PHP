@@ -56,7 +56,7 @@ MENU;
 //-------------------------------------------------------
 function myFooter(){
     $footerHTML = <<<MYFOOTER
-        <footer style="margin-top: 80px;">
+        <footer  class="footer navbar-fixed-bottom" style="margin-top: 80px; ">
             <hr>
             <p class="text-center">
             &copy;Shah Zaib
@@ -91,7 +91,7 @@ function tirarDado():int {
 //-------------------------------------------------------
 function mostrarDado(int $random):void {
     $ruta = "../random/img/";
-    echo("<img src='" . $ruta . $random . ".png' width='500' height='600'>");
+    echo("<div style='border: 1px solid black;'><img src='" . $ruta . $random . ".png' width='500' height='600'></div>");
     // echo($random);
 }
 

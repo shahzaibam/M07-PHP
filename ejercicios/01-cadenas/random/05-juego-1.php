@@ -1,83 +1,56 @@
 <?php
-    //Iniciamos la sesión
-    session_start();
-    
-    require_once './04-functions.php';
+// Iniciamos la sesión
 
-    myHeader();
+require_once './04-functions.php';
 
-    myMenu();
+myHeader();
+myMenu();
 
 ?>
 
 <body>
-    
     <div>
-
-        <?php
-
-
-            
-            $reiniciar_btn = <<<REINICIAR
-                <form method="post">
-                    <input type='submit' name="reiniciar" id="reiniciar" value='Reiniciar'>
-                </form>
-            REINICIAR;
-
-            if(!isset($_SESSION['contador'])) {
-                $_SESSION['contador'] = 1;
-            }else if($_SESSION['contador'] == 3) {
-                echo $reiniciar_btn;
-                if (isset($_POST['reiniciar'])) {
-                    $_SESSION['contador'] = 1;
-                }
-            } else {
-                $_SESSION['contador']++;
-            }
+        <h1 class="text-center mt-4 mb-4">Juego 1</h1>
+        <div class="d-flex justify-content-around" style="margin-top: 80px;" >
+            <?php
 
 
-
-        ?>
-
-        <div style="display: flex">
-
-        <?php
-
-
-            //Function Main
+            // Function Main
             //--------------------------------------------------------
-            function main():void {
+            function main(): void {
 
-                //Local vars
-                $getJugador1 = tirarDado();
+                $puntos = 0;
+                $tiradas = 0;
 
-                //Print
-                echo '<h1 style="padding-left: 100px;"> Jugador 1 </h1>';
-                mostrarDado($getJugador1); 
+                //se hace una tirada 3 veces, se llama a la funcion tirarDado tres veces.
+                while($tiradas < 3) {
+                    // Local vars
+                    $getJugador1 = tirarDado();
+                    mostrarDado($getJugador1);
+
+                    $puntos = $puntos + $getJugador1;
+
+                    $tiradas++;
+
+                    echo "Tirada $tiradas: $getJugador1 puntos <br>";
+
+                    
+                }
+                echo "Total Puntos: $puntos";
 
             }
 
 
-            echo "<form method='post'>";
-            echo "<input type='submit' value='Recargar Página'>";
-            echo "</form>";
 
-            //Web code
+            // Web code
             //--------------------------------------------------------
             main();
-        ?>
-
-
-    </div>
-    <p> Se ha recargado <?php echo $_SESSION['contador'] ?> veces</p>
+            ?>
+        </div>
 
     </div>
-
-
 </body>
 
-
 <?php
-
 myFooter();
 ?>
