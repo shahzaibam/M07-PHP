@@ -17,7 +17,7 @@
         //Function Main
         //--------------------------------------------------------
         function main():void {
-
+ 
             //Local vars
             $getJugador1 = tirarDado();
             $getJugador2 = tirarDado();
