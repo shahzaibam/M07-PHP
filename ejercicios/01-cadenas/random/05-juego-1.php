@@ -21,7 +21,7 @@ myMenu();
 
                 $puntos = 0;
                 $tiradas = 0;
-
+ 
                 //se hace una tirada 3 veces, se llama a la funcion tirarDado tres veces.
                 while($tiradas < 3) {
                     // Local vars
