@@ -40,4 +40,19 @@ function addUltimo(array &$array) {
 }
 
 
+
+//mostrar arrays multidimensionales con sus keys y valores
+function mostrarImagenesIcons(&$cards) {
+    foreach ($cards as $key => $value) {
+        $numImg = $key + 1;
+        echo ("<img src=./img/$numImg.png>");
+
+        foreach ($value as $key => $valor) {
+            echo ("<span> $key : $valor </span>");
+
+        }
+
+    }
+}
+
 ?>
