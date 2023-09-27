@@ -13,8 +13,14 @@ myMenu();
 
 <body>
 
-    <?php
-        mostrarImagenesIcons($cards);
-    ?>
+<div class="text-center align-center" style="width: 80%">
 
+    <div>
+        <?php
+            mostrarImagenesIcons($cards);
+        ?>
+
+    </div>
+
+</div>
 </body>

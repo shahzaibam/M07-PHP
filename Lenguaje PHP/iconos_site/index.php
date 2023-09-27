@@ -17,7 +17,7 @@ myMenu();
 
 <body>
 
-<div class="text-center">
+<div class="text-center ">
 
     <h1 class="text-center">Welcome Christmas Cards</h1>
 
