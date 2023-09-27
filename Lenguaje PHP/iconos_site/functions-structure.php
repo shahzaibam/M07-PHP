@@ -1,67 +1,43 @@
-
 <?php
 
-//------------------------------------------------------------------------------------------------------------
-function myHeader(){
-    $head = <<<CABECERA
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-                
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+//generar numero random del 1 al 20
+function numRandom(): int{
+    $num = rand(1,20);
 
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Impresiones de Stickers</title>
-    </head>
-    CABECERA;
-    echo $head;
+    return $num;
 }
 
-//------------------------------------------------------------------------------------------------------------
-function myMenu(){
-            $menu=<<<HERE
-            <div class="menu">
-            <ul class="nav">
-                <li class="nav-item">
-                    <a class="nav-link active" href="./index.php">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="./01-exercici-1.php">Exercici 1</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="./02-exercici-2.php">Exercici 2</a>
-                </li>
-            </ul>
-            </div>
-            HERE;
-            echo $menu;
-            echo '<hr>';
-}
- 
-//------------------------------------------------------------------------------------------------------------
-function myFooter(){
-        $footerHTML = <<<MYFOOTER
-            <footer>
-                <hr>
-                <p>
-                @Provençana
-                </p>
-            </footer>
-        MYFOOTER;
-        echo $footerHTML;
-        date_default_timezone_set('Europe/Madrid');
 
-        $fechaActual = date("d-m-Y");
-        $horaActual = date("h:i:s");
-    
-        echo "La fecha es: $fechaActual y la hora es $horaActual " ;
+//Cargar iconos con un size random y iconos
+function cargarIconos(int $rand, array &$icons) {
+    for ($i=0; $i < $rand ; $i++) { 
+        $numIcon = numRandom();
+
+        array_push($icons, $numIcon);
+        
+    }
 }
-    
-// Print Line. Appends an return at the end
-//------------------------------------------------------------------------------------------------------------
-function println($something): void {
-	echo $something . '<br>';
+
+//mostrar iconos
+function mostrarIconos($icons) {
+    for ($i=0; $i < count($icons); $i++) { 
+        echo ("<img src=./img/" . $icons[$i] . ".png>"); 
+    }
 }
+
+//pasar array y eliminar el primer icono
+function eliminarPrimero(array &$array) {
+    array_shift($array);
+}
+
+
+//pasar array y añadir icono al final
+function addUltimo(array &$array) {
+
+    $numRand = numRandom();
+
+    array_push($array, $numRand);
+}
+
+
 ?>
