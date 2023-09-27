@@ -19,7 +19,7 @@ function printArrayByIndex($array, $mode = 1): void
         println('--------------------------------<br>');
     }
 }
- 
+  
 //Funcion imprime array asociativo - simple
 //------------------------------------------------------------------------------------------------------------
 function printArrayByKey($array)
