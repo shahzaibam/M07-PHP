@@ -12,8 +12,9 @@ function mostrarImagenesIcons(&$cards) {
         $numImg = $key + 1;
         echo ("<img src=./img/$numImg.png>");
 
-        foreach ($value as $key => $value) {
-            echo ("<span>tag :  $value </span>");
+        foreach ($value as $key => $valor) {
+            echo ("<span> $key : $valor </span>");
+
         }
 
     }
