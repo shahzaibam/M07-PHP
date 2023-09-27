@@ -1,9 +1,14 @@
 <?php
 
+require_once ('./layout-structure.php');
 require_once ('./functions-structure.php');
+
 
 myHeader();
 myMenu();
+
+
+
 
 ?> 
 
@@ -12,27 +17,24 @@ myMenu();
 
 <body>
 
-<h1 class="text-center">Welcome Christmas Cards</h1>
+<div class="text-center ">
+
+    <h1 class="text-center">Welcome Christmas Cards</h1>
 
     
-<?php
+    <?php
 
-$numeroImagen = array();
+        $numeroImagen = array();
 
-//definir array de imagenes
-for ($i=1; $i < 21; $i++) { 
-    array_push($numeroImagen, $i . ".png");
-}
+        //definir array de imagenes
+        cargarIconosEnArray($numeroImagen);
 
-for ($i=0; $i < count($numeroImagen); $i++) { 
-   echo ("<div class='d-flex justify-content-center align-center'> <img src=./img/" . $numeroImagen[$i] . "> </div>");
-}
+        //mostrar Array
+        mostrarArray($numeroImagen);
 
-// print_r($numeroImagen)
+    ?>
 
-
-?>
-
+</div>
 
 </body>
 
