@@ -19,7 +19,7 @@ function cargarIconos(int $rand, array &$icons) {
 }
 
 //mostrar iconos
-function mostrarIconos($icons) {
+function mostrarArrayIcons($icons) {
     for ($i=0; $i < count($icons); $i++) { 
         echo ("<img src=./img/" . $icons[$i] . ".png>"); 
     }
@@ -42,19 +42,22 @@ function addUltimo(array &$array) {
 
 
 //mostrar arrays multidimensionales con sus keys y valores
-function mostrarImagenesIcons(&$cards) {
-    foreach ($cards as $key => $value) {
+function mostrarArrayAsociativoIcons(&$cards) {
+    foreach ($cards as $key => $icon) {
         $numImg = $key + 1;
 
         echo ("<img src=./img/$numImg.png>");
 
-        foreach ($value as $key => $valor) {
-            echo ("<span> $key : $valor </span>");
+        foreach ($icon as $property => $valor) {
+            echo ("<span> $property : $valor </span>");
 
         }
 
 
     }
 }
+
+
+//mostrar iconos pares
 
 ?>

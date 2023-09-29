@@ -17,7 +17,7 @@ myMenu();
 
     <div>
         <?php
-            mostrarImagenesIcons($cards);
+            mostrarArrayAsociativoIcons($cards);
         ?>
 
     </div>

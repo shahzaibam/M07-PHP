@@ -40,6 +40,35 @@ $cards = [
 ];
 
 
+
+$ciudadIcon = ["Madrid", "Barcelona", "Valencia", "Girona", "Tarragona", "Benidorm", "Sevilla", "Malaga", "Mallorca", "Almería"];
+
+
+//ejercicio 3 array asociativo
+$iconsInfo = [
+    ["tagName" => "#foxHappy", "likes" => 5, "imgName" => "1.png", "ciudad" => $ciudadIcon[array_rand($ciudadIcon,1)] ],
+    ["tagName" => "#reindeerHappy", "likes" => 13, "imgName" => "2.png", "ciudad" => $ciudadIcon[array_rand($ciudadIcon,1)]],
+    ["tagName" => "#lightBear", "likes" => 10, "imgName" => "3.png", "ciudad" => $ciudadIcon[array_rand($ciudadIcon,1)]],
+    ["tagName" => "#noelOneGift", "likes" => 15, "imgName" => "4.png", "ciudad" => $ciudadIcon[array_rand($ciudadIcon,1)]],
+    ["tagName" => "#noelRedGreen", "likes" => 8, "imgName" => "5.png", "ciudad" => $ciudadIcon[array_rand($ciudadIcon,1)]],
+    ["tagName" => "#smallBear", "likes" => 9, "imgName" => "6.png", "ciudad" => $ciudadIcon[array_rand($ciudadIcon,1)]],
+    ["tagName" => "#noelXmas", "likes" => 17, "imgName" => "7.png", "ciudad" => $ciudadIcon[array_rand($ciudadIcon,1)]],
+    ["tagName" => "#noelTree", "likes" => 20, "imgName" => "8.png", "ciudad" => $ciudadIcon[array_rand($ciudadIcon,1)]],
+    ["tagName" => "#noelGift", "likes" => 15, "imgName" => "9.png", "ciudad" => $ciudadIcon[array_rand($ciudadIcon,1)]],
+    ["tagName" => "#noelBag", "likes" => 19,"imgName" => "10.png", "ciudad" => $ciudadIcon[array_rand($ciudadIcon,1)]],
+    ["tagName" => "#noelCandy", "likes" => 6,"imgName" => "11.png", "ciudad" => $ciudadIcon[array_rand($ciudadIcon,1)]],
+    ["tagName" => "#noelChimney", "likes" => 22, "imgName" => "12.png", "ciudad" => $ciudadIcon[array_rand($ciudadIcon,1)]],
+    ["tagName" => "#noelHappy", "likes" => 25, "imgName" => "13.png", "ciudad" => $ciudadIcon[array_rand($ciudadIcon,1)]],
+    ["tagName" => "#noelGreen", "likes" => 2, "imgName" => "14.png", "ciudad" => $ciudadIcon[array_rand($ciudadIcon,1)]],
+    ["tagName" => "#pinkRabbit", "likes" => 15, "imgName" => "15.png", "ciudad" => $ciudadIcon[array_rand($ciudadIcon,1)]],
+    ["tagName" => "#lightRabbit", "likes" => 25, "imgName" => "16.png", "ciudad" => $ciudadIcon[array_rand($ciudadIcon,1)]],
+    ["tagName" => "#pinkBear", "likes" => 43, "imgName" => "17.png", "ciudad" => $ciudadIcon[array_rand($ciudadIcon,1)]],
+    ["tagName" => "#pinkPig", "likes" => 14, "imgName" => "18.png", "ciudad" => $ciudadIcon[array_rand($ciudadIcon,1)]],
+    ["tagName" => "#fogJersey", "likes" => 19, "imgName" => "19.png", "ciudad" => $ciudadIcon[array_rand($ciudadIcon,1)]],
+    ["tagName" => "#noelTwoGift", "likes" => 35, "imgName" => "20.png", "ciudad" => $ciudadIcon[array_rand($ciudadIcon,1)]]
+];
+
+
 //------------------------------------------------------------------------------------------------------------
 function myHeader(){
     $head = <<<CABECERA
@@ -72,6 +101,9 @@ function myMenu(){
                 <li class="nav-item">
                     <a class="nav-link" href="./02-exercici-2.php">Exercici 2</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./03-exercici-3.php">Exercici 3</a>
+                </li>
             </ul>
             </div>
             HERE;
@@ -103,4 +135,3 @@ function myFooter(){
 function println($something): void {
 	echo $something . '<br>';
 }
-?>

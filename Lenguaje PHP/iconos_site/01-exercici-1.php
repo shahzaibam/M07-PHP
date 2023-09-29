@@ -29,21 +29,21 @@ myMenu();
         //mostrando Icons
         echo "<h1> ---- Cargando Icons ---- </h1>";
         // echo "<hr>";
-        mostrarIconos($icons);
+        mostrarArrayIcons($icons);
 
 
         //eliminar icons
         echo "<hr>";
         echo "<h1> ---- Eliminando el primero ---- </h1>";
         eliminarPrimero($icons);
-        mostrarIconos($icons);
+        mostrarArrayIcons($icons);
 
 
         //añadir al ultimo del array
         echo "<hr>";
         echo "<h1> ---- Añadiendo al ultimo ---- </h1>";
         addUltimo($icons);
-        mostrarIconos($icons);
+        mostrarArrayIcons($icons);
         
     ?>
 </div>
