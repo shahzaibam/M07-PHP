@@ -47,7 +47,7 @@ $ciudadIcon = ["Madrid", "Barcelona", "Valencia", "Girona", "Tarragona", "Benido
 //ejercicio 3 array asociativo
 $iconsInfo = [
     ["tagName" => "#foxHappy", "likes" => 5, "imgName" => "0.png", "ciudad" => $ciudadIcon[array_rand($ciudadIcon,1)] ],
-    ["tagName" => "#reindeerHappy", "likes" => 13, "imgName" => "1.png", "ciudad" => $ciudadIcon[array_rand($ciudadIcon,1)]],
+    ["tagName" => "#reindeerHappy", "likes" => 43, "imgName" => "1.png", "ciudad" => $ciudadIcon[array_rand($ciudadIcon,1)]],
     ["tagName" => "#lightBear", "likes" => 10, "imgName" => "2.png", "ciudad" => $ciudadIcon[array_rand($ciudadIcon,1)]],
     ["tagName" => "#noelOneGift", "likes" => 15, "imgName" => "3.png", "ciudad" => $ciudadIcon[array_rand($ciudadIcon,1)]],
     ["tagName" => "#noelRedGreen", "likes" => 8, "imgName" => "4.png", "ciudad" => $ciudadIcon[array_rand($ciudadIcon,1)]],

@@ -98,7 +98,7 @@ function mostrarArrayIconsImPares($iconsInfo, &$iconosImpares)
 function mostrarArrayAlmacenado(&$array)
 {
     foreach ($array as $key => $value) {
-        echo ("<div>");
+        echo ("<div class='p-4 m-2 border'>");
         echo ("<img src='./img/" . $value["imgName"] . "'>"); 
         foreach ($value as $clave => $valor) {
             echo ("<p>" . $clave .  "  --->  " . $valor . "</p>");
