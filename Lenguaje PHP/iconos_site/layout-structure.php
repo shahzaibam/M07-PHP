@@ -3,11 +3,11 @@
 
 //funcion que carga los iconos con un for dentro del array
 function cargarIconosEnArray(&$numeroImagen) {
-    for ($i=1; $i < 21; $i++) { 
+    for ($i=0; $i < 20; $i++) { 
         array_push($numeroImagen, $i . ".png");
     }
 }
-
+ 
 //funcion que muestra el array 
 function mostrarArray(&$numeroImagen) {
     for ($i=0; $i < count($numeroImagen); $i++) { 
@@ -48,7 +48,7 @@ $ciudadIcon = ["Madrid", "Barcelona", "Valencia", "Girona", "Tarragona", "Benido
 $iconsInfo = [
     ["tagName" => "#foxHappy", "likes" => 5, "imgName" => "0.png", "ciudad" => $ciudadIcon[array_rand($ciudadIcon,1)] ],
     ["tagName" => "#reindeerHappy", "likes" => 43, "imgName" => "1.png", "ciudad" => $ciudadIcon[array_rand($ciudadIcon,1)]],
-    ["tagName" => "#lightBear", "likes" => 10, "imgName" => "2.png", "ciudad" => $ciudadIcon[array_rand($ciudadIcon,1)]],
+    ["tagName" => "#lightBear", "likes" => 2, "imgName" => "2.png", "ciudad" => $ciudadIcon[array_rand($ciudadIcon,1)]],
     ["tagName" => "#noelOneGift", "likes" => 15, "imgName" => "3.png", "ciudad" => $ciudadIcon[array_rand($ciudadIcon,1)]],
     ["tagName" => "#noelRedGreen", "likes" => 8, "imgName" => "4.png", "ciudad" => $ciudadIcon[array_rand($ciudadIcon,1)]],
     ["tagName" => "#smallBear", "likes" => 9, "imgName" => "5.png", "ciudad" => $ciudadIcon[array_rand($ciudadIcon,1)]],

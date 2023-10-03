@@ -8,52 +8,20 @@ myHeader();
 myMenu();
 
 
-//Muestra el icono con más LIKES, si hay empates tienes que mostrar todos.
-function mostrarIconosConMasLikes($iconsInfo): mixed
+//funcion que busca si existe un tagName con ese nombre
+function findTagName(&$iconsInfo)
 {
-    $maximLike = 0;
-    $iconsWithMaximLikes = [];
-
-    // Busco el maximo numero de likes
-    foreach ($iconsInfo as $icon) {
-        $likes = $icon["likes"];
-        if ($likes > $maximLike) {
-            $maximLike = $likes;
-            $iconsWithMaximLikes = [$icon];
-        } elseif ($likes == $maximLike) {
-            array_push($iconsWithMaximLikes, $icon);
+    foreach ($iconsInfo as $key => $value) {
+        if ($value["tagName"] == "#noelXmas") {
+            echo ("<div class='p-4 m-2 border'>");
+            echo ("<img src='./img/" . $value["imgName"] . "'>"); 
+            echo ("<p>" . "TagName : " . $value["tagName"] . "</p>"); 
+            echo ("<p>" . "Likes : " . $value["likes"] . "</p>"); 
+            echo ("<p>" . "Imagen : "  . $value["imgName"] . "</p>"); 
+            echo ("<p>"  . "Ciudad : " . $value["ciudad"] . "</p>"); 
         }
     }
-
-
-
-    return $iconsWithMaximLikes;
 }
-
-
-//Muestra el icono con menos LIKES, si hay empates tienes que mostrar todos.
-function mostrarIconosConMenosLikes($iconsInfo): mixed
-{
-    $minimLike = 0;
-    $iconsWithMinimLikes = [];
-
-    // Busco el maximo numero de likes
-    foreach ($iconsInfo as $icon) {
-        $likes = $icon["likes"];
-        if ($likes < $minimLike) {
-            $minimLike = $likes;
-            $iconsWithMinLikes = [$icon];
-        } elseif ($likes == $minimLike) {
-            array_push($iconsWithMinimLikes, $icon);
-        }
-    }
-
-    return $iconsWithMinimLikes;
-}
-
-
-
-
 
 
 ?>
@@ -140,6 +108,41 @@ function mostrarIconosConMenosLikes($iconsInfo): mixed
             $bottomLikes = mostrarIconosConMenosLikes($iconsInfo);
 
             mostrarArrayAlmacenado($bottomLikes);
+
+            ?>
+        </div>
+
+
+        <h2>Mostrar Icono orden desc like</h2>
+        <div class="d-flex">
+            <?php
+
+            $ordenDesc = ordenDescendente($iconsInfo);
+
+            mostrarArrayAlmacenado($ordenDesc);
+
+            ?>
+        </div>
+
+
+        <h2>Mostrar Icono orden desc tagname</h2>
+        <div class="d-flex">
+            <?php
+
+            $ordenDescTag = ordenTagName($iconsInfo);
+
+            mostrarArrayAlmacenado($ordenDescTag);
+
+            ?>
+        </div>
+
+
+
+        <h2>Mostrar Icono segun tagname</h2>
+        <div class="d-flex">
+            <?php
+
+            findTagName($iconsInfo);
 
             ?>
         </div>
