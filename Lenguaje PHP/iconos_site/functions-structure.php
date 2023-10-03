@@ -57,7 +57,63 @@ function mostrarArrayAsociativoIcons(&$cards) {
     }
 }
 
+//funcion para mostrar los iconos pares y a la vez ir guardando los en una variable array
+function mostrarArrayIconsPares($iconsInfo, &$iconosPares)
+{
+    $imgVeinte = 20;
+    for ($i = 0; $i < 20; $i++) {
 
-//mostrar iconos pares
+        if ($i % 2 == 0) {
+            echo ("<div>");
+
+            echo ("<img src='./img/" . $i . ".png'>");
+            echo ("<b> " . $i . "</b>");
+            echo ("</div>");
+
+            if ($i < 20) {
+
+                array_push($iconosPares, $iconsInfo[$i]);
+            }
+        }
+    }
+}
+
+//funcion para mostrar los iconos impares y a la vez ir guardando los en una variable array
+function mostrarArrayIconsImPares($iconsInfo, &$iconosImpares)
+{
+    for ($i = 0; $i < 21; $i++) {
+
+        if (!($i % 2 == 0)) {
+
+            echo ("<img src='./img/" . $i . ".png'>");
+            echo ("<b> " . $i . "</b>");
+
+            array_push($iconosImpares, $iconsInfo[$i]);
+        }
+    }
+}
+
+
+//funcion para mostrar el array
+function mostrarArrayAlmacenado(&$array)
+{
+    foreach ($array as $key => $value) {
+        echo ("<div>");
+        echo ("<img src='./img/" . $value["imgName"] . "'>"); 
+        foreach ($value as $clave => $valor) {
+            echo ("<p>" . $clave .  "  --->  " . $valor . "</p>");
+        }
+        echo ("</div>");
+    }
+}
+
+
+//funcion para hacer un merge de los array
+function uniteArrays(&$arrayUno, &$arrayDos):mixed {
+    $arrayUnited = array_merge($arrayUno, $arrayDos);
+
+    return $arrayUnited;
+}
+
 
 ?>
