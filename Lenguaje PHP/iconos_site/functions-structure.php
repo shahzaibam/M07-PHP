@@ -186,3 +186,19 @@ function ordenTagName($iconsInfo): mixed
 
     return $iconsInfo;
 }
+
+
+//funcion que busca si existe un tagName con ese nombre
+function findTagName(&$iconsInfo)
+{
+    foreach ($iconsInfo as $key => $value) {
+        if ($value["tagName"] == "#noelXmas") {
+            echo ("<div class='p-4 m-2 border'>");
+            echo ("<img src='./img/" . $value["imgName"] . "'>"); 
+            echo ("<p>" . "TagName : " . $value["tagName"] . "</p>"); 
+            echo ("<p>" . "Likes : " . $value["likes"] . "</p>"); 
+            echo ("<p>" . "Imagen : "  . $value["imgName"] . "</p>"); 
+            echo ("<p>"  . "Ciudad : " . $value["ciudad"] . "</p>"); 
+        }
+    }
+}
