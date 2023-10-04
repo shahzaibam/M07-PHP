@@ -1,4 +1,11 @@
 <?php
+session_start();
+
+$_SESSION["nombre"] = "Shah Zaib";
+$_SESSION["favColor"] = "Negro";
+$_SESSION["favAnimal"] = "Gato";
+
+
 
 require_once ('./layout-structure.php');
 require_once ('./functions-structure.php');
