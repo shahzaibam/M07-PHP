@@ -118,7 +118,7 @@ function uniteArrays(&$arrayUno, &$arrayDos):mixed {
 
 
 
-
+  
 //Muestra el icono con más LIKES, si hay empates tienes que mostrar todos.
 function mostrarIconosConMasLikes($iconsInfo): mixed
 {
