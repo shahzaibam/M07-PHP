@@ -1,9 +1,12 @@
 <?php
 session_start();
 
+
+$_SESSION["contador"];
 $_SESSION["nombre"] = "Shah Zaib";
 $_SESSION["favColor"] = "Negro";
 $_SESSION["favAnimal"] = "Gato";
+
 
 
 

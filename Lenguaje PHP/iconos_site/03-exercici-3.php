@@ -12,9 +12,14 @@ myMenu();
 echo "Bienvenido al ejercicio 3 .<br>";
 echo "Tu nombre es  " . $_SESSION["nombre"] . ".<br>";
 echo "Tu color favorito es " . $_SESSION["favColor"] . ".<br>";
-echo "Tu animal favorito es " . $_SESSION["favAnimal"] . ".";
+echo "Tu animal favorito es " . $_SESSION["favAnimal"] . ".<br>";
 
 
+if(isset($_SESSION["contador"])) {
+    $_SESSION["contador"] = $_SESSION["contador"] + 1;
+}
+
+echo ($_SESSION["contador"]);
 
 
 ?>
