@@ -1,6 +1,8 @@
 <?php
+declare(strict_types=1);
 
 session_start();
+
 
 require_once './04-functions.php';
 
@@ -8,31 +10,8 @@ myHeader();
 
 myMenu();
 
+//MAXIMO de tiradas para terminar el juego
 const MAX_TIRADAS = 3;
-
-// $_SESSION["tiradas"];
-
-
-function inicioJugada() {
-    $_SESSION["contador"] = 0;
-    $_SESSION["puntos"] = 0;
-}
-
-
-
-//tirarDadoRecarga es una funcion que cuenta las veces que se ha hecho la tirada, cada vez que se recargue la pagina hará un contador++; si el contador llega a 3, el valor de contador será 1.
-function tirarDadoRecarga():int {
-    if (!isset($_SESSION["contador"])) {
-        $_SESSION["contador"] = 0;
-    } else if ($_SESSION["contador"] == MAX_TIRADAS) {
-        inicioJugada();
-    } else {
-        $_SESSION["contador"] = $_SESSION["contador"] + 1;
-    }
-
-
-    return $_SESSION["contador"];
-}
 
 
 

@@ -1,6 +1,9 @@
 <?php
 session_start();
 
+declare(strict_types=1);
+
+
 require_once ('./layout-structure.php');
 require_once ('./functions-structure.php');
   
