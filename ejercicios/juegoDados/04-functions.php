@@ -1,10 +1,11 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 //HEADER
 //-------------------------------------------------------
-function myHeader() {
+function myHeader()
+{
     $head = <<<CABECERA
 
     <!DOCTYPE html>
@@ -24,23 +25,27 @@ function myHeader() {
 
 //MENU
 //-------------------------------------------------------
-function myMenu() {
+function myMenu()
+{
     $menu = <<<MENU
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item active">
-                    <a class="nav-link" href="03-index.php"> Home </a>
+                    <a class="nav-link" href="01-index.php"> Home </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="05-juego-1.php"> Juego 1 </a>
+                    <a class="nav-link" href="02-juego-1.php"> Juego 1 </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="06-juego-2.php"> Juego 2 </a>
+                    <a class="nav-link" href="02-juego-1.2.php"> Juego 1.2 </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="07-juego-3.php"> Juego 3 </a>
+                    <a class="nav-link" href="03-juego-2.php"> Juego 2 </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="04-juego-3.php"> Juego 3 </a>
                 </li>
             </ul>
         </div>
@@ -54,7 +59,8 @@ MENU;
 
 //FOOTER
 //-------------------------------------------------------
-function myFooter(){
+function myFooter()
+{
     $footerHTML = <<<MYFOOTER
         <footer  class="footer navbar-fixed-bottom" style="margin-top: 80px; ">
             <hr>
@@ -80,8 +86,9 @@ function myFooter(){
 
 //Obtener numero aleatorio (1-6)
 //-------------------------------------------------------
-function tirarDado():int {
-    $randomImg = rand(1,6);
+function tirarDado(): int
+{
+    $randomImg = rand(1, 6);
 
     return $randomImg;
 }
@@ -89,30 +96,26 @@ function tirarDado():int {
 
 //Mostrar la imagen del dado segun el numero aleatorio
 //-------------------------------------------------------
-function mostrarDado(int $random):void {
-    $ruta = "../random/img/";
-    echo("<div style='border: 1px solid black;'><img src='" . $ruta . $random . ".png' width='500' height='600'></div>");
+function mostrarDado(int $random): void
+{
+    $ruta = "./img/";
+    echo ("<div style='border: 1px solid black;'><img src='" . $ruta . $random . ".png' width='500' height='600'></div>");
     // echo($random);
 }
 
 
 //Calcula el ganador de los 2 dados
 //-------------------------------------------------------
-function calcularGanador(int $getJugador1, int $getJugador2):string {
+function calcularGanador(int $getJugador1, int $getJugador2): string
+{
 
-    $jugadores = ["Peter" => $getJugador1, "Jhon" => $getJugador2];
-
-        if($getJugador1>$getJugador2) {
-            $message = "El Ganador es Jugador 1";
-        }else if($getJugador1<$getJugador2){
-            $message = 'El Ganador es el Jugador 2';
-        }else {
-            $message = 'Han quedado empate';
-        }
+    if ($getJugador1 > $getJugador2) {
+        $message = "El Ganador es Jugador 1";
+    } else if ($getJugador1 < $getJugador2) {
+        $message = 'El Ganador es el Jugador 2';
+    } else {
+        $message = 'Han quedado empate';
+    }
 
     return $message;
 }
-
-
-
-?>
