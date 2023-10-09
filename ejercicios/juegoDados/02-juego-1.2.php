@@ -45,7 +45,7 @@ function tirarDadoRecarga():int {
         <div class="d-flex justify-content-around" style="margin-top: 80px;">
             <?php
 
-
+    
 
 
             function main()
