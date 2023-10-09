@@ -1,5 +1,6 @@
 <?php
 // Iniciamos la sesión
+declare(strict_types=1);
 
 require_once './04-functions.php';
 

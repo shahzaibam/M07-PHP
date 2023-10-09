@@ -1,6 +1,9 @@
 <?php
     require_once './04-functions.php';
 
+    declare(strict_types=1);
+
+
     myHeader();
 
     myMenu();

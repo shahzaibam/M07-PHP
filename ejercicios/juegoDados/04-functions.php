@@ -33,7 +33,7 @@ function myMenu()
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item active">
-                    <a class="nav-link" href="01-index.php"> Home </a>
+                    <a class="nav-link" href="index.php"> Home </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="02-juego-1.php"> Juego 1 </a>
@@ -103,7 +103,7 @@ function mostrarDado(int $random): void
     // echo($random);
 }
 
-
+ 
 //Calcula el ganador de los 2 dados
 //-------------------------------------------------------
 function calcularGanador(int $getJugador1, int $getJugador2): string
@@ -118,4 +118,27 @@ function calcularGanador(int $getJugador1, int $getJugador2): string
     }
 
     return $message;
+}
+
+
+//cuando se llegue al maximo de tiradas, se ejecutará esta funcion para poner contador y puntos a 0
+function inicioJugada() {
+    $_SESSION["contador"] = 0;
+    $_SESSION["puntos"] = 0;
+}
+
+
+
+//tirarDadoRecarga es una funcion que cuenta las veces que se ha hecho la tirada, cada vez que se recargue la pagina hará un contador++; si el contador llega a 3, el valor de contador será 1.
+function tirarDadoRecarga():int {
+    if (!isset($_SESSION["contador"])) {
+        $_SESSION["contador"] = 0;
+    } else if ($_SESSION["contador"] == MAX_TIRADAS) {
+        inicioJugada();
+    } else {
+        $_SESSION["contador"] = $_SESSION["contador"] + 1;
+    }
+
+
+    return $_SESSION["contador"];
 }
