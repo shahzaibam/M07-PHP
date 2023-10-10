@@ -307,7 +307,7 @@ function calcularPuntosJ3($numDadoRandomJ1, $numDadoRandomJ2, $numDadoRandomJ3) 
         }
         $_SESSION["puntosJ3"] = $_SESSION["puntosJ3"] + 1;
         $_SESSION["puntosJ1"] = $_SESSION["puntosJ1"] + 1;
-        
+           
     }
 }
 
