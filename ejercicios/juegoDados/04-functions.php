@@ -129,7 +129,7 @@ function inicioJugada() {
 
 
 
-//tirarDadoRecarga es una funcion que cuenta las veces que se ha hecho la tirada, cada vez que se recargue la pagina hará un contador++; si el contador llega a 3, el valor de contador será 1.
+//tirarDadoRecarga es una funcion que cuenta las veces que se ha hecho la tirada, cada vez que se recargue la pagina hará un contador++; si el contador llega a 3 (el juego finaliza), el valor de contador volverá a ser 0.
 function tirarDadoRecarga():int {
     if (!isset($_SESSION["contador"])) {
         $_SESSION["contador"] = 0;
@@ -150,13 +150,15 @@ function tirarDadoRecarga():int {
 
 ///////////////////   JUEGO - 2 /////////////////////////////////////
 
-//cuando se llegue al maximo de tiradas, se ejecutará esta funcion para poner contador y puntos del jugador 1 y jugador 2 a 0
+//cuando se llegue al maximo de tiradas, se ejecutará esta funcion para poner contador y puntos del jugador 1 y jugador 2 igual 0
 function inicioJugadaJ2() {
     $_SESSION["contador"] = 0;
     $_SESSION["puntosJ1"] = 0;
     $_SESSION["puntosJ2"] = 0;
 }
 
+
+//tirarDadoRecargaJ2 es una funcion que devuelve un int, que es el numero de tiradas realizadas, cada vez que se recargue la pagina el contador aumentará hasta llegar al maximo de tiradas. Si llega al maximo de tiradas llamará a la otra función inicioJugadaJ2() que pondrá el valor de contador, puntosJ1 y puntosJ2 igual a 0 para volver a jugar.
 function tirarDadoRecargaJ2():int {
     if (!isset($_SESSION["contador"])) {
         $_SESSION["contador"] = 0;
@@ -171,7 +173,7 @@ function tirarDadoRecargaJ2():int {
 }
 
 
-//calcular ganador y sumar un punto al que gana, si los dos quedan empate los dos se llevan un punto cada uno ---- JUEGO NUMERO 2
+//calcular ganador y sumar un punto al que gana, si los dos quedan empate los dos se llevan un punto cada uno
 function calcularPuntos($numDadoRandomJ1, $numDadoRandomJ2) {
     if($numDadoRandomJ1>$numDadoRandomJ2) {
         if(!isset( $_SESSION["puntosJ1"])) {
@@ -197,7 +199,7 @@ function calcularPuntos($numDadoRandomJ1, $numDadoRandomJ2) {
     }
 }
 
-//decidir ganador, si el numero de tiradas es igual al maximo permitido, se comparan los puntos de los dos jugadores el que tenga más puntos gana, si quedan empate se imprime otro mensaje
+//decidir ganador, si el numero de tiradas es igual al maximo permitido, se comparan los puntos de los dos jugadores el que tenga más puntos gana, si quedan empate se imprime que han quedado empate
 function decidirGanador($numTiradas) {
     if($numTiradas == MAX_TIRADAS_J2) {
 
@@ -218,7 +220,7 @@ function decidirGanador($numTiradas) {
 
 ///////////////////   JUEGO - 3 /////////////////////////////////////
 
-//cuando se llegue al maximo de tiradas, se ejecutará esta funcion para poner contador y puntos del jugador 1 y jugador 2 a 0
+//cuando se llegue al maximo de tiradas, se ejecutará esta funcion para poner contador y puntos del jugador 1, jugador 2 y jugador 3 igual a 0
 function inicioJugadaJ3() {
     $_SESSION["contador"] = 0;
     $_SESSION["puntosJ1"] = 0;
@@ -226,6 +228,8 @@ function inicioJugadaJ3() {
     $_SESSION["puntosJ3"] = 0;
 }
 
+
+//tirarDadoRecargaJ3 es una funcion que devuelve un int, que es el numero de tiradas realizadas, cada vez que se recargue la pagina el contador aumentará hasta llegar al maximo de tiradas. Si llega al maximo de tiradas llamará a la otra función inicioJugadaJ3() que pondrá el valor de contador, puntosJ1, puntosJ2 y puntosJ3 igual a 0 para volver a jugar.
 function tirarDadoRecargaJ3():int {
     if (!isset($_SESSION["contador"])) {
         $_SESSION["contador"] = 0;
@@ -240,7 +244,9 @@ function tirarDadoRecargaJ3():int {
 }
 
 
-//calcular ganador y sumar un punto al que gana, si los tres quedan empate los tres se llevan un punto cada uno ---- JUEGO NUMERO 3
+
+
+//calcular ganador y sumar un punto al que gana, si los tres quedan empate los tres se llevan un punto cada uno 
 function calcularPuntosJ3($numDadoRandomJ1, $numDadoRandomJ2, $numDadoRandomJ3) {
 
     if($numDadoRandomJ1 > $numDadoRandomJ2 && $numDadoRandomJ1 > $numDadoRandomJ3) {
@@ -311,7 +317,7 @@ function calcularPuntosJ3($numDadoRandomJ1, $numDadoRandomJ2, $numDadoRandomJ3) 
     }
 }
 
-//decidir ganador, si el numero de tiradas es igual al maximo permitido, se comparan los puntos de los dos jugadores el que tenga más puntos gana, si quedan empate se imprime otro mensaje
+//decidir ganador, si el numero de tiradas es igual al maximo permitido, se comparan los puntos de los tres jugadores, el que tenga más puntos gana, si quedan empate se imprime que han quedado empate
 function decidirGanadorJ3($numTiradas) {
     if($numTiradas == MAX_TIRADAS_J3) {
 
@@ -321,6 +327,12 @@ function decidirGanadorJ3($numTiradas) {
             return "Ganador es el Jugador 2";
         }else if($_SESSION["puntosJ3"] == max($_SESSION["puntosJ1"], $_SESSION["puntosJ2"], $_SESSION["puntosJ3"])) {
             return "Ganador es el Jugador 3";
+        }else if($_SESSION["puntosJ1"] == $_SESSION["puntosJ2"]) {
+            return "Ganador es el Jugador 1 y Jugado 2";
+        }else if($_SESSION["puntosJ1"] == $_SESSION["puntosJ3"]) {
+            return "Ganador es el Jugador 1 y Jugado 3";
+        }else if($_SESSION["puntosJ2"] == $_SESSION["puntosJ3"]) {
+            return "Ganador es el Jugador 2 y Jugado 3";
         }else {
             return "Han quedado empate";
         }
