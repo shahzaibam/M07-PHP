@@ -1,7 +1,8 @@
 <?php
+    declare(strict_types=1);
+    
     require_once './04-functions.php';
 
-    declare(strict_types=1);
 
 
     myHeader();
