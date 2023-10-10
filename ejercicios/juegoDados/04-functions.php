@@ -242,37 +242,23 @@ function tirarDadoRecargaJ3():int {
 
 //calcular ganador y sumar un punto al que gana, si los dos quedan empate los dos se llevan un punto cada uno ---- JUEGO NUMERO 2
 function calcularPuntosJ3($numDadoRandomJ1, $numDadoRandomJ2, $numDadoRandomJ3) {
-    if($numDadoRandomJ1>$numDadoRandomJ2) {
+
+    if($numDadoRandomJ1 > $numDadoRandomJ2 && $numDadoRandomJ1 > $numDadoRandomJ3) {
         if(!isset( $_SESSION["puntosJ1"])) {
             $_SESSION["puntosJ1"] = 0;
         }
         $_SESSION["puntosJ1"] = $_SESSION["puntosJ1"] + 1;
-    }else if($numDadoRandomJ1>$numDadoRandomJ3) {
-        if(!isset( $_SESSION["puntosJ1"])) {
-            $_SESSION["puntosJ1"] = 0;
-        }
-        $_SESSION["puntosJ1"] = $_SESSION["puntosJ1"] + 1;
-    } else if($numDadoRandomJ2>$numDadoRandomJ1) {
+    } else if($numDadoRandomJ2 > $numDadoRandomJ1 && $numDadoRandomJ2 > $numDadoRandomJ3) {
         if(!isset( $_SESSION["puntosJ2"])) {
             $_SESSION["puntosJ2"] = 0;
         }
         $_SESSION["puntosJ2"] = $_SESSION["puntosJ2"] + 1;
-    }else if($numDadoRandomJ2>$numDadoRandomJ3) {
-        if(!isset( $_SESSION["puntosJ2"])) {
-            $_SESSION["puntosJ2"] = 0;
-        }
-        $_SESSION["puntosJ2"] = $_SESSION["puntosJ2"] + 1;
-    }else if($numDadoRandomJ3>$numDadoRandomJ1) {
+    }else if($numDadoRandomJ3 > $numDadoRandomJ1 && $numDadoRandomJ3 > $numDadoRandomJ2) {
         if(!isset( $_SESSION["puntosJ3"])) {
             $_SESSION["puntosJ3"] = 0;
         }
         $_SESSION["puntosJ3"] = $_SESSION["puntosJ3"] + 1;
-    }else if($numDadoRandomJ3>$numDadoRandomJ2) {
-        if(!isset( $_SESSION["puntosJ3"])) {
-            $_SESSION["puntosJ3"] = 0;
-        }
-        $_SESSION["puntosJ3"] = $_SESSION["puntosJ3"] + 1;
-    }else {
+    }else if($numDadoRandomJ1 == $numDadoRandomJ2 && $numDadoRandomJ2 == $numDadoRandomJ3) {
         if(!isset( $_SESSION["puntosJ1"])) {
             $_SESSION["puntosJ1"] = 0;
         }
@@ -289,17 +275,52 @@ function calcularPuntosJ3($numDadoRandomJ1, $numDadoRandomJ2, $numDadoRandomJ3) 
         $_SESSION["puntosJ2"] = $_SESSION["puntosJ2"] + 1;
         $_SESSION["puntosJ3"] = $_SESSION["puntosJ3"] + 1;
 
+    }else if($numDadoRandomJ1 == $numDadoRandomJ2) {
+        if(!isset( $_SESSION["puntosJ1"])) {
+            $_SESSION["puntosJ1"] = 0;
+        }
+
+        if(!isset( $_SESSION["puntosJ2"])) {
+            $_SESSION["puntosJ2"] = 0;
+        }
+        $_SESSION["puntosJ1"] = $_SESSION["puntosJ1"] + 1;
+        $_SESSION["puntosJ2"] = $_SESSION["puntosJ2"] + 1;
+
+    }else if($numDadoRandomJ2 == $numDadoRandomJ3) {
+        if(!isset( $_SESSION["puntosJ2"])) {
+            $_SESSION["puntosJ2"] = 0;
+        }
+
+        if(!isset( $_SESSION["puntosJ3"])) {
+            $_SESSION["puntosJ3"] = 0;
+        }
+        $_SESSION["puntosJ2"] = $_SESSION["puntosJ2"] + 1;
+        $_SESSION["puntosJ3"] = $_SESSION["puntosJ3"] + 1;
+        
+    }else if($numDadoRandomJ3 == $numDadoRandomJ1) {
+        if(!isset( $_SESSION["puntosJ3"])) {
+            $_SESSION["puntosJ3"] = 0;
+        }
+
+        if(!isset( $_SESSION["puntosJ1"])) {
+            $_SESSION["puntosJ1"] = 0;
+        }
+        $_SESSION["puntosJ3"] = $_SESSION["puntosJ3"] + 1;
+        $_SESSION["puntosJ1"] = $_SESSION["puntosJ1"] + 1;
+        
     }
 }
 
 //decidir ganador, si el numero de tiradas es igual al maximo permitido, se comparan los puntos de los dos jugadores el que tenga más puntos gana, si quedan empate se imprime otro mensaje
 function decidirGanadorJ3($numTiradas) {
-    if($numTiradas == MAX_TIRADAS_J2) {
+    if($numTiradas == MAX_TIRADAS_J3) {
 
-        if($_SESSION["puntosJ1"] > $_SESSION["puntosJ2"]) {
+        if($_SESSION["puntosJ1"] == max($_SESSION["puntosJ1"], $_SESSION["puntosJ2"], $_SESSION["puntosJ3"])) {
             return "Ganador es el Jugador 1";
-        }else if($_SESSION["puntosJ2"] > $_SESSION["puntosJ1"]) {
+        }else if($_SESSION["puntosJ2"] == max($_SESSION["puntosJ1"], $_SESSION["puntosJ2"], $_SESSION["puntosJ3"])) {
             return "Ganador es el Jugador 2";
+        }else if($_SESSION["puntosJ3"] == max($_SESSION["puntosJ1"], $_SESSION["puntosJ2"], $_SESSION["puntosJ3"])) {
+            return "Ganador es el Jugador 3";
         }else {
             return "Han quedado empate";
         }

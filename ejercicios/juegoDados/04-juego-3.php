@@ -88,14 +88,20 @@ const MAX_TIRADAS_J3 = 5;
                 echo ("</div>");
 
 
-                // calcularPuntosJ3($puntosTotalJ1, $puntosTotalJ2, $puntosTotalJ3); 
+                calcularPuntosJ3($puntosTotalJ1, $puntosTotalJ2, $puntosTotalJ3); 
 
 
-                // echo "Puntos Jugador 1  : " . $_SESSION["puntosJ1"];
-                // echo ("<br>");
-                // echo "Puntos Jugador 2  : " . $_SESSION["puntosJ2"];
-                // echo("<br>");
-                // echo "Puntos Jugador 3 : " . $_SESSION["puntosJ3"];
+                echo "Puntos Jugador 1  : " . $_SESSION["puntosJ1"];
+                echo ("<br>");
+                echo "Puntos Jugador 2  : " . $_SESSION["puntosJ2"];
+                echo("<br>");
+                echo "Puntos Jugador 3 : " . $_SESSION["puntosJ3"];
+
+
+                
+                $mensaje = decidirGanadorJ3($tiradas);
+
+                echo "<h2> $mensaje </h2>";
             }
 
 
