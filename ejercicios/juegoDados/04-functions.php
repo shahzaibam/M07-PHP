@@ -240,7 +240,7 @@ function tirarDadoRecargaJ3():int {
 }
 
 
-//calcular ganador y sumar un punto al que gana, si los dos quedan empate los dos se llevan un punto cada uno ---- JUEGO NUMERO 2
+//calcular ganador y sumar un punto al que gana, si los tres quedan empate los tres se llevan un punto cada uno ---- JUEGO NUMERO 3
 function calcularPuntosJ3($numDadoRandomJ1, $numDadoRandomJ2, $numDadoRandomJ3) {
 
     if($numDadoRandomJ1 > $numDadoRandomJ2 && $numDadoRandomJ1 > $numDadoRandomJ3) {
