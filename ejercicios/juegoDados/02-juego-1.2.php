@@ -40,8 +40,13 @@ const MAX_TIRADAS = 3;
 
                     $numDadoRandom = tirarDado();
 
-                    $_SESSION["puntos"] =  $_SESSION["puntos"] + $numDadoRandom;
-
+                    if (isset($_SESSION["puntos"])) {
+                        $_SESSION["puntos"] = $_SESSION["puntos"] + $numDadoRandom;
+                    } else {
+                        // Si la clave "puntos" no existe en $_SESSION, inicialízar la con el valor de $numDadoRandom
+                        $_SESSION["puntos"] = $numDadoRandom;
+                    }
+                    
 
                     mostrarDado($numDadoRandom);
 
