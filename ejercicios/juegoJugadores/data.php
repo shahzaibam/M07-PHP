@@ -83,6 +83,105 @@ $jugadores = [
         ["partidos"] => 6
     ],
 
+    ["kepa"] => [
+        ["pais"] => "España",
+        ["numCamiseta"] => "2",
+        ["fechaNacimiento"] => "03/10/1994",
+        ["rol"] => "Portero",
+        ["goles"] => 0,
+        ["partidos"] => 13
+    ],
+
+    ["laporte"] => [
+        ["pais"] => "España",
+        ["numCamiseta"] => "28",
+        ["fechaNacimiento"] => "12/07/2002",
+        ["rol"] => "Defensa",
+        ["goles"] => 1,
+        ["partidos"] => 24
+    ],
+
+    ["morata"] => [
+        ["pais"] => "España",
+        ["numCamiseta"] => "8",
+        ["fechaNacimiento"] => "23/10/1992",
+        ["rol"] => "Delantero",
+        ["goles"] => 34,
+        ["partidos"] => 67
+    ],
+
+    ["nico"] => [
+        ["pais"] => "España",
+        ["numCamiseta"] => "12",
+        ["fechaNacimiento"] => "12/07/2002",
+        ["rol"] => "Delantero",
+        ["goles"] => 4,
+        ["partidos"] => 12
+    ],
+
+    ["normand"] => [
+        ["pais"] => "España",
+        ["numCamiseta"] => "15",
+        ["fechaNacimiento"] => "11/11/1996",
+        ["rol"] => "Defensa",
+        ["goles"] => 0,
+        ["partidos"] => 5
+    ],
+
+    ["oyarzabal"] => [
+        ["pais"] => "España",
+        ["numCamiseta"] => "6",
+        ["fechaNacimiento"] => "16/01/1997",
+        ["rol"] => "Defensa",
+        ["goles"] => 1,
+        ["partidos"] => 22
+    ],
+
+    ["pau"] => [
+        ["pais"] => "España",
+        ["numCamiseta"] => "6",
+        ["fechaNacimiento"] => "16/01/1997",
+        ["rol"] => "Defensa",
+        ["goles"] => 1,
+        ["partidos"] => 22
+    ],
+
+    ["rodrigo"] => [
+        ["pais"] => "España",
+        ["numCamiseta"] => "8",
+        ["fechaNacimiento"] => "22/06/1996",
+        ["rol"] => "Centrocampista",
+        ["goles"] => 1,
+        ["partidos"] => 18
+    ],
+
+    ["sancet"] => [
+        ["pais"] => "España",
+        ["numCamiseta"] => "11",
+        ["fechaNacimiento"] => "25/04/2000",
+        ["rol"] => "Centrocampista",
+        ["goles"] => 1,
+        ["partidos"] => 1
+    ],
+
+    ["unai"] => [
+        ["pais"] => "España",
+        ["numCamiseta"] => "1",
+        ["fechaNacimiento"] => "11/06/1997",
+        ["rol"] => "Portero",
+        ["goles"] => 0,
+        ["partidos"] => 35
+    ],
+    
+    ["zubimendi"] => [
+        ["pais"] => "España",
+        ["numCamiseta"] => "19",
+        ["fechaNacimiento"] => "02/02/1999",
+        ["rol"] => "Centrocampista",
+        ["goles"] => 0,
+        ["partidos"] => 2
+    ],
+
 ]
 
 ?>
