@@ -36,16 +36,16 @@ function myMenu()
                     <a class="nav-link" href="index.php"> Home </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="ejercicio-1.php"> Juego 1 </a>
+                    <a class="nav-link" href="ejercicio-1.php"> Ejercicio 1 </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="ejercicio-2.php"> Juego 2 </a>
+                    <a class="nav-link" href="ejercicio-2.php"> Ejercicio 2 </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="ejercicio-3.php"> Juego 3 </a>
+                    <a class="nav-link" href="ejercicio-3.php"> Ejercicio 3 </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="ejercicio-4.php"> Juego 4 </a>
+                    <a class="nav-link" href="ejercicio-4.php"> Ejercicio 4 </a>
                 </li>
             </ul>
         </div>
