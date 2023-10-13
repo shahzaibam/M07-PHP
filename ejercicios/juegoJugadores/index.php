@@ -7,7 +7,7 @@ myHeader();
 myMenu();
 
 
-$names_array = ... nombre de jugadroes;
+// $names_array = ... nombre de jugadroes;
 
 $letter_template = <<<TEMPLATE
     Dear {{name}}
@@ -16,11 +16,11 @@ $letter_template = <<<TEMPLATE
     TEMPLATE;
 
 
-    $letters_aarray = make_letters($letter_template, $names_array);
+    // $letters_aarray = make_letters($letter_template, $names_array);
 
-    foreach ($letters_aarray as $key => $letter) {
-        file_put_contents(......);
-    }
+    // foreach ($letters_aarray as $key => $letter) {
+    //     file_put_contents(......);
+    // }
 
 
 
