@@ -1,5 +1,8 @@
 <?php
 
+//Genera una carta para todos los jugadores/as y guarda los archivos en disco. Los jugadores/as estarán definidos en un array, los archivos generados se llamarán: ferranTorres.txt, gavi.txt
+
+
 include('./layout.php');
 include('./data.php');
 include('./functions.php');
@@ -34,7 +37,7 @@ $names_array = array_keys($jugadores);
 
     <?php
         make_letters($names_array);
-        writeInFile($names_array);
+        writeInFileTxt($names_array);
     ?>
 
     <?php

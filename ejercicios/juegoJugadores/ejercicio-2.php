@@ -1,5 +1,7 @@
 <?php
 
+//Lo mismo que el ejercicio 1 pero las cartas no se guardan en un fichero de texto, sino que las imprimes por pantalla con tags html  <pre> ... </pre>.
+
 include('./layout.php');
 include('./data.php');
 include('./functions.php');
@@ -11,7 +13,7 @@ myMenu();
 $names_array = array_keys($jugadores);
 
 // print_r($names_array);
-
+ 
 ?>
 
 <!DOCTYPE html>
@@ -24,7 +26,9 @@ $names_array = array_keys($jugadores);
 <body>
 
 <div>
-    <h1 class="text-center mt-4">Ejercicio 2</h1>
+    <div>
+        <h1 class="text-center mt-5">Ejercicio 2</h1>
+    </div>
     <div>
     <?php
 
