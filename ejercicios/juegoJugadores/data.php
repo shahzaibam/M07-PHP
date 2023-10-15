@@ -139,7 +139,7 @@ $jugadores = [
 
     "pau" => [
         "pais" => "España",
-        "numCamiseta" => "6",
+        "numCamiseta" => "19",
         "fechaNacimiento" => "16/01/1997",
         "rol" => "Defensa",
         "goles" => 1,

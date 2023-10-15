@@ -47,12 +47,7 @@ $templateLocation = "templateToRead/index.view.html"
 
         ?>
 
-
-
     </div>
-
-
-
 
     <?
     myFooter();

@@ -38,7 +38,7 @@ function writeInFileTxt($names_array) {
         file_put_contents($file_name, $letter);
     }
 
-    echo "<p>Template creado</p>";
+    echo "<p>Template creado de jugadores (.TXT)</p>";
 
 }
 
@@ -82,7 +82,7 @@ function writeInFileHtml($templateLocation, $names_array) {
         file_put_contents($file_name, $letter);
     }
 
-    echo "<p>Template creado</p>";
+    echo "<p>Template creado de jugadores (HTML)</p>";
 
 }
 
@@ -125,7 +125,7 @@ function writeInFileTxtIndex($names_array) {
     }
 
 
-    echo "<p>Template creado</p>";
+    echo "<p>Template creado (Index.html)</p>";
 }
 
 
