@@ -42,13 +42,14 @@ $templateLocation = "templateToRead/index.view.html"
 
         $indexTemplateArrays = make_letters_index($names_array);
 
-        echo "<pre>";
+        // echo "<pre>";
 
-        showTemplateJugadores($indexTemplateArrays);
+        // showTemplateJugadores($indexTemplateArrays);
 
-        echo "</pre>";
+        // echo "</pre>";
 
         writeInFileTxtIndex($names_array);
+        header("Location:playerTemplateInfo.php");
 
 
         ?>
