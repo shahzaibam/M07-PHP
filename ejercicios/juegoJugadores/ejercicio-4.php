@@ -40,7 +40,13 @@ $templateLocation = "templateToRead/index.view.html"
         writeInFileHtml($templateLocation, $names_array);
 
 
-        make_letters_index($names_array);
+        $indexTemplateArrays = make_letters_index($names_array);
+
+        echo "<pre>";
+
+        showTemplateJugadores($indexTemplateArrays);
+
+        echo "</pre>";
 
         writeInFileTxtIndex($names_array);
 

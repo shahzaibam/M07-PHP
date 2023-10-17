@@ -1,5 +1,30 @@
 <?php
 
+//HOME
+
+function mostrarJugadores($jugadores)
+{
+    echo '<div class="player-list">';
+    
+    foreach ($jugadores as $key => $value) {
+        echo "<div class=\"player border pb-3 mt-4 \">";
+        echo "<div class=\"image-container\">";
+        echo "<img class=\"p-5\" src=\"./img/$key.png\"/>";
+        echo "</div>";
+        echo "<span>nombre: $key</span> <br>" ;
+
+        foreach ($value as $prop => $valor) {
+          echo "<span>$prop: </span>";
+          echo "<span>$valor</span><br>";
+        }
+
+        echo "</div>";
+    }
+
+    echo '</div>';
+}
+
+
 //EJERCICIO 1-------------
 
 
@@ -44,6 +69,19 @@ function writeInFileTxt($names_array) {
 
 //---------------------------------------------------------------------------
 
+
+//EJERCICIO 2 ------------------------------
+
+//this function shows the array template of all players.
+function showTemplateJugadores($letter) {
+    foreach ($letter as $key => $value) {
+        echo "<p>$value </p>";
+    }
+}
+
+
+
+//----------------------------------------------------------------------------
 
 
 //EJERCICIO 3 -------------------------------
@@ -91,7 +129,7 @@ function writeInFileHtml($templateLocation, $names_array) {
 function make_letters_index($names_array) {
 
     $index_template = <<<TEMPLATE
-    <a href="./{{name}}.html">{{name}}</a>
+    <a href="http://127.0.0.1/m07-php/ejercicios/juegoJugadores/disco/ficheros/{{name}}.html">{{name}}</a>
     TEMPLATE;
 
 
@@ -115,13 +153,17 @@ function make_letters_index($names_array) {
 function writeInFileTxtIndex($names_array) {
     $letters_array = make_letters_index($names_array);
     $directory = "./disco/ficheros/";
-    
+
+
+    $fileDeleted = unlink($directory . "index.html"); //here we delete the file which was created with all the player name, after deleting we will create it again so it will not be duplicated players
+
     $file_name = $directory . "index.html"; 
 
     if($file_name) {
         foreach ($letters_array as $key => $letter) {
             file_put_contents($file_name, $letter . PHP_EOL, FILE_APPEND); //file append para que guarde todos los jugadores, si no pones file append solo mostrará el último jugador (zubimendi)
         }
+
     }
 
 

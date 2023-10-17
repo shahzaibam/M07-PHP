@@ -2,32 +2,11 @@
 
 include('./layout.php');
 include('./data.php');
+include('./functions.php');
 
 myHeader(); 
 
 myMenu();
-
-function mostrarJugadores($jugadores)
-{
-    echo '<div class="player-list">';
-    
-    foreach ($jugadores as $key => $value) {
-        echo "<div class=\"player border pb-3 mt-4 \">";
-        echo "<div class=\"image-container\">";
-        echo "<img class=\"p-5\" src=\"./img/$key.png\"/>";
-        echo "</div>";
-        echo "<span>nombre: $key</span> <br>" ;
-
-        foreach ($value as $prop => $valor) {
-          echo "<span>$prop: </span>";
-          echo "<span>$valor</span><br>";
-        }
-
-        echo "</div>";
-    }
-
-    echo '</div>';
-}
 
 ?>
 <!DOCTYPE html>

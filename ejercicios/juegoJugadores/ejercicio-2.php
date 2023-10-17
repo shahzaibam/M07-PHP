@@ -12,6 +12,8 @@ myMenu();
 
 $names_array = array_keys($jugadores);
 
+
+
 // print_r($names_array);
  
 ?>
@@ -36,7 +38,9 @@ $names_array = array_keys($jugadores);
 
         echo ("<pre>");
 
-        print_r($getJugadoresLetter);
+        // print_r($getJugadoresLetter);
+
+        showTemplateJugadores($getJugadoresLetter);
 
         echo ("</pre>");
 

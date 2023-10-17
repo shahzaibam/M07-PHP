@@ -39,7 +39,9 @@ $templateLocation = "templateToRead/index.view.html";
             if($lettersGen) {
                 echo "<p> Leído... Imprimiendo....";
                 echo "<pre>";
-                print_r($lettersGen);
+
+                showTemplateJugadores($lettersGen);
+
                 echo "</pre>";
             }
 
