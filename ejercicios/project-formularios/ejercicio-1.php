@@ -36,7 +36,7 @@ myMenu();
 
 
             $numGetted = 0;
-            $num1 = 0;
+            $num1 = 0; 
             $num2 = 0;
 
             if (isset($_GET["numero"])) {
