@@ -13,7 +13,7 @@ function mostrarArray(&$numeroImagen) {
     for ($i=0; $i < count($numeroImagen); $i++) { 
         echo ("<img src=./img/" . $numeroImagen[$i] . ">");
     }
-}
+} 
 
 
 $cards = [
