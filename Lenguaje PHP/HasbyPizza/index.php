@@ -2,6 +2,13 @@
 include ("./layout-structure.php");
 
 myHeader();
-myMenu();
 
+myMenu();
 ?>
+<body>
+
+    <div>
+        <h1>home</h1>
+    </div>
+</body>
+</html>
