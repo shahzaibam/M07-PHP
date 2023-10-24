@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <title>PHP Multiple Checkboxes - Pizza Toppings</title>
-</head>
+</head> 
 
 <body class="center">
     <main>
