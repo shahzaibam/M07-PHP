@@ -4,7 +4,7 @@ session_start();
 
 include("./layout-structure.php");
 myHeader();
-
+ 
 
 if (isset($_POST['sizePizza'])) {
     // $_SESSION['sizePizza'] = $_POST['sizePizza'][0]; // Assuming only one option can be selected
