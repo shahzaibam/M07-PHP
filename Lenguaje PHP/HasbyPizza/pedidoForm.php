@@ -135,7 +135,7 @@ myHeader();
 
                                 <div class="row text-left mt-5 ml-4">
                                     <div class="form-group col-sm-3 flex-column">
-                                        <span>Tamaño:</span>
+                                        <span>Mass:</span>
                                     </div>
 
                                     <div class="form-group col-sm-3 flex-column">

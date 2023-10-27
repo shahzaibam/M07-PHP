@@ -4,13 +4,19 @@ session_start();
 
 include("./layout-structure.php");
 myHeader();
+
+foreach ($_POST as $key => $value) {
+    $valor = htmlspecialchars($value);
+
+    echo $valor;
+}
  
 
 if (isset($_POST['sizePizza'])) {
     // $_SESSION['sizePizza'] = $_POST['sizePizza'][0]; // Assuming only one option can be selected
 
     for ($i = 0; $i < count($_POST['sizePizza']); $i++) {
-        $sizePizza = $_POST['sizePizza'][$i];
+        $sizePizza = htmlspecialchars($_POST['sizePizza'][$i]);
     }
 
     // echo "Selected size: " . $selectedSize;
@@ -23,7 +29,7 @@ if (isset($_POST['dough'])) {
     // $_SESSION['sizePizza'] = $_POST['sizePizza'][0]; // Assuming only one option can be selected
 
     for ($i = 0; $i < count($_POST['dough']); $i++) {
-        $dough = $_POST['dough'][$i];
+        $dough = htmlspecialchars($_POST['dough'][$i]);
     }
 
     // echo "Selected size: " . $selectedSize;
