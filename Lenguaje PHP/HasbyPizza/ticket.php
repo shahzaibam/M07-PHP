@@ -1,86 +1,3 @@
-<?php
-
-session_start();
-
-include("./layout-structure.php");
-myHeader();
-
-foreach ($_POST as $key => $value) {
-    $valor = htmlspecialchars($value);
-
-    echo $valor;
-}
- 
-
-if (isset($_POST['sizePizza'])) {
-    // $_SESSION['sizePizza'] = $_POST['sizePizza'][0]; // Assuming only one option can be selected
-
-    for ($i = 0; $i < count($_POST['sizePizza']); $i++) {
-        $sizePizza = htmlspecialchars($_POST['sizePizza'][$i]);
-    }
-
-    // echo "Selected size: " . $selectedSize;
-} else {
-    echo "error en size pizza";
-}
-
-
-if (isset($_POST['dough'])) {
-    // $_SESSION['sizePizza'] = $_POST['sizePizza'][0]; // Assuming only one option can be selected
-
-    for ($i = 0; $i < count($_POST['dough']); $i++) {
-        $dough = htmlspecialchars($_POST['dough'][$i]);
-    }
-
-    // echo "Selected size: " . $selectedSize;
-} else {
-    echo "error en size pizza";
-}
-
-
-if (isset($_POST['ingredients'])) {
-
-    // foreach ($_POST['ingredients'] as $key => $value) {
-    //     $_POST['ingredients'];
-    //     array_push($_POST["ingredients"], $value);
-
-
-    // }
-
-} else {
-    echo "error en size pizza";
-}
-
-
-if (isset($_POST['extras'])) {
-    // $_SESSION['sizePizza'] = $_POST['sizePizza'][0]; // Assuming only one option can be selected
-
-    // for ($i = 0; $i < count($_POST['extras']); $i++) {
-    //     $_SESSION['extras'] = $_POST['extras'][$i];
-    // }
-
-    // echo "Selected size: " . $selectedSize;
-} else {
-    echo "error en size pizza";
-}
-
-$_SESSION['name'] = $_POST['name'];
-$surname = $_POST['surname'];
-$email = $_POST['email'];
-$city = $_POST['city'];
-$discount = $_POST['discount'];
-$menu1 = $_POST['menu1'];
-$quantity1 = $_POST['quantity1'];
-$menu2 = $_POST['menu2'];
-$quantity2 = $_POST['quantity2'];
-$menu3 = $_POST['menu3'];
-$quantity3 = $_POST['quantity3'];
-$custom = $_POST['custom'];
-$quantityCustom = $_POST['quantityCustom'];
-
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -96,9 +13,13 @@ $quantityCustom = $_POST['quantityCustom'];
         <div>
             <div class="info border m-5">
                 <h1>Thanks for buying in HasbyPizza.</h1>
-                <p>Name: <?php echo $_SESSION["name"]; ?></p>
+                <p>Name: <?php echo $name; ?></p>
                 <p>Surname: <?php echo $surname; ?></p>
-                <p>Email: <?php echo $email ?></p>
+                <p>Email: <?php if ($emailValid) {
+                                echo $email;
+                            } else {
+                                echo "Email Invalido";
+                            } ?></p>
                 <p>city: <?php echo $city; ?></p>
                 <p>Discount: <?php echo $discount; ?></p>
                 <p>Menu1: <?php echo $menu1; ?></p>
@@ -115,8 +36,8 @@ $quantityCustom = $_POST['quantityCustom'];
 
                 <p>ingredients: <?php
 
-                                for ($i = 0; $i < count($_POST['ingredients']); $i++) {
-                                    echo $_POST["ingredients"][$i] . ", ";
+                                for ($i = 0; $i < count($ingredientes); $i++) {
+                                    echo $ingredientes[$i] . ", ";
                                 }
 
                                 ?>
@@ -127,8 +48,8 @@ $quantityCustom = $_POST['quantityCustom'];
 
                 <p>extras: <?php
 
-                            for ($i = 0; $i < count($_POST['extras']); $i++) {
-                                echo $_POST["extras"][$i] . ", ";
+                            for ($i = 0; $i < count($extras); $i++) {
+                                echo $extras[$i] . ", ";
                             }
 
                             ?>

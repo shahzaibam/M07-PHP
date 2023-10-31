@@ -3,8 +3,27 @@
 session_start();
 
 include("./layout-structure.php");
+require_once("./validation.php");
 
 myHeader();
+
+if (isset($_SESSION['info'])) {
+    $info = $_SESSION['info'];
+}
+
+if (isset($_SESSION['errors'])) {
+    $errors = $_SESSION['errors'];
+}
+
+
+/**
+ * contenido dinamico --> Raul
+ * values de los campos PHP (VALIDACIONES) --> Shah Zaib
+ * JS --> Raul
+ * Selector de ciudades dinamicamente con un array --> Ivan
+ * 
+ */
+
 
 ?>
 
@@ -20,28 +39,52 @@ myHeader();
                     <div class="card">
 
 
-                        <form class="form-card" action="ticket.php" method="post">
+                        <form class="form-card" method="post">
 
                             <div class="row justify-content-between text-left">
-                                <div class="form-group col-sm-6 flex-column d-flex"> <label for="name" class="form-control-label px-3">Name</label> <input type="text" id="name" name="name" placeholder="Enter your Name"> </div>
-                                <div class="form-group col-sm-6 flex-column d-flex"> <label for="surname" class="form-control-label px-3">Surname</label> <input type="text" id="surname" name="surname" placeholder="Enter your Surname"> </div>
+                                <div class="form-group col-sm-6 flex-column d-flex">
+                                    <label for="name" class="form-control-label px-3">Name</label>
+                                    <input type="text" id="name" name="name" placeholder="Enter your Name" value="<?php echo $info["name"] ?? "" ?>">
+                                    <span style="color: red;"><?php echo $errors["name"] ?? "" ?></span>
+                                </div>
+                                <div class="form-group col-sm-6 flex-column d-flex">
+                                    <label for="surname" class="form-control-label px-3">Surname</label>
+                                    <input type="text" id="surname" name="surname" placeholder="Enter your Surname" value="<?php echo $info["surname"] ?? "" ?>">
+                                    <span style="color: red;"><?php echo $errors["surname"] ?? "" ?></span>
+                                </div>
                             </div>
 
 
                             <div class="row justify-content-between text-left">
-                                <div class="form-group col-sm-6 flex-column d-flex"> <label for="email" class="form-control-label px-3">Email</label> <input type="email" id="email" name="email" placeholder=""> </div>
-                                <div class="form-group col-sm-6 flex-column d-flex"> <label for="phoneNumber" class="form-control-label px-3">Phone number</label><input type="text" id="phoneNumber" name="phoneNumber" placeholder=""> </div>
+                                <div class="form-group col-sm-6 flex-column d-flex">
+                                    <label for="email" class="form-control-label px-3">Email</label>
+                                    <input id="email" name="email" placeholder="" value="<?php echo $info["email"] ?? "" ?>">
+                                    <span style="color: red;"><?php echo $errors["email"] ?? "" ?></span>
+                                </div>
+                                <div class="form-group col-sm-6 flex-column d-flex">
+                                    <label for="phoneNumber" class="form-control-label px-3">Phone number</label>
+                                    <input type="text" id="phoneNumber" name="phoneNumber" placeholder="" value="<?php echo $info["phoneNumber"] ?? "" ?>">
+                                    <span style="color: red;"><?php echo $errors["phoneNumber"] ?? "" ?></span>
+                                </div>
                             </div>
 
 
                             <div class="row justify-content-between text-left">
-                                <div class="form-group col-sm-6 flex-column d-flex"> <label for="city" class="form-control-label px-3">City</label> <input type="text" id="city" name="city" placeholder=""> </div>
-                                <div class="form-group col-sm-6 flex-column d-flex"> <label for="address" class="form-control-label px-3">Address</label> <input type="text" id="address" name="address" placeholder=""> </div>
+                                <div class="form-group col-sm-6 flex-column d-flex"> 
+                                    <label for="city" class="form-control-label px-3">City</label> 
+                                    <input type="text" id="city" name="city" placeholder=""> 
+                                </div>
+                                <div class="form-group col-sm-6 flex-column d-flex"> 
+                                    <label for="address" class="form-control-label px-3">Address</label> 
+                                    <input type="text" id="address" name="address" placeholder=""> 
+                                </div>
                             </div>
 
 
                             <div class="row justify-content-between mt-5">
-                                <div class="form-group col-sm-2 flex-column d-flex"> <label for="discount" class="form-control-label px-3">Discount</label> <input type="checkbox" id="discount" name="discount" placeholder="" value="discount"> </div>
+                                <div class="form-group col-sm-2 flex-column d-flex"> <label for="discount" class="form-control-label px-3">Discount</label> 
+                                <input type="checkbox" id="discount" name="discount" placeholder="" value="discount"> 
+                            </div>
                             </div>
 
                             <div class="row justify-content-between text-left mt-5">
@@ -94,7 +137,7 @@ myHeader();
 
 
                             <div class="row justify-content-between mt-5">
-                                <div class="form-group col-sm-2 flex-column d-flex"> <label for="discount" class="form-control-label px-3">Custom Pizza</label> <input type="checkbox" id="custom" name="custom" placeholder="" value="CustomPizza"> </div>
+                                <div class="form-group col-sm-2 flex-column d-flex"> <label for="custom" class="form-control-label px-3">Custom Pizza</label> <input type="checkbox" id="custom" name="custom" placeholder="" value="CustomPizza"> </div>
                             </div>
 
                             <div class="d-flex">
@@ -226,7 +269,7 @@ myHeader();
                             </div>
 
 
-                            
+
                             <div class="row justify-content-end">
                                 <div class="form-group col-sm-6"> <input type="submit" class="btn-block btn-primary"> </div>
                             </div>
