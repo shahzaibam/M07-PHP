@@ -70,21 +70,47 @@ if (isset($_SESSION['errors'])) {
 
 
                             <div class="row justify-content-between text-left">
-                                <div class="form-group col-sm-6 flex-column d-flex"> 
-                                    <label for="city" class="form-control-label px-3">City</label> 
-                                    <input type="text" id="city" name="city" placeholder=""> 
+                                <div class="form-group col-sm-6 flex-column d-flex">
+                                    <!-- <label for="city" class="form-control-label px-3">City</label>
+                                    <input type="text" id="city" name="city" placeholder=""> -->
+
+                                    <div class="form-group flex-column d-flex">
+                                        <label for="city" class="form-control-label px-3">City</label>
+
+                                        <?php
+                                        // Array de ciudades
+                                        $ciudades = array("Almería", "Barcelona", "Castellón", "Málaga", "Madrid");
+
+                                        // Función para generar el select de ciudades
+                                        function generarSelectCiudades($ciudades)
+                                        {
+                                            echo '<select name="city" id="city">';
+                                            foreach ($ciudades as $ciudad) {
+                                                echo "<option value='$ciudad'>$ciudad</option>";
+                                            }
+                                            echo '</select>';
+                                        }
+
+                                        // Llamada a la función para generar el select
+                                        generarSelectCiudades($ciudades);
+                                        ?>
+                                    </div>
+
+
+
+
                                 </div>
-                                <div class="form-group col-sm-6 flex-column d-flex"> 
-                                    <label for="address" class="form-control-label px-3">Address</label> 
-                                    <input type="text" id="address" name="address" placeholder=""> 
+                                <div class="form-group col-sm-6 flex-column d-flex">
+                                    <label for="address" class="form-control-label px-3">Address</label>
+                                    <input type="text" id="address" name="address" placeholder="">
                                 </div>
                             </div>
 
 
                             <div class="row justify-content-between mt-5">
-                                <div class="form-group col-sm-2 flex-column d-flex"> <label for="discount" class="form-control-label px-3">Discount</label> 
-                                <input type="checkbox" id="discount" name="discount" placeholder="" value="discount"> 
-                            </div>
+                                <div class="form-group col-sm-2 flex-column d-flex"> <label for="discount" class="form-control-label px-3">Discount</label>
+                                    <input type="checkbox" id="discount" name="discount" placeholder="" value="discount">
+                                </div>
                             </div>
 
                             <div class="row justify-content-between text-left mt-5">
