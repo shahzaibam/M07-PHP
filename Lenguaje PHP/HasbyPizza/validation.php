@@ -80,16 +80,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //city
     if (isset($_POST['city'])) {
         $city = htmlspecialchars($_POST['city']);
+        $info['city'] = trim($city);
+    } else {
+        $errors['city'] = "La ciudad no puede estar vacía";
+    }
 
-        if (!empty($city)) {
-            if (preg_match("/^[a-zA-Z-' ]+$/", $city)) {
-                $info['city'] = trim($city);
+
+    // ^[A-Za-z0-9\s\-\.\,\(\)\/]+$
+
+
+    //address
+    if (isset($_POST['address'])) {
+        $address = htmlspecialchars($_POST['address']);
+
+        if (!empty($address)) {
+            if (preg_match("/^[A-Za-z0-9\s\-\.\,\/]+$/", $address)) {
+                $info['address'] = trim($address);
             } else {
-                $errors['city'] = "Porfavor introduce una ciudad válida";
+                $errors['address'] = "La dirección es incorrecta";
             }
-        } else {
-            $errors['city'] = "La ciudad no puede estar vacía";
         }
+    } else {
+        $errors['address'] = "La dirección no puede estar vacía";
     }
 
 
@@ -171,13 +183,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST['custom'])) {
 
 
-        // if (isset($_POST['sizePizza'])) {
-        //     $sizePizza = $_POST['sizePizza'];
-        //     $info['sizePizza'] = $sizePizza;
-        // }else {
-        //     $errors['sizePizza'] = "Porfavor selecciona una pizza";
+        if (isset($_POST['sizePizza'])) {
+            $sizePizza = $_POST['sizePizza'];
+            $info['sizePizza'] = $sizePizza;
+        }else {
+            $errors['sizePizza'] = "Porfavor selecciona una pizza";
 
-        // }
+        }
 
         if (isset($_POST['quantityCustom'])) {
             $quantityCustom = htmlspecialchars($_POST['quantityCustom']);
@@ -203,35 +215,43 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 
-        // if (isset($_POST['dough'])) {
-        //     $dough = $_POST['dough'];
-        //     $info['dough'] = trim($dough);
-        // } else {
-        //     $errors['dough'] = "Porfavor selecciona una massa";
-        // }
+        if (isset($_POST['dough'])) {
+            $dough = $_POST['dough'];
+            $info['dough'] = trim($dough);
+        } else {
+            $errors['dough'] = "Porfavor selecciona una massa";
+        }
 
 
-        // if (isset($_POST['ingredients'])) {
-        //     $ingredientes = $_POST['ingredients'];
-        //     $info['ingredientes'] = trim($ingredientes);
-        // } else {
-        //     $errors['ingredientes'] = "Porfavor selecciona ingredientes";
-        // }
+        if (isset($_POST['ingredients'])) {
+            $ingredientes = $_POST['ingredients'];
+            $info['ingredientes'] = trim($ingredientes);
+        } else {
+            $errors['ingredientes'] = "Porfavor selecciona ingredientes";
+        }
 
 
-        // if (isset($_POST['extras'])) {
-        //     $extras = $_POST['extras'];
-        //     $info['extras'] = trim($extras);
-        // } else {
-        //     $errors['extras'] = "Porfavor selecciona extras";
-        // }
+        if (isset($_POST['extras'])) {
+            $extras = $_POST['extras'];
+            $info['extras'] = trim($extras);
+        } else {
+            $errors['extras'] = "Porfavor selecciona extras";
+        }
     }
-}
+    if (!empty($errors)) {
+        redirect_with("./pedidoForm.php", [
+            'info' => $info,
+            'errors' => $errors
+        ]);
+    } 
+    
+    if (empty($errors)){
+        // Si no hay errores, redirecciona a la página de ticket
+        redirect_with("./ticket.php", [
+            'info' => $info
+        ]);
+    }
+
+}    
 
 
-if (!empty($errors)) {
-    redirect_with("./pedidoForm.php", [
-        'info' => $info,
-        'errors' => $errors
-    ]);
-}

@@ -1,3 +1,15 @@
+<?php
+
+session_start();
+
+if (isset($_SESSION['info'])) {
+    $info = $_SESSION['info'];
+}
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,25 +25,21 @@
         <div>
             <div class="info border m-5">
                 <h1>Thanks for buying in HasbyPizza.</h1>
-                <p>Name: <?php echo $name; ?></p>
-                <p>Surname: <?php echo $surname; ?></p>
-                <p>Email: <?php if ($emailValid) {
-                                echo $email;
-                            } else {
-                                echo "Email Invalido";
-                            } ?></p>
-                <p>city: <?php echo $city; ?></p>
-                <p>Discount: <?php echo $discount; ?></p>
-                <p>Menu1: <?php echo $menu1; ?></p>
-                <p>Quantity1: <?php echo $quantity1; ?></p>
-                <p>Menu2: <?php echo $menu2; ?></p>
-                <p>Quantity2: <?php echo  $quantity2; ?></p>
-                <p>menu3: <?php echo $menu3; ?></p>
-                <p>quantity3: <?php echo $quantity3; ?></p>
-                <p>custom: <?php echo $custom; ?></p>
-                <p>QuantityCustom: <?php echo $quantityCustom; ?></p>
-                <p>SizePizza: <?php echo $sizePizza; ?></p>
-                <p>Dough: <?php echo $dough; ?></p>
+                <p>Name: <?php echo ($info["name"]) ? $info["name"] : 'N/A'; ?></p>
+                <p>Surname: <?php echo ($info["surname"]) ? $info["surname"] : 'N/A'; ?></p>
+                <p>Email: <?php echo ($info["email"]) ? $info["email"] : 'N/A'; ?></p>
+                <p>city: <?php echo ($info["city"]) ? $info["city"] : 'N/A'; ?></p>
+                <p>Discount: <?php echo ($info["discount"]) ? $info["discount"] : 'N/A'; ?></p>
+                <p>Menu1: <?php echo ($info["menu1"]) ? $info["menu1"] : 'N/A'; ?></p>
+                <p>Quantity1: <?php echo ($info["quantity1"]) ? $info["quantity1"] : 'N/A'; ?></p>
+                <p>Menu2: <?php echo ($info["menu2"]) ? $info["menu2"] : 'N/A'; ?></p>
+                <p>Quantity2: <?php echo ($info["quantity2"]) ? $info["quantity2"] : 'N/A'; ?></p>
+                <p>menu3: <?php echo ($info["menu3"]) ? $info["menu3"] : 'N/A'; ?></p>
+                <p>quantity3: <?php echo ($info["quantity3"]) ? $info["quantity3"] : 'N/A'; ?></p>
+                <p>custom: <?php echo ($info["custom"]) ? $info["custom"] : 'N/A'; ?></p>
+                <p>QuantityCustom:<?php echo ($info["quantityCustom"]) ? $info["quantityCustom"] : 'N/A'; ?></p>
+                <p>SizePizza: <?php echo ($info["sizePizza"]) ? $info["sizePizza"] : 'N/A'; ?></p>
+                <p>Dough: <?php echo ($info["dough"]) ? $info["dough"] : 'N/A'; ?></p>
 
 
                 <p>ingredients: <?php
