@@ -29,8 +29,8 @@ if (isset($_SESSION['info'])) {
                 <p>Surname: <?php echo ($info["surname"]) ? $info["surname"] : 'N/A'; ?></p>
                 <p>Email: <?php echo ($info["email"]) ? $info["email"] : 'N/A'; ?></p>
                 <p>city: <?php echo ($info["city"]) ? $info["city"] : 'N/A'; ?></p>
-                <p>Discount: <?php echo ($info["discount"]) ? $info["discount"] : 'N/A'; ?></p>
-                <p>Menu1: <?php echo ($info["menu1"]) ? $info["menu1"] : 'N/A'; ?></p>
+                <p>Discount: <?php echo ($info["discount"]) ?? 'N/A'; ?></p>
+                <p>Menu1: <?php echo ($info["menu1"]) ?? 'N/A'; ?></p>
                 <p>Quantity1: <?php echo ($info["quantity1"]) ? $info["quantity1"] : 'N/A'; ?></p>
                 <p>Menu2: <?php echo ($info["menu2"]) ? $info["menu2"] : 'N/A'; ?></p>
                 <p>Quantity2: <?php echo ($info["quantity2"]) ? $info["quantity2"] : 'N/A'; ?></p>
@@ -44,10 +44,9 @@ if (isset($_SESSION['info'])) {
 
                 <p>ingredients: <?php
 
-                                for ($i = 0; $i < count($ingredientes); $i++) {
-                                    echo $ingredientes[$i] . ", ";
+                                for ($i = 0; $i < count($info["ingredients"]); $i++) {
+                                    echo $info["ingredients"][$i] . ", ";
                                 }
-
                                 ?>
 
                 </p>

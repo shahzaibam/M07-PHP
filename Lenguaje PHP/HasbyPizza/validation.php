@@ -105,77 +105,145 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
 
+
     if (isset($_POST['discount'])) {
         //menu1
-        if (isset($_POST['menu1'])) {
 
-            if (isset($_POST['quantity1'])) {
-                $quantity1 = htmlspecialchars($_POST['quantity1']);
 
-                if (!empty($quantity1)) {
+        if (isset($_POST['menu']) && is_array($_POST['menu'])) {
+            $info['menu'] = $_POST['menu'];
 
-                    if ((filter_var($quantity1, FILTER_VALIDATE_INT))) {
 
-                        if ($quantity1 < 0) {
-                            $errors['quantity1'] = "Porfavor introduce una cantidad válida";
-                        } else {
-                            $info['quantity1'] = trim($quantity1);
-                        }
-                    } else {
-                        $errors['quantity1'] = "Porfavor introduce una cantidad válida";
-                    }
-                } else {
-                    $errors['quantity1'] = "La ciudad no puede estar vacía";
-                }
+
+            if (isset($_POST['quantity'])) {
+                $info["quantity"] = $_POST['quantity'];
             }
-        }
+            // if (isset($_POST['quantity'])) {
+            //     $quantity = $_POST['quantity'];
+            //     for ($i = 0; $i < count($quantity); $i++) {
+            //         if ($quantity[$i] == "") {
+            //             $errors['quantity'] = "Por favor introduce una cantidad";
+            //         } else if ((filter_var($quantity[$i], FILTER_VALIDATE_INT))) {
+            //             if ($quantity[$i] < 0) {
+            //                 $errors['quantity'] = "Por favor introduce una cantidad válida";
+            //             } else {
+            //                 echo '<script>console.log("hola");</script>';
+            //                 $info['quantity'] = $quantity[$i];
+            //             }
+            //         } else {
+            //             echo '<script>alert("hola");</script>';
+            //             $errors['quantity'] = "Porfavor introduce una cantidad válida";
+            //         }
+            //     }
+            // } else {
+            //     echo '<script>alert("hola");</script>';
+            //     $errors['quantity'] = "Por favor, pon un quantity";   
+            // }
+            // } else {
+            // echo ("hellooooooo");
 
+            // $errors['menu'] = "Por favor, selecciona al menos un menú para aplicar el descuento.";
+            // }
 
-        if (isset($_POST['menu2'])) {
-            if (isset($_POST['quantity2'])) {
-                $quantity2 = htmlspecialchars($_POST['quantity2']);
-
-                if (!empty($quantity2)) {
-
-                    if ((filter_var($quantity2, FILTER_VALIDATE_INT))) {
-
-                        if ($quantity2 < 0) {
-                            $errors['quantity2'] = "Porfavor introduce una cantidad válida";
-                        } else {
-                            $info['quantity2'] = trim($quantity2);
-                        }
-                    } else {
-                        $errors['quantity2'] = "Porfavor introduce una cantidad válida";
-                    }
-                } else {
-                    $errors['quantity2'] = "La ciudad no puede estar vacía";
-                }
-            }
-        }
-
-
-        if (isset($_POST['menu3'])) {
-            if (isset($_POST['quantity3'])) {
-                $quantity3 = htmlspecialchars($_POST['quantity3']);
-
-                if (!empty($quantity3)) {
-
-                    if ((filter_var($quantity3, FILTER_VALIDATE_INT))) {
-
-                        if ($quantity3 < 0) {
-                            $errors['quantity3'] = "Porfavor introduce una cantidad válida";
-                        } else {
-                            $info['quantity3'] = trim($quantity3);
-                        }
-                    } else {
-                        $errors['quantity3'] = "Porfavor introduce una cantidad válida";
-                    }
-                } else {
-                    $errors['quantity3'] = "La ciudad no puede estar vacía";
-                }
-            }
+        } else {
+            $errors['menu'] = "Por favor, selecciona al menu.";
         }
     }
+
+
+
+
+
+
+
+
+    // if (isset($_POST['menu']) && is_array($_POST['menu'])) {
+    //     $info['menu'] = $_POST['menu'];
+
+    //     // Verificar si se ha seleccionado al menos un menú
+    //     if (empty($info['menu'])) {
+    //         $errors['menu'] = "Por favor, selecciona al menos un menú para aplicar el descuento.";
+    //     }
+    // } else {
+    //     $errors['menu'] = "Por favor, selecciona al menos un menú para aplicar el descuento.";
+    // }
+
+
+    // if (isset($_POST['menu'])) {
+
+    //     $info['menu'] = $_POST['menu'];
+
+    //     if (isset($_POST['quantity'])) {
+    //         $quantity = htmlspecialchars($_POST['quantity']);
+
+    //         if (!empty($quantity)) {
+
+    //             if ((filter_var($quantity, FILTER_VALIDATE_INT))) {
+
+    //                 if ($quantity < 0) {
+    //                     $errors['quantity'] = "Porfavor introduce una cantidad válida";
+    //                 } else {
+    //                     $info['quantity'] = $quantity;
+    //                 }
+    //             } else {
+    //                 $errors['quantity'] = "Porfavor introduce una cantidad válida";
+    //             }
+    //         } else {
+    //             $errors['quantity'] = "La ciudad no puede estar vacía";
+    //         }
+    //     }
+    // }else {
+    //     $error["menu"] = "Escoge un menu del descuento";
+    // }
+
+
+    // if (isset($_POST['menu2'])) {
+    //     $info['menu2'] = $_POST['menu2'];
+
+    //     if (isset($_POST['quantity2'])) {
+    //         $quantity2 = htmlspecialchars($_POST['quantity2']);
+
+    //         if (!empty($quantity2)) {
+
+    //             if ((filter_var($quantity2, FILTER_VALIDATE_INT))) {
+
+    //                 if ($quantity2 < 0) {
+    //                     $errors['quantity2'] = "Porfavor introduce una cantidad válida";
+    //                 } else {
+    //                     $info['quantity2'] = trim($quantity2);
+    //                 }
+    //             } else {
+    //                 $errors['quantity2'] = "Porfavor introduce una cantidad válida";
+    //             }
+    //         } else {
+    //             $errors['quantity2'] = "La ciudad no puede estar vacía";
+    //         }
+    //     }
+    // }
+
+
+    // if (isset($_POST['menu3'])) {
+    //     if (isset($_POST['quantity3'])) {
+    //         $quantity3 = htmlspecialchars($_POST['quantity3']);
+
+    //         if (!empty($quantity3)) {
+
+    //             if ((filter_var($quantity3, FILTER_VALIDATE_INT))) {
+
+    //                 if ($quantity3 < 0) {
+    //                     $errors['quantity3'] = "Porfavor introduce una cantidad válida";
+    //                 } else {
+    //                     $info['quantity3'] = trim($quantity3);
+    //                 }
+    //             } else {
+    //                 $errors['quantity3'] = "Porfavor introduce una cantidad válida";
+    //             }
+    //         } else {
+    //             $errors['quantity3'] = "La ciudad no puede estar vacía";
+    //         }
+    //     }
+    // }
+
 
 
 
@@ -186,9 +254,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (isset($_POST['sizePizza'])) {
             $sizePizza = $_POST['sizePizza'];
             $info['sizePizza'] = $sizePizza;
-        }else {
+        } else {
             $errors['sizePizza'] = "Porfavor selecciona una pizza";
-
         }
 
         if (isset($_POST['quantityCustom'])) {
@@ -217,23 +284,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if (isset($_POST['dough'])) {
             $dough = $_POST['dough'];
-            $info['dough'] = trim($dough);
+            $info['dough'] = $dough;
         } else {
             $errors['dough'] = "Porfavor selecciona una massa";
         }
 
 
         if (isset($_POST['ingredients'])) {
+
             $ingredientes = $_POST['ingredients'];
-            $info['ingredientes'] = trim($ingredientes);
+            $info['ingredients'] = $ingredientes;
         } else {
-            $errors['ingredientes'] = "Porfavor selecciona ingredientes";
+            $errors['ingredients'] = "Porfavor selecciona ingredientes";
         }
 
 
         if (isset($_POST['extras'])) {
             $extras = $_POST['extras'];
-            $info['extras'] = trim($extras);
+            $info['extras'] = $extras;
         } else {
             $errors['extras'] = "Porfavor selecciona extras";
         }
@@ -243,15 +311,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             'info' => $info,
             'errors' => $errors
         ]);
-    } 
-    
-    if (empty($errors)){
+    }
+
+    if (empty($errors)) {
         // Si no hay errores, redirecciona a la página de ticket
         redirect_with("./ticket.php", [
             'info' => $info
         ]);
     }
-
-}    
-
-
+}
