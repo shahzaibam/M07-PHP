@@ -5,6 +5,8 @@
     <link rel="stylesheet" type="text/css" href="loginStyles.css">
 </head>
 <body>
+
+
     <div class="login-container">
     <h2>Log In</h2>
     <form method="post" action="doLogin.php">

@@ -2,9 +2,12 @@
 
 session_start();
 
+// require_once("./extraFunctions.php");
+
 if (isset($_SESSION['info'])) {
     $info = $_SESSION['info'];
 }
+
 
 
 ?>
@@ -25,50 +28,76 @@ if (isset($_SESSION['info'])) {
         <div>
             <div class="info border m-5">
                 <h1>Thanks for buying in HasbyPizza.</h1>
-                <p>Name: <?php echo ($info["name"]) ? $info["name"] : 'N/A'; ?></p>
-                <p>Surname: <?php echo ($info["surname"]) ? $info["surname"] : 'N/A'; ?></p>
-                <p>Email: <?php echo ($info["email"]) ? $info["email"] : 'N/A'; ?></p>
-                <p>city: <?php echo ($info["city"]) ? $info["city"] : 'N/A'; ?></p>
-                <p>Discount: <?php echo ($info["discount"]) ?? 'N/A'; ?></p>
-                <p>Menu1: <?php echo ($info["menu1"]) ?? 'N/A'; ?></p>
-                <p>Quantity1: <?php echo ($info["quantity1"]) ? $info["quantity1"] : 'N/A'; ?></p>
-                <p>Menu2: <?php echo ($info["menu2"]) ? $info["menu2"] : 'N/A'; ?></p>
-                <p>Quantity2: <?php echo ($info["quantity2"]) ? $info["quantity2"] : 'N/A'; ?></p>
-                <p>menu3: <?php echo ($info["menu3"]) ? $info["menu3"] : 'N/A'; ?></p>
-                <p>quantity3: <?php echo ($info["quantity3"]) ? $info["quantity3"] : 'N/A'; ?></p>
-                <p>custom: <?php echo ($info["custom"]) ? $info["custom"] : 'N/A'; ?></p>
-                <p>QuantityCustom:<?php echo ($info["quantityCustom"]) ? $info["quantityCustom"] : 'N/A'; ?></p>
-                <p>SizePizza: <?php echo ($info["sizePizza"]) ? $info["sizePizza"] : 'N/A'; ?></p>
-                <p>Dough: <?php echo ($info["dough"]) ? $info["dough"] : 'N/A'; ?></p>
+                <p><?php echo ($info["name"]) ? 'Name:' . $info["name"] : 'N/A'; ?></p>
+                <p><?php echo ($info["surname"]) ? 'Surname: ' . $info["surname"] : 'N/A'; ?></p>
+                <p><?php echo ($info["email"]) ? 'Email: ' . $info["email"] : 'N/A'; ?></p>
+                <p><?php echo ($info["city"]) ? 'City: ' . $info["city"] : 'N/A'; ?></p>
+                <p><?php echo ($info["quantityCustom"]) ? 'Cantidad: ' . $info["quantityCustom"] : 'N/A'; ?></p>
+                <p><?php echo ($info["pizzaSize"]) ? 'Pizza Size: ' . $info["pizzaSize"] : 'N/A'; ?></p>
+                <p><?php echo ($info["massas"]) ? 'Massa: ' . $info["massas"] : 'N/A'; ?></p>
+                <!-- <p><?php //echo ($info["ingredients"]) ? 'Ingredients: ' . $info["ingredients"] : 'N/A'; 
+                        ?></p> -->
+                <!-- <p><?php //echo ($info["custom"]) ? 'Custom:' . $info["custom"] : 'N/A'; 
+                        ?></p> -->
+                <p><?php //echo ($info["quantityCustom"]) ? 'QuantityCustom:' . $info["quantityCustom"] : 'N/A'; 
+                    ?></p>
 
+                <p>
+                    Ingredients:
+                    <?php
+                    for ($i = 0; $i < count($info["ingredients"]); $i++) {
+                        echo $info["ingredients"][$i] . ", ";
+                    }
+                    ?>
+                </p>
 
-                <p>ingredients: <?php
+                <p>
+                    Extras:
+                    <?php
+                    for ($i = 0; $i < count($info["extras"]); $i++) {
+                        echo $info["extras"][$i] . ", ";
+                    }
+                    ?>
+                </p>
 
-                                for ($i = 0; $i < count($info["ingredients"]); $i++) {
-                                    echo $info["ingredients"][$i] . ", ";
-                                }
-                                ?>
+                <p>
+                    Precio :
+                    <?php
 
+                    if (isset($_SESSION["precioTotal"])) {
+                        echo $_SESSION["precioTotal"];
+                    } else {
+                        echo "---";
+                    }
+
+                    ?>
                 </p>
 
 
+                <p>
+                    Precio OFERTAS :
+                    <?php
 
-                <p>extras: <?php
+                    if (isset($_SESSION["totalPriceOfertas"])) {
+                        echo $_SESSION["totalPriceOfertas"];
+                    } else {
+                        echo "---";
+                    }
 
-                            for ($i = 0; $i < count($extras); $i++) {
-                                echo $extras[$i] . ", ";
-                            }
-
-                            ?>
+                    ?>
                 </p>
+
 
             </div>
 
+            <a href="pdf_generator.php" download="tu_archivo.pdf">
+                <button>Descargar PDF</button>
+            </a>
 
         </div>
 
 
-        <div class="hasbyThankPicture info  m-5">
+        <div class="hasbyThankPicture info " style="margin-top: 30px;">
             <img src="./img/hasbyThumbsUp.jpg" alt="" height="608.15px">
         </div>
 

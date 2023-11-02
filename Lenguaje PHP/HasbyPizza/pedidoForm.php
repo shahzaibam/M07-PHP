@@ -1,40 +1,43 @@
-<?php
+<!DOCTYPE html>
+<html lang="en">
 
-session_start();
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Pizza</title>
+    <!-- Agrega tus enlaces a archivos CSS o scripts JS aquí si es necesario -->
+</head>
 
-if (isset($_SESSION["entrado"])) {
-    include("./layout-structure.php");
-    require_once("./validation.php");
-    require_once("./datos.php");
+<body>
 
-    myHeader();
+    <?php
+    session_start();
 
-    if (isset($_SESSION['info'])) {
-        $info = $_SESSION['info'];
-    }
+    if (isset($_SESSION["entrado"])) {
+        include("./layout-structure.php");
+        require_once("./inc/validation.php");
+        require_once("./inc/data.php");
 
-    if (isset($_SESSION['errors'])) {
-        $errors = $_SESSION['errors'];
-    }
+        myHeader();
 
-    /**
-     * contenido dinamico --> Raul
-     * values de los campos PHP (VALIDACIONES) --> Shah Zaib
-     * JS --> Raul
-     * Selector de ciudades dinamicamente con un array --> Ivan
-     * 
-     */
+        if (isset($_SESSION['info'])) {
+            $info = $_SESSION['info'];
+        }
 
-
-?>
-
-
-
-
-    <body>
-
+        if (isset($_SESSION['errors'])) {
+            $errors = $_SESSION['errors'];
+        }
+    ?>
         <a href="./login/logout.php">Cerrar Sesión</a>
 
+        <?php
+
+        // for ($i=0; $i < count($errors) ; $i++) { 
+        //     # code...
+        //     print_r($errors[$i]);
+        // }
+
+        ?>
 
         <div class="container mt-5 text-center">
             <h1>Custom Pizza</h1>
@@ -42,12 +45,8 @@ if (isset($_SESSION["entrado"])) {
             <div class="container-fluid px-1 py-5 mx-auto">
                 <div class="row d-flex justify-content-center">
                     <div class="col-xl-8 col-lg-8 col-md-9 col-11 text-center">
-
                         <div class="card">
-
-
                             <form class="form-card" method="post">
-
                                 <div class="row justify-content-between text-left">
                                     <div class="form-group col-sm-6 flex-column d-flex">
                                         <label for="name" class="form-control-label px-3">Name</label>
@@ -60,278 +59,252 @@ if (isset($_SESSION["entrado"])) {
                                         <span style="color: red;"><?php echo $errors["surname"] ?? "" ?></span>
                                     </div>
                                 </div>
-
+                                <!-- Sustituye esta parte con los campos y elementos necesarios -->
+                                <!-- Ejemplo: -->
 
                                 <div class="row justify-content-between text-left">
                                     <div class="form-group col-sm-6 flex-column d-flex">
                                         <label for="email" class="form-control-label px-3">Email</label>
-                                        <input id="email" name="email" placeholder="" value="<?php echo $info["email"] ?? "" ?>">
+                                        <input type="email" id="email" name="email" placeholder="Enter your email" value="<?php echo $info["email"] ?? "" ?>">
                                         <span style="color: red;"><?php echo $errors["email"] ?? "" ?></span>
                                     </div>
                                     <div class="form-group col-sm-6 flex-column d-flex">
                                         <label for="phoneNumber" class="form-control-label px-3">Phone number</label>
-                                        <input type="text" id="phoneNumber" name="phoneNumber" placeholder="" value="<?php echo $info["phoneNumber"] ?? "" ?>">
+                                        <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="Enter your phone number" value="<?php echo $info["phoneNumber"] ?? "" ?>">
                                         <span style="color: red;"><?php echo $errors["phoneNumber"] ?? "" ?></span>
                                     </div>
                                 </div>
 
 
-                                <div class="row justify-content-between text-left">
-                                    <div class="form-group col-sm-6 flex-column d-flex">
-                                        <!-- <label for="city" class="form-control-label px-3">City</label>
-                                    <input type="text" id="city" name="city" placeholder=""> -->
 
-                                        <div class="form-group flex-column d-flex">
-                                            <label for="city" class="form-control-label px-3">City</label>
 
-                                            <?php
-                                            // Array de ciudades
-                                            $ciudades = array("Almería", "Barcelona", "Castellón", "Málaga", "Madrid");
 
-                                            // Función para generar el select de ciudades
-                                            function generarSelectCiudades($ciudades)
-                                            {
-                                                echo '<select name="city" id="city">';
-                                                foreach ($ciudades as $ciudad) {
-                                                    echo "<option value='$ciudad'>$ciudad</option>";
-                                                }
-                                                echo '</select>';
+
+
+
+
+
+
+
+
+
+
+
+                                <div class="form-group col-sm-6 flex-column d-flex">
+                                    <!-- <label for="city" class="form-control-label px-3">City</label>
+        <input type="text" id="city" name="city" placeholder=""> -->
+
+                                    <div class="form-group flex-column d-flex">
+                                        <label for="city" class="form-control-label px-3">City</label>
+
+                                        <?php
+                                        // Array de ciudades
+                                        $ciudades = array("Almería", "Barcelona", "Castellón", "Málaga", "Madrid");
+
+                                        // Función para generar el select de ciudades
+                                        function generarSelectCiudades($ciudades)
+                                        {
+                                            echo '<select name="city" id="city">';
+                                            foreach ($ciudades as $ciudad) {
+                                                echo "<option value='$ciudad'>$ciudad</option>";
                                             }
+                                            echo '</select>';
+                                        }
 
-                                            // Llamada a la función para generar el select
-                                            generarSelectCiudades($ciudades);
-                                            ?>
-                                        </div>
-
-
-
-
-                                    </div>
-                                    <div class="form-group col-sm-6 flex-column d-flex">
-                                        <label for="address" class="form-control-label px-3">Address</label>
-                                        <input type="text" id="address" name="address" placeholder="Escribe tu dirección" value="<?php echo $info["address"] ?? "" ?>">
-                                        <span style="color:red;"><?php echo $errors["address"] ?? "" ?></span>
+                                        // Llamada a la función para generar el select
+                                        generarSelectCiudades($ciudades);
+                                        ?>
                                     </div>
                                 </div>
-
-
-                                <div class="row justify-content-between mt-5">
-                                    <div class="form-group col-sm-2 flex-column d-flex"> <label for="discount" class="form-control-label px-3">Discount</label>
-                                        <input type="checkbox" id="discount" name="discount" placeholder="" value="discount">
-                                    </div>
+                                <div class="form-group col-sm-6 flex-column d-flex">
+                                    <label for="address" class="form-control-label px-3">Address</label>
+                                    <input type="text" id="address" name="address" placeholder="Escribe tu dirección" value="<?php echo $info["address"] ?? "" ?>">
+                                    <span style="color:red;"><?php echo $errors["address"] ?? "" ?></span>
                                 </div>
-
-                                <div class="row justify-content-between text-left mt-5">
-
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col">Menu</th>
-                                            <th scope="col">Price</th>
-                                            <th scope="col">Quantity</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <th scope="row">
-                                                <label for="menu1" class="form-control-label px-3"></label> <input type="checkbox" id="menu1" name="menu[]" placeholder="" value="Pepperoni + Drink">
-                                            </th>
-                                            <td>Pepperoni + Drink</td>
-                                            <td>12€</td>
-                                            <td>
-                                                <label for="quantity1" class="form-control-label px-3"></label> <input type="number" id="quantity1" name="quantity[]" placeholder="">
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">
-                                                <label for="menu2" class="form-control-label px-3"></label> <input type="checkbox" id="menu2" name="menu[]" placeholder="" value="Barbeque + Water">
-                                            </th>
-                                            <td>Barbeque + Water</td>
-                                            <td>10€</td>
-                                            <td>
-                                                <label for="quantity2" class="form-control-label px-3"></label> <input type="number" id="quantity2" name="quantity[]" placeholder="">
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">
-                                                <label for="menu3" class="form-control-label px-3"></label> <input type="checkbox" id="menu3" name="menu[]" placeholder="" value="Special HasbyPizza + Complements">
-                                            </th>
-                                            <td>Special HasbyPizza + Complements</td>
-                                            <td>17€</td>
-                                            <td>
-                                                <label for="quantity3" class="form-control-label px-3"></label> <input type="number" id="quantity3" name="quantity[]" placeholder="">
-
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-
-                                <span><?php  $info["menu"] ?? "" ?></span>
-                                <span><?php echo $errors["menu"] ?? "" ?></span>
-
-                                <span><?php  $info["quantity"] ?? "" ?></span>
-                                <span><?php  $errors["quantity"] ?? "" ?></span>
-
-
-                                
-                            </div>
-                            <span><?php  $errors["quantity"] ?? "" ?></span>
-                            <span><?php  $errors["discount"] ?? "" ?></span>
-
-
-                                <div class="row justify-content-between mt-5">
-                                    <div class="form-group col-sm-2 flex-column d-flex"> <label for="custom" class="form-control-label px-3">Custom Pizza</label> <input type="checkbox" id="custom" name="custom" placeholder="" value="CustomPizza"> </div>
-                                </div>
-
-                                <div class="d-flex">
-
-                                    <div class="row text-left mt-5">
-                                        <div class="form-group col-m-2">
-                                            <label for="quantityCustom" class="form-control-label px-3">Quantity </label>
-                                            <input type="number" id="quantityCustom" name="quantityCustom" placeholder="">
-                                        </div>
-
-                                    </div>
-
-                                    <div class="row text-left mt-5 ml-4">
-                                        <div class="form-group col-sm-3 flex-column">
-                                            <span>Tamaño:</span>
-                                        </div>
-
-                                    <div class="form-group col-sm-2 flex-column">
-                                        <label for="small" class="form-control-label px-3">Small</label>
-                                        <input type="radio" id="small" name="sizePizza[]" value="small">
-                                    </div>
-
-                                    <div class="form-group col-sm-2 flex-column">
-                                        <label for="medium" class="form-control-label px-3">Medium</label>
-                                        <input type="radio" id="medium" name="sizePizza[]" value="medium">
-                                    </div>
-
-                                    <div class="form-group col-sm-2 flex-column">
-                                        <label for="big" class="form-control-label px-3">Big</label>
-                                        <input type="radio" id="big" name="sizePizza[]" value="big">
-                                    </div>
-                                </div>
-
-                            </div>
-
-
-                                <div class="d-flex">
-
-                                <div class="row text-left mt-5 ml-4">
-                                    <div class="form-group col-sm-3 flex-column">
-                                        <span>Mass:</span>
-                                    </div>
-
-                                    <div class="form-group col-sm-3 flex-column">
-                                        <label for="masa" class="form-control-label px-2">Masa Roll</label>
-                                        <input type="radio" id="masa" name="dough[]" value="Masa Roll">
-                                    </div>
-
-                                    <div class="form-group col-sm-2 flex-column">
-                                        <label for="finizzima" class="form-control-label px-3">Finizzima</label>
-                                        <input type="radio" id="finizzima" name="dough[]" value="Finizzima">
-                                    </div>
-
-                                    <div class="form-group col-sm-2 flex-column">
-                                        <label for="classic" class="form-control-label px-3">Classic</label>
-                                        <input type="radio" id="classic" name="dough[]" value="Classic">
-                                    </div>
-                                </div>
-
-                            </div>
-
-
-
-                                <div class="d-flex">
-
-                                <div class="row text-left mt-5 ml-4">
-                                    <div class="form-group col-sm-2 flex-column">
-                                        <span>Ingredientes:</span>
-                                    </div>
-
-                                    <div class="form-group col-sm-1 flex-column">
-                                        <label for="chicken" class="form-control-label px-2">Chicken</label>
-                                        <input type="checkbox" id="chicken" name="ingredients[]" value="chicken">
-                                    </div>
-
-                                    <div class="form-group col-sm-1 flex-column">
-                                        <label for="veal" class="form-control-label px-3">Veal</label>
-                                        <input type="checkbox" id="veal" name="ingredients[]" value="finizzima">
-                                    </div>
-
-                                    <div class="form-group col-sm-1 flex-column">
-                                        <label for="egg" class="form-control-label px-3">Egg</label>
-                                        <input type="checkbox" id="egg" name="ingredients[]" value="egg">
-                                    </div>
-
-                                    <div class="form-group col-sm-1 flex-column">
-                                        <label for="tuna" class="form-control-label px-3">Tuna</label>
-                                        <input type="checkbox" id="tuna" name="ingredients[]" value="tuna">
-                                    </div>
-
-
-                                    <div class="form-group col-sm-1 flex-column">
-                                        <label for="mushrooms" class="form-control-label px-3">Mushrooms</label>
-                                        <input type="checkbox" id="mushrooms" name="ingredients[]" value="mushrooms">
-                                    </div>
-                                </div>
-                                <!-- <span style="color: red;"><?php //print_r( $info["ingredients"]) ?? "" ?></span>
-                                <span style="color: red;"><?php //echo $errors["ingredients"] ?? "" ?></span>
-                                 -->
-
-                                </div>
-
-
-                                <div class="d-flex">
-
-                                    <div class="row text-left mt-5 ml-4">
-                                        <div class="form-group col-sm-3 flex-column">
-                                            <span>Extras:</span>
-                                        </div>
-
-                                    <div class="form-group col-sm-2 flex-column">
-                                        <label for="olive" class="form-control-label px-2">Olive (0,25)</label>
-                                        <input type="checkbox" id="olive" name="extras[]" value="olive">
-                                    </div>
-
-                                    <div class="form-group col-sm-2 flex-column">
-                                        <label for="bacon" class="form-control-label px-3">Bacon (0,50)</label>
-                                        <input type="checkbox" id="bacon" name="extras[]" value="bacon">
-                                    </div>
-
-                                    <div class="form-group col-sm-2 flex-column">
-                                        <label for="onion" class="form-control-label px-3">Onion (0,25)</label>
-                                        <input type="checkbox" id="onion" name="extras[]" value="onion">
-                                    </div>
-
-                                    <div class="form-group col-sm-2 flex-column">
-                                        <label for="potato" class="form-control-label px-3">Potato (0,50)</label>
-                                        <input type="checkbox" id="potato" name="extras[]" value="potato">
-                                    </div>
-                                </div>
-
-                            </div>
-
-
-
-                                <div class="row justify-content-end">
-                                    <div class="form-group col-sm-6"> <input type="submit" class="btn-block btn-primary"> </div>
-                                </div>
-
-
-                            </form>
-
-
-
                         </div>
 
 
+
+
+                        <div class="form-group">
+                            <label for="ofertas">Ofertas del Día:</label>
+                            <ul>
+                                <?php foreach ($ofertasDelDia as $oferta) : ?>
+                                    <li>
+                                        <input type='number' name='ofertas[<?= $oferta['nombre'] ?>]' value='0' min='0'>
+                                        <?= $oferta['nombre'] ?> - Precio: $<?= $oferta['precio'] ?>
+                                    </li>
+                                <?php endforeach; ?>
+
+                            </ul>
+
+                            <span><?php echo $errors["ofertas"] ?? "" ?></span>
+                        </div>
+
+
+
+
+
+
+
+                        <div class="row text-left mt-5 ml-4">
+                            <div class="form-group col-sm-3 flex-column">
+                                <span>Cantidad:</span>
+                            </div>
+
+                            <input type="number" id="quantityCustom_1" name="quantityCustom" value="<?php echo $info["quantityCustom"] ?? "" ?>" style="width: 100px;">
+
+
+                            <span style="color: red;">
+                                <?php echo $errors["quantityCustom"] ?? "" ?>
+                            </span>
+                        </div>
+
+
+
+
+                        <!-- Parte de los radio buttons -->
+                        <div class="row text-left mt-5 ml-4">
+                            <div class="form-group col-sm-3 flex-column">
+                                <span>Tamaño:</span>
+                            </div>
+                            <?php
+                            //Tamaños de pizza
+                            // $contacts = [
+                            //     'email' => 'Email',
+                            //     'phone' => 'Phone'
+                            // ];
+
+
+                            foreach ($pizzaSizes as $key => $value) {
+                                echo "<div>";
+                                echo "<input type='radio' name='pizzaSizes' id='pizzaSizes_$key' value='$key' />";
+                                echo "<label for='pizzaSizes_$key'>" . " $value </label>";
+                                echo "</div>";
+                            }
+                            ?>
+
+
+
+                            <span style="color: red;">
+                                <?php echo $errors["pizzaSize"] ?? "" ?>
+                            </span>
+                        </div>
+
+
+                        <!-- Parte de los radio buttons -->
+                        <div class="row text-left mt-5 ml-4">
+                            <div class="form-group col-sm-3 flex-column">
+                                <span>Massa:</span>
+                            </div>
+                            <?php
+                            //Tamaños de pizza
+                            // $contacts = [
+                            //     'email' => 'Email',
+                            //     'phone' => 'Phone'
+                            // ];
+
+
+                            foreach ($massas as $key => $value) {
+                                echo "<div>";
+                                echo "<input type='radio' name='massas' id='massas_$key' value='$key' />";
+                                echo "<label for='massas_$key'>" . " $value </label>";
+                                echo "</div>";
+                            }
+                            ?>
+
+
+
+                            <span style="color: red;">
+                                <?php echo $errors["massas"] ?? "" ?>
+                            </span>
+                        </div>
+
+
+                        <!-- Parte de los checkboxes -->
+                        <div class="row text-left mt-5 ml-4">
+                            <div class="form-group col-sm-3 flex-column">
+                                <span>Ingredientes:</span>
+                            </div>
+                            <?php
+                            $ingredientsOptions = [
+                                ["id" => "chicken", "value" => "Chicken"],
+                                ["id" => "veal", "value" => "Vealll"],
+                                ["id" => "egg", "value" => "Eggss"],
+                                ["id" => "tuna", "value" => "Tuna"],
+                                ["id" => "mushrooms", "value" => "Mushrooms"],
+                                // Puedes añadir más opciones de ingredientes si es necesario
+                            ];
+
+                            foreach ($ingredientsOptions as $ingredient) {
+                                echo "<div class='form-group col-sm-2 flex-column p-5' >";
+                                echo "<label for='{$ingredient['id']}' class='form-control-label p-2'>" . $ingredient['value'] . "</label>";
+                                echo "<input type='checkbox' id='{$ingredient['id']}' name='ingredients[]' value='{$ingredient['id']}'";
+                                if (isset($info["ingredients"]) && in_array($ingredient['id'], $info["ingredients"])) {
+                                    echo " checked"; // Marcar el checkbox si coincide con la información guardada
+                                }
+                                echo ">";
+                                echo "</div>";
+                            }
+                            ?>
+
+
+                            <span style="color: red;">
+                                <?php echo $errors["ingredients"] ?? "" ?>
+                            </span>
+                        </div>
+
+
+                        <div class="row text-left mt-5 ml-4">
+                            <div class="form-group col-sm-3 flex-column">
+                                <span>Extras:</span>
+                            </div>
+
+                            <?php
+
+                            foreach ($extrasOptions as $extra) {
+                                echo "<div class='form-group col-sm-2 flex-column p-5' >";
+                                echo "<label for='{$extra['id']}' class='form-control-label p-2'>" . $extra['name'] . "</label>";
+                                echo "<input type='checkbox' id='{$extra['id']}' name='extras[]' value='{$extra['value']}'";
+                                if (isset($info["extras"]) && in_array($extra['value'], $info["extras"])) {
+                                    echo " checked";
+                                }
+                                echo ">";
+                                echo "</div>";
+                            }
+                            ?>
+
+                            <span style="color: red;">
+                                <?php echo $errors["extras"] ?? "" ?>
+                            </span>
+                        </div>
+
+
+
+
+
+                        <!-- Agrega más partes del formulario según sea necesario -->
+                        <div class="row justify-content-end">
+                            <div class="form-group col-sm-6"> <input type="submit" class="btn-block btn-primary"> </div>
+                        </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+        </div>
+    <?php
+    } else {
+        echo "No puedes acceder aquí, inicia sesión";
+        echo "<br>";
+        echo "<a href='./login/login.php'>Iniciar Sesión</a>";
+    }
+    unset($_SESSION['info']);
+    unset($_SESSION['errors']);
+    ?>
+
+    <!-- Agrega tus enlaces a archivos JavaScript si es necesario -->
 
 </body>
+
+</html>
