@@ -19,9 +19,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             } else {
                 $errors['name'] = "Porfavor introduce un nombre válido";
             }
+        }else {
+            $errors['name'] = "El nombre no puede estar vacío";
         }
-    } else {
-        $errors['name'] = "El nombre no puede estar vacío";
     }
 
 
@@ -99,9 +99,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             } else {
                 $errors['address'] = "La dirección es incorrecta";
             }
+        } else {
+            $errors['address'] = "La dirección no puede estar vacía";
         }
-    } else {
-        $errors['address'] = "La dirección no puede estar vacía";
     }
 
 

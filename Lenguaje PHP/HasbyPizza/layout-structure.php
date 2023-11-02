@@ -21,6 +21,9 @@ function myHeader(){
 
 function myMenu(){
     $menu=<<<HERE
+
+    
+
     <div>
         <ul class="header-img">
 
