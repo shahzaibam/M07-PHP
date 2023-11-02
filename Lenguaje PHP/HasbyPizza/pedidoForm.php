@@ -163,6 +163,8 @@ if (isset($_SESSION["entrado"])) {
                                         ?>
                                     </table>
 
+                                    <span style="color: red;"><?php echo $errors['menu'] ?? "" ?></span>
+
                                 </div>
 
 
