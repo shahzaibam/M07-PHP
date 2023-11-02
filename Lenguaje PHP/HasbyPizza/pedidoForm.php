@@ -5,6 +5,7 @@ session_start();
 if (isset($_SESSION["entrado"])) {
     include("./layout-structure.php");
     require_once("./validation.php");
+    require_once("./datos.php");
 
     myHeader();
 
@@ -133,29 +134,31 @@ if (isset($_SESSION["entrado"])) {
                                         </thead>
                                         <?php
                                         // Opciones de menú con sus detalles (nombre, precio)
-                                        $menuOptions = [
-                                            ["name" => "Pepperoni + Drink", "price" => "12€", "id" => "menu1"],
-                                            ["name" => "Barbeque + Water", "price" => "10€", "id" => "menu2"],
-                                            ["name" => "Special HasbyPizza + Complements", "price" => "17€", "id" => "menu3"],
-                                        ];
+                                        // $menuOptions = [
+                                        //     ["name" => "Pepperoni + Drink", "price" => "12€", "id" => "menu"],
+                                        //     ["name" => "Barbeque + Water", "price" => "10€", "id" => "menu"],
+                                        //     ["name" => "Special HasbyPizza + Complements", "price" => "17€", "id" => "menu"],
+                                        // ];
+
+
+
+                                        $cont = 0;
+                                        
 
                                         // Generación dinámica de las filas de la tabla con las opciones de menú
                                         echo "<tbody>";
                                         foreach ($menuOptions as $key => $option) {
-                                            $menuId = $option['id'];
-                                            $menuName = $option['name'];
-                                            $menuPrice = $option['price'];
-
+                                            $cont++;
                                             echo "<tr>";
                                             echo "<th scope='row'>";
-                                            echo "<label for='$menuId' class='form-control-label px-3'></label>";
-                                            echo "<input type='checkbox' id='$menuId' name='$menuId' placeholder='' value='$menuName'>";
+                                            echo "<label for='menu_$key' class='form-control-label px-3'></label>";
+                                            echo "<input type='checkbox' id='menu_" . $key . "' name='menu[]' placeholder='' value='" . $key . "' " . (in_array($key, $_SESSION['selected_menu'] ?? []) ? 'checked' : '') . ">";
                                             echo "</th>";
-                                            echo "<td>$menuName</td>";
-                                            echo "<td>$menuPrice</td>";
+                                            echo "<td>$key</td>";
+                                            echo "<td>$option</td>";
                                             echo "<td>";
-                                            echo "<label for='quantity$key' class='form-control-label px-3'></label>";
-                                            echo "<input type='number' id='quantity$key' name='quantity$key' placeholder=''>";
+                                            echo "<label for='quantity$cont' class='form-control-label px-3'></label>";
+                                            echo "<input type='number' id='quantity$cont' name='quantity$cont' placeholder=''>";
                                             echo "</td>";
                                             echo "</tr>";
                                         }
@@ -321,6 +324,7 @@ if (isset($_SESSION["entrado"])) {
 
     </body>
 
+
 <?php
 } else {
     echo "No puedes acceder aqui, logeate";
@@ -329,4 +333,6 @@ if (isset($_SESSION["entrado"])) {
 
     echo "<a href='./login/login.php'>Logear</a>";
 }
+unset($_SESSION['info']);
+unset($_SESSION['errors']); 
 ?>
