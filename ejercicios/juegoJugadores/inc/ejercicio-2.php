@@ -2,9 +2,9 @@
 
 //Lo mismo que el ejercicio 1 pero las cartas no se guardan en un fichero de texto, sino que las imprimes por pantalla con tags html  <pre> ... </pre>.
 
-include('./layout.php');
-include('./data.php');
-include('./functions.php');
+include('../layout.php');
+include('../data/data.php');
+include('../functions.php');
 
 
 myHeader();

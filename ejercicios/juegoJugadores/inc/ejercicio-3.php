@@ -2,9 +2,9 @@
 
 // Lo mismo que el ejercicio 2 pero la plantilla de la carta ha de estar en un fichero que el programa lo ha de leer, el fichero se llamará: index.view.html (es un html con el texto de la carta) 
 
-include('./layout.php');
-include('./data.php');
-include('./functions.php');
+include('../layout.php');
+include('../data/data.php');
+include('../functions.php');
 
  
 myHeader();
@@ -12,7 +12,7 @@ myMenu();
 
 $names_array = array_keys($jugadores);
 
-$templateLocation = "templateToRead/index.view.html";
+$templateLocation = "../templateToRead/index.view.html";
 
 
 ?>

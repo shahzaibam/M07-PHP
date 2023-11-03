@@ -4,16 +4,16 @@
 //Crea también un fichero 'index.html' con una lista de los enlaces a los ficheros de las cartas generadas.
 
 
-include('./layout.php');
-include('./data.php');
-include('./functions.php');
+include('../layout.php');
+include('../data/data.php');
+include('../functions.php');
 
 myHeader();
 myMenu();
 
 $names_array = array_keys($jugadores);
 
-$templateLocation = "templateToRead/index.view.html"
+$templateLocation = "../templateToRead/index.view.html"
 
 ?>
 
@@ -49,7 +49,7 @@ $templateLocation = "templateToRead/index.view.html"
         // echo "</pre>";
 
         writeInFileTxtIndex($names_array);
-        header("Location:playerTemplateInfo.php");
+        header("Location:../playerTemplateInfo.php");
 
 
         ?>
