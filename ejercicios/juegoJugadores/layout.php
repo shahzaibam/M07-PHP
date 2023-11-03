@@ -38,6 +38,7 @@ function myMenu()
                 <li class="nav-item">
                     <a class="nav-link" href="http://127.0.0.1/m07-php/ejercicios/juegoJugadores/inc/ejercicio-1.php"> Ejercicio 1 </a>
                 </li>
+                
                 <li class="nav-item">
                     <a class="nav-link" href="http://127.0.0.1/m07-php/ejercicios/juegoJugadores/inc/ejercicio-2.php"> Ejercicio 2 </a>
                 </li>
