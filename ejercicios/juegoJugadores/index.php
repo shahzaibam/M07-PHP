@@ -1,7 +1,7 @@
 <?php
 
 include('./layout.php');
-include('./data.php');
+include('./data/data.php');
 include('./functions.php');
 
 myHeader(); 

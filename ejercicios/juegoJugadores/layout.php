@@ -33,19 +33,23 @@ function myMenu()
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item active">
-                    <a class="nav-link" href="index.php"> Home </a>
+                    <a class="nav-link" href="http://127.0.0.1/m07-php/ejercicios/juegoJugadores/index.php"> Home </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="ejercicio-1.php"> Ejercicio 1 </a>
+                    <a class="nav-link" href="http://127.0.0.1/m07-php/ejercicios/juegoJugadores/inc/ejercicio-1.php"> Ejercicio 1 </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="http://127.0.0.1/m07-php/ejercicios/juegoJugadores/inc/ejercicio-2.php"> Ejercicio 2 </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="ejercicio-2.php"> Ejercicio 2 </a>
+                    <a class="nav-link" href="http://127.0.0.1/m07-php/ejercicios/juegoJugadores/inc/ejercicio-3.php"> Ejercicio 3 </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="ejercicio-3.php"> Ejercicio 3 </a>
+                    <a class="nav-link" href="http://127.0.0.1/m07-php/ejercicios/juegoJugadores/inc/ejercicio-4.php"> Ejercicio 4 </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="ejercicio-4.php"> Ejercicio 4 </a>
+                    <a class="nav-link" href="http://127.0.0.1/m07-php/ejercicios/juegoJugadores/inc/ejercicio-5.php"> Ejercicio 5 </a>
                 </li>
             </ul>
         </div>
@@ -82,5 +86,3 @@ function myFooter()
 
 
 }
-
-?>

@@ -56,7 +56,7 @@ function make_letters($names_array) {
 //this function writes the saved templates in the array to txt files.
 function writeInFileTxt($names_array) {
     $letters_array = make_letters($names_array);
-    $directory = "./letters/";
+    $directory = "../letters/";
     
     foreach ($letters_array as $key => $letter) {
         $file_name = $directory . $names_array[$key] . ".txt"; 
@@ -113,7 +113,7 @@ function make_letters_file($templateLocation, $names_array) {
 //this function writes the saved templates in the array to HTML files.
 function writeInFileHtml($templateLocation, $names_array) {
     $letters_array = make_letters_file($templateLocation, $names_array);
-    $directory = "./disco/ficheros/";
+    $directory = "../disco/ficheros/";
     
     foreach ($letters_array as $key => $letter) {
         $file_name = $directory . $names_array[$key] . ".html"; 
@@ -152,7 +152,7 @@ function make_letters_index($names_array) {
 //this function writes all the players files into a single file named index.html and if youu click on any players name it will show the message with the players name you clicked
 function writeInFileTxtIndex($names_array) {
     $letters_array = make_letters_index($names_array);
-    $directory = "./disco/ficheros/";
+    $directory = "../disco/ficheros/";
 
 
     $fileDeleted = unlink($directory . "index.html"); //here we delete the file which was created with all the player name, after deleting we will create it again so it will not be duplicated players
@@ -173,3 +173,5 @@ function writeInFileTxtIndex($names_array) {
 
 
 ?>
+
+<!-- <a href="./letters/"></a> -->
