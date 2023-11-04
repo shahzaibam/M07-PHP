@@ -13,7 +13,6 @@ $massas = [
 ];
 
 
-// Opciones de ingredientes adicionales con sus precios
 $extrasOptions = [
     ["id" => "olive", "name" => "Olive (0,25)", "value" => "olive"],
     ["id" => "bacon", "name" => "Bacon (0,50)", "value" => "bacon"],
@@ -41,5 +40,6 @@ $ofertasDelDia = [
     ["nombre" => "Pizza 4 quesos", "precio" => 8.0],
     ["nombre" => "Pizza Bacon", "precio" => 10.0],
     ["nombre" => "Pizza Pollo", "precio" => 12.0],
-    // Agrega más ofertas si es necesario
 ];
+
+?>

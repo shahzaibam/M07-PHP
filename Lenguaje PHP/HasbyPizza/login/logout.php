@@ -1,5 +1,4 @@
 <?php
-// Iniciar la sesión
 session_start();
 
 // Destruir la sesión y redirigir al inicio de sesión

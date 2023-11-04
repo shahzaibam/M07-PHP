@@ -15,7 +15,7 @@ $pdf->SetKeywords('PDF');
 
 $pdf->AddPage();
 
-$html = file_get_contents('ticket.php'); 
+$html = file_get_contents('./ticket.php'); 
 
 $pdf->writeHTML($html, true, true, true, true, '');
 

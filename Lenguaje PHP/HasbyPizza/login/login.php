@@ -5,9 +5,11 @@
     <link rel="stylesheet" type="text/css" href="loginStyles.css">
 </head>
 <body>
+    <div>
 
+        <a href="../index.php">Ir al Home</a>
 
-    <div class="login-container">
+        <div class="login-container">
     <h2>Log In</h2>
     <form method="post" action="doLogin.php">
         <label for="username">Usuario:</label>
@@ -18,6 +20,9 @@
         <input type="submit" value="Log In">
     </form>
     </div>
+    </div>
+
+
 
 </body>
 </html>

@@ -2,8 +2,6 @@
 
 session_start();
 
-// require_once("./extraFunctions.php");
-
 if (isset($_SESSION['info'])) {
     $info = $_SESSION['info'];
 }
@@ -90,7 +88,7 @@ if (isset($_SESSION['info'])) {
 
             </div>
 
-            <a href="pdf_generator.php" download="tu_archivo.pdf">
+            <a href="pdf_generator.php">
                 <button>Descargar PDF</button>
             </a>
 

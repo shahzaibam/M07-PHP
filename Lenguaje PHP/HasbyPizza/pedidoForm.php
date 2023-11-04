@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Custom Pizza</title>
-    <!-- Agrega tus enlaces a archivos CSS o scripts JS aquí si es necesario -->
 </head>
 
 <body>
@@ -30,14 +29,7 @@
     ?>
         <a href="./login/logout.php">Cerrar Sesión</a>
 
-        <?php
 
-        // for ($i=0; $i < count($errors) ; $i++) { 
-        //     # code...
-        //     print_r($errors[$i]);
-        // }
-
-        ?>
 
         <div class="container mt-5 text-center">
             <h1>Custom Pizza</h1>
@@ -59,8 +51,6 @@
                                         <span style="color: red;"><?php echo $errors["surname"] ?? "" ?></span>
                                     </div>
                                 </div>
-                                <!-- Sustituye esta parte con los campos y elementos necesarios -->
-                                <!-- Ejemplo: -->
 
                                 <div class="row justify-content-between text-left">
                                     <div class="form-group col-sm-6 flex-column d-flex">
@@ -78,30 +68,14 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
                                 <div class="form-group col-sm-6 flex-column d-flex">
-                                    <!-- <label for="city" class="form-control-label px-3">City</label>
-        <input type="text" id="city" name="city" placeholder=""> -->
 
                                     <div class="form-group flex-column d-flex">
                                         <label for="city" class="form-control-label px-3">City</label>
 
                                         <?php
-                                        // Array de ciudades
                                         $ciudades = array("Almería", "Barcelona", "Castellón", "Málaga", "Madrid");
 
-                                        // Función para generar el select de ciudades
                                         function generarSelectCiudades($ciudades)
                                         {
                                             echo '<select name="city" id="city">';
@@ -111,7 +85,6 @@
                                             echo '</select>';
                                         }
 
-                                        // Llamada a la función para generar el select
                                         generarSelectCiudades($ciudades);
                                         ?>
                                     </div>
@@ -169,11 +142,6 @@
                                 <span>Tamaño:</span>
                             </div>
                             <?php
-                            //Tamaños de pizza
-                            // $contacts = [
-                            //     'email' => 'Email',
-                            //     'phone' => 'Phone'
-                            // ];
 
 
                             foreach ($pizzaSizes as $key => $value) {
@@ -198,11 +166,6 @@
                                 <span>Massa:</span>
                             </div>
                             <?php
-                            //Tamaños de pizza
-                            // $contacts = [
-                            //     'email' => 'Email',
-                            //     'phone' => 'Phone'
-                            // ];
 
 
                             foreach ($massas as $key => $value) {
@@ -233,7 +196,6 @@
                                 ["id" => "egg", "value" => "Eggss"],
                                 ["id" => "tuna", "value" => "Tuna"],
                                 ["id" => "mushrooms", "value" => "Mushrooms"],
-                                // Puedes añadir más opciones de ingredientes si es necesario
                             ];
 
                             foreach ($ingredientsOptions as $ingredient) {
@@ -241,7 +203,7 @@
                                 echo "<label for='{$ingredient['id']}' class='form-control-label p-2'>" . $ingredient['value'] . "</label>";
                                 echo "<input type='checkbox' id='{$ingredient['id']}' name='ingredients[]' value='{$ingredient['id']}'";
                                 if (isset($info["ingredients"]) && in_array($ingredient['id'], $info["ingredients"])) {
-                                    echo " checked"; // Marcar el checkbox si coincide con la información guardada
+                                    echo " checked"; 
                                 }
                                 echo ">";
                                 echo "</div>";
@@ -283,7 +245,6 @@
 
 
 
-                        <!-- Agrega más partes del formulario según sea necesario -->
                         <div class="row justify-content-end">
                             <div class="form-group col-sm-6"> <input type="submit" class="btn-block btn-primary"> </div>
                         </div>
@@ -303,7 +264,6 @@
     unset($_SESSION['errors']);
     ?>
 
-    <!-- Agrega tus enlaces a archivos JavaScript si es necesario -->
 
 </body>
 

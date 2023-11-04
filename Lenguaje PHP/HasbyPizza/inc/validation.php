@@ -89,7 +89,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
 
-    // ^[A-Za-z0-9\s\-\.\,\(\)\/]+$
 
 
     //address
@@ -173,7 +172,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
     $pizzaSize = filter_input(INPUT_POST, 'pizzaSizes', FILTER_SANITIZE_STRING);
-    // check the selected value against the original values
     if ($pizzaSize && array_key_exists($pizzaSize, $pizzaSizes)) {
         $pizzaSize = htmlspecialchars($pizzaSize);
         $info["pizzaSize"] = $pizzaSize;
@@ -186,7 +184,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $massa = filter_input(INPUT_POST, 'massas', FILTER_SANITIZE_STRING);
 
 
-    // check the selected value against the original values
     if ($massa && array_key_exists($massa, $massas)) {
         $massa = htmlspecialchars($massa);
         $info["massas"] = $massa;
