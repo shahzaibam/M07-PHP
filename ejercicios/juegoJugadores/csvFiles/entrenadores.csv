@@ -1,4 +1,4 @@
-../imgEntrenadores/luisEnrique.jpg;
+../csvFiles/imgEntrenadores/luisEnrique.jpg
 Nombre; Luis Enrique;
 Equipo; PSG;
 FechaNacimiento; 08/05/1970;
@@ -6,7 +6,7 @@ AnyosDeEntrenador; 10;
 NivelLiderazgo; 8;
 Pais; Espanya;
 
-../img/xaviHernandez.jpeg;
+../csvFiles/imgEntrenadores/xaviHernandez.jpeg
 Nombre; Xavi;
 Equipo; Barcelona;
 FechaNacimiento; 25/01/1980;

@@ -13,8 +13,6 @@ myMenu();
 
 $archivo = "../csvFiles/entrenadores.csv";
 
-echo "<h2>Listado de Entrenadores:</h2>";
-
 function mostrarEntreandores($archivo)
 {
     // Abrir el archivo en modo lectura
@@ -25,7 +23,7 @@ function mostrarEntreandores($archivo)
 
             if (strpos($datos[0], 'img') == true) {
 
-                echo " <img src=\"/$datos[0]\" height='200px'/> <br>";
+                echo " <img src=\"$datos[0]\" height='200px'/> <br>";
             } else {
                 echo " $datos[0]<br>";
             }
@@ -43,14 +41,17 @@ function mostrarEntreandores($archivo)
 <body>
 
     <div>
+        <h2 class="text-center mt-4">Listado de Entrenadores:</h2>
         <div>
-            <?php
+            <div class="d-flex justify-content-around mt-5">
+                <?php
 
 
 
-            mostrarEntreandores($archivo);
+                mostrarEntreandores($archivo);
 
-            ?>
+                ?>
+            </div>
         </div>
 
     </div>

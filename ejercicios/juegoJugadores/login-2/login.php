@@ -1,0 +1,62 @@
+<?php
+
+include('../layout.php');
+
+myHeader();
+myMenu();
+
+?>
+    <body>
+        <div class="container">
+            <div class="login__content">
+                <img src="assets/img/foot-6.jpg" alt="login image" class="login__img">
+
+                <form action="doLogin" method="post" class="login__form">
+                    <div>
+                        <h1 class="login__title">
+                            <span>Welcome</span> Back
+                        </h1>
+                        <p class="login__description">
+                            Welcome! Please login to continue.
+                        </p>
+                    </div>
+                    
+                    <div>
+                        <div class="login__inputs">
+                            <div>
+                                <label for="input-email" class="login__label">Email</label>
+                                <input type="email" placeholder="Enter your email address" required class="login__input" id="input-email">
+                            </div>
+    
+                            <div>
+                                <label for="input-pass" class="login__label">Password</label>
+    
+                                <div class="login__box">
+                                    <input type="password" placeholder="Enter your password" required class="login__input" id="input-pass">
+                                    <i class="ri-eye-off-line login__eye" id="input-icon"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="login__check">
+                            <input type="checkbox" class="login__check-input" id="input-check">
+                            <label for="input-check" class="login__check-label">Remember me</label>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="login__buttons">
+                            <button class="login__button">Log In</button>
+                        </div>
+
+                        <a href="#" class="login__forgot">Forgot Password?</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+        <!--=============== MAIN JS ===============-->
+        <script src="assets/js/main.js"></script>
+    </body>
+</html>
