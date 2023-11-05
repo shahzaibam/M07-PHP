@@ -11,7 +11,7 @@ include('../functions.php');
 myHeader();
 myMenu();
 
-$archivo = "../entrenadores.csv";
+$archivo = "../csvFiles/entrenadores.csv";
 
 echo "<h2>Listado de Entrenadores:</h2>";
 
@@ -22,7 +22,13 @@ function mostrarEntreandores($archivo)
         // Leer el archivo línea por línea
         while (($datos = fgetcsv($gestor, 1000, ",")) !== FALSE) {
             // Mostrar los datos de cada entrenador
-            echo " $datos[0]<br>";
+
+            if (strpos($datos[0], 'img') == true) {
+
+                echo " <img src=\"/$datos[0]\" height='200px'/> <br>";
+            } else {
+                echo " $datos[0]<br>";
+            }
         }
         // Cerrar el archivo
         fclose($gestor);
@@ -37,11 +43,16 @@ function mostrarEntreandores($archivo)
 <body>
 
     <div>
-        <?php
+        <div>
+            <?php
+
+
 
             mostrarEntreandores($archivo);
 
-        ?>
+            ?>
+        </div>
+
     </div>
 
 </body>

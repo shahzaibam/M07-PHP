@@ -51,6 +51,9 @@ function myMenu()
                 <li class="nav-item">
                     <a class="nav-link" href="http://127.0.0.1/m07-php/ejercicios/juegoJugadores/inc/ejercicio-5.php"> Ejercicio 5 </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="http://127.0.0.1/m07-php/ejercicios/juegoJugadores/inc/login.php"> Login </a>
+                </li>
             </ul>
         </div>
     </nav>
