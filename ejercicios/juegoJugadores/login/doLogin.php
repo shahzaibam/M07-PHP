@@ -52,6 +52,19 @@ if (($handle = fopen($csvFile, "r")) !== false) {
                     // Establecer la cookie con el nuevo valor y una duración de 365 días
                     setcookie($cookie_name, $visits, time() + (365 * 24 * 60 * 60), "/");
     
+                }else if($username == "vicente_bosque") {
+                    $cookie_name = "visitsVicente";
+                    $visits = 1;
+    
+                    // Verificar si la cookie existe
+                    if(isset($_COOKIE[$cookie_name])) {
+                        $visits = $_COOKIE[$cookie_name];
+                        $visits++;
+                    }
+    
+                    // Establecer la cookie con el nuevo valor y una duración de 365 días
+                    setcookie($cookie_name, $visits, time() + (365 * 24 * 60 * 60), "/");
+    
                 }
 
 

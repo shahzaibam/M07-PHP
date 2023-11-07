@@ -10,6 +10,7 @@ myMenuLoggedIn();
 
 $_SESSION["imgXavi"] = "../csvFiles/imgEntrenadores/xaviHernandez.jpeg";
 $_SESSION["imgLuis"] = "../csvFiles/imgEntrenadores/luisEnrique.jpg";
+$_SESSION["imgVicente"] = "../csvFiles/imgEntrenadores/vicente.jpg";
 
 
 
@@ -37,6 +38,18 @@ function writeUsername($nombre):array {
             array_push($info, $foto);
 
             $cookie_name = "visitsXavi";
+            if(isset($_COOKIE[$cookie_name])) {
+                // Mostrar el número de visitas
+                echo "Número de visitas: " . $_COOKIE[$cookie_name];
+            }
+            // echo "<img src='" . $foto . "' height='100px'/>";
+        }else if($nombre == "vicente_bosque") {
+            $message =  "Bienvenido, Vicente del Bosque";
+            $foto = $_SESSION["imgVicente"];
+            array_push($info, $message);
+            array_push($info, $foto);
+
+            $cookie_name = "visitsVicente";
             if(isset($_COOKIE[$cookie_name])) {
                 // Mostrar el número de visitas
                 echo "Número de visitas: " . $_COOKIE[$cookie_name];
