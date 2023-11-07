@@ -23,18 +23,34 @@ function writeUsername($nombre):array {
             $foto = $_SESSION["imgLuis"];
             array_push($info, $message);
             array_push($info, $foto);
+
+            $cookie_name = "visitsLuis";
+            if(isset($_COOKIE[$cookie_name])) {
+                // Mostrar el número de visitas
+                echo "Número de visitas: " . $_COOKIE[$cookie_name];
+            }
             // echo "<img src='" . $foto . "' height='100px'/>";
         }else if($nombre == "xavi_hernand") {
             $message =  "Bienvenido, Xavi Hernández";
             $foto = $_SESSION["imgXavi"];
             array_push($info, $message);
             array_push($info, $foto);
+
+            $cookie_name = "visitsXavi";
+            if(isset($_COOKIE[$cookie_name])) {
+                // Mostrar el número de visitas
+                echo "Número de visitas: " . $_COOKIE[$cookie_name];
+            }
             // echo "<img src='" . $foto . "' height='100px'/>";
         }
     }
 
     return $info;
 }
+
+
+
+
 
 ?>
 

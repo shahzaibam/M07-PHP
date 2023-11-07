@@ -20,10 +20,47 @@ if (($handle = fopen($csvFile, "r")) !== false) {
             $csvUsername = $data[0];
             $csvPassword = $data[1];
 
-            if ($csvUsername === $username && $csvPassword === $password) {
+            if ($csvUsername === "luis_enrique" && $csvPassword === $password) {
                 $_SESSION["entrado"] = true;
 
                 header("Location: ../viewEntrenador/home.php");
+
+
+
+                $cookie_name = "visitsLuis";
+                $visits = 1;
+
+                // Verificar si la cookie existe
+                if(isset($_COOKIE[$cookie_name])) {
+                    $visits = $_COOKIE[$cookie_name];
+                    $visits++;
+                }
+
+                // Establecer la cookie con el nuevo valor y una duración de 365 días
+                setcookie($cookie_name, $visits, time() + (365 * 24 * 60 * 60), "/");
+
+
+                exit();
+            }else if($csvUsername === "xavi_hernand" && $csvPassword === $password){
+                $_SESSION["entrado"] = true;
+
+                header("Location: ../viewEntrenador/home.php");
+
+
+
+                $cookie_name = "visitsXavi";
+                $visits = 1;
+
+                // Verificar si la cookie existe
+                if(isset($_COOKIE[$cookie_name])) {
+                    $visits = $_COOKIE[$cookie_name];
+                    $visits++;
+                }
+
+                // Establecer la cookie con el nuevo valor y una duración de 365 días
+                setcookie($cookie_name, $visits, time() + (365 * 24 * 60 * 60), "/");
+
+
                 exit();
             }
         }

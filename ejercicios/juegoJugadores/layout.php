@@ -75,7 +75,7 @@ function myMenuLoggedIn()
 {
     $menu = <<<MENU
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light" style="background: #9ea0b6;">
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item active">
@@ -83,6 +83,10 @@ function myMenuLoggedIn()
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="http://127.0.0.1/m07-php/ejercicios/juegoJugadores/viewEntrenador/listarJugadores.php"> Listar Jugadores </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="http://127.0.0.1/m07-php/ejercicios/juegoJugadores/viewEntrenador/frasesMotivadoras.php"> Frases Motivadoras </a>
                 </li>
 
                 <li class="nav-item">
