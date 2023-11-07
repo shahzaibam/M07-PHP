@@ -11,7 +11,7 @@ myMenu();
             <div class="login__content">
                 <img src="assets/img/foot-6.jpg" alt="login image" class="login__img">
 
-                <form action="doLogin" method="post" class="login__form">
+                <form action="./doLogin.php" method="post" class="login__form">
                     <div>
                         <h1 class="login__title">
                             <span>Welcome</span> Back
@@ -25,7 +25,7 @@ myMenu();
                         <div class="login__inputs">
                             <div>
                                 <label for="input-email" class="login__label">Email</label>
-                                <input type="email" placeholder="Enter your email address" required class="login__input" id="input-email">
+                                <input type="text" placeholder="Enter your email address" required class="login__input" id="input-email">
                             </div>
     
                             <div>
