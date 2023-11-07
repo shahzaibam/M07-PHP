@@ -1,8 +1,6 @@
 <?php
 
-//Partiendo del ejercicio 3 genera las cartas y guardalas en disco en ficheros html: ferranTorres.html, gavi.html.
-//Crea también un fichero 'index.html' con una lista de los enlaces a los ficheros de las cartas generadas.
-
+session_start();
 
 include('../layout.php');
 include('../data/data.php');
@@ -12,6 +10,9 @@ myHeader();
 myMenu();
 
 $archivo = "../csvFiles/entrenadores.csv";
+
+
+
 
 function mostrarEntreandores($archivo)
 {
@@ -23,7 +24,15 @@ function mostrarEntreandores($archivo)
 
             if (strpos($datos[0], 'img') == true) {
 
+                // $_SESSION["imgLuis"] = $datos[0];
                 echo " <img src=\"$datos[0]\" height='200px'/> <br>";
+
+                // if(strpos($datos[0], 'luis') == true) {
+                //     $_SESSION["imgLuis"] = $datos[0];
+                // }else if(strpos($datos[0], 'xavi') == true) {
+                //     $_SESSION["imgXavi"] = $datos[0];
+                // }
+
             } else {
                 echo " $datos[0]<br>";
             }
@@ -37,7 +46,6 @@ function mostrarEntreandores($archivo)
 
 
 ?>
-
 <body>
 
     <div>

@@ -21,6 +21,7 @@ function myHeader()
 
         <!--=============== CSS ===============-->
         <link rel="stylesheet" href="assets/css/styles.css">
+        <link rel="stylesheet" href="./styles.css">
     </head>
     CABECERA;
 
@@ -66,6 +67,36 @@ MENU;
 
     echo $menu;
 }
+
+
+//MENU FOR USER LOGGED IN
+//-------------------------------------------------------
+function myMenuLoggedIn()
+{
+    $menu = <<<MENU
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="http://127.0.0.1/m07-php/ejercicios/juegoJugadores/viewEntrenador/home.php"> Home </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="http://127.0.0.1/m07-php/ejercicios/juegoJugadores/viewEntrenador/home.php"> Listar Jugadores </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="http://127.0.0.1/m07-php/ejercicios/juegoJugadores/login/logout.php"> Log Out </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+MENU;
+
+    echo $menu;
+}
+
 
 
 //FOOTER

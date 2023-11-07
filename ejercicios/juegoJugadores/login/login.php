@@ -1,9 +1,16 @@
 <?php
+session_start();
 
 include('../layout.php');
 
 myHeader();
 myMenu();
+
+if(isset($_SESSION["entrado"])) {
+    if($_SESSION["entrado"] == true) {
+        header("Location: ../viewEntrenador/home.php");
+    }
+}
 
 ?>
     <body>
@@ -24,16 +31,16 @@ myMenu();
                     <div>
                         <div class="login__inputs">
                             <div>
-                                <label for="input-email" class="login__label">Email</label>
-                                <input type="text" placeholder="Enter your email address" required class="login__input" id="input-email">
+                                <label for="input-username" class="login__label">Username</label>
+                                <input type="text" placeholder="Enter your username" name="username" required class="login__input" id="input-username">
                             </div>
     
                             <div>
                                 <label for="input-pass" class="login__label">Password</label>
     
                                 <div class="login__box">
-                                    <input type="password" placeholder="Enter your password" required class="login__input" id="input-pass">
-                                    <i class="ri-eye-off-line login__eye" id="input-icon"></i>
+                                    <input type="password" placeholder="Enter your password" name="pass" required class="login__input" id="input-pass">
+                                    <i class="ri-eye-off-line login__eye" id="input-icon" style="margin: 12px 4px 0px 0px;"></i>
                                 </div>
                             </div>
                         </div>

@@ -17,15 +17,6 @@ $templateLocation = "../templateToRead/index.view.html"
 
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-
 <body>
     <div>
 
@@ -49,7 +40,7 @@ $templateLocation = "../templateToRead/index.view.html"
         // echo "</pre>";
 
         writeInFileTxtIndex($names_array);
-        header("Location:../playerTemplateInfo.php");
+        header("Location:./playerTemplateInfo.php");
 
 
         ?>
@@ -60,5 +51,3 @@ $templateLocation = "../templateToRead/index.view.html"
     myFooter();
     ?>
 </body>
-
-</html>
