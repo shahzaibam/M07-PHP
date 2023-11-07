@@ -82,7 +82,7 @@ function myMenuLoggedIn()
                     <a class="nav-link" href="http://127.0.0.1/m07-php/ejercicios/juegoJugadores/viewEntrenador/home.php"> Home </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="http://127.0.0.1/m07-php/ejercicios/juegoJugadores/viewEntrenador/home.php"> Listar Jugadores </a>
+                    <a class="nav-link" href="http://127.0.0.1/m07-php/ejercicios/juegoJugadores/viewEntrenador/listarJugadores.php"> Listar Jugadores </a>
                 </li>
 
                 <li class="nav-item">

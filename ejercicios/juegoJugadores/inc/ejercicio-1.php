@@ -16,8 +16,6 @@ $names_array = array_keys($jugadores);
 
 
 
-
-
 ?>
 
 
