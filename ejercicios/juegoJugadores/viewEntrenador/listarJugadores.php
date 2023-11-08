@@ -31,12 +31,8 @@ if(isset($_SESSION["entrado"])){
         // close the file
         fclose($f);
 
-
-
-
         
         ?>
-
 
         <body>
             <div>
