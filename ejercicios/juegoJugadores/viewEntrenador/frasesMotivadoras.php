@@ -24,10 +24,20 @@ if(isset($_SESSION["entrado"])){
                 $fmotivadoras = readFrasesMotivadoras();
                 if($fmotivadoras == '') {
     
-                    echo "<p> $fmotivadoras </p>";
+                    // echo "<p> $fmotivadoras </p>";
+                    foreach ($fmotivadoras as $numeroFrase => $frase) {
+                        echo "<p>$frase</p>";
+                    }
                 
                 }else {
-                    echo "<p> $fmotivadoras </p>";
+                    // echo "<p> $fmotivadoras </p>";
+                    foreach ($fmotivadoras as $numeroFrase => $frase) {
+                        echo "<p>$frase</p>";
+                        // echo "<form method='post'>";
+                        // echo "<input type='hidden' name='numeroFrase' value='$numeroFrase'>";
+                        // echo "<input type='submit' name='votar' value='Votar'>";
+                        // echo "</form>";
+                    }
                 }
     
             }else {

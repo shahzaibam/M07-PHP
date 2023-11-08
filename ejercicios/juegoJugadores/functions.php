@@ -207,22 +207,24 @@ function writeFrasesMotivadoras(): string {
 /**
 * esta funcion comprueba si existe el fichero de frasesMotivadoras.txt, si existe guarda el contenido del fichero en la variable de $contents como string, luego comprueba si hay algo en $contents, si $contents lleva algo va guardar todo el string en $fmotivadoras haciendo lineBreaks con el metodo nl2br. Finalmente si no hay nada en $contents retorna la variable de error.
 */
-function readFrasesMotivadoras(): string {
+function readFrasesMotivadoras() {
     $filename = './frasesMotivadoras.txt';
-    $contents = '';
-    $fmotivadoras = '';
-    $emptyTxt = '';
+    $fmotivadoras = [];
 
     if (file_exists($filename)) {
-        $contents = file_get_contents($filename);
+        $contents = file($filename, FILE_IGNORE_NEW_LINES); // Leemos el archivo y almacenamos cada línea en un elemento del arreglo
+        if (!empty($contents)) {
+            foreach ($contents as $numeroFrase => $frase) {
+                $fmotivadoras[$numeroFrase] = $frase;
+            }
+        }else {
+            $fmotivadoras[] = "No hay Frases";
+
+        }
     }
 
-    if (!empty($contents)) {
-        return $fmotivadoras =  nl2br($contents); //nl2br --> Inserts HTML line breaks before all newlines in a string
-                
-    }else {
-        return $emptyTxt = "No hay Frases motivadoras";
-    }
+    return $fmotivadoras;
 }
+
 
 ?>
