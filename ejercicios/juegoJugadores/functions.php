@@ -172,6 +172,57 @@ function writeInFileTxtIndex($names_array) {
 
 
 
-?>
 
-<!-- <a href="./letters/"></a> -->
+
+
+
+
+
+
+
+        
+/**
+* esta funcion valida que los carácteres introducidos no sean numeros, solo letras, comprueba si son letras y si da true escribe la frase en el fichero frasesMotivadoras.txt, retorna el valor de $error porque se comprobará si hay algo en el error muestra el error, si no hay nada seguirá con la funcion de readFrasesMotivadoras(); 
+*/
+function writeFrasesMotivadoras(): string {
+    $error = "";
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+        $frase = $_POST['frase'];
+
+        if (!preg_match('/[0-9]/', $frase)) {
+            file_put_contents('frasesMotivadoras.txt', $frase . PHP_EOL, FILE_APPEND);
+            header("Location: frasesMotivadoras.php");
+        } else {
+            $error = "La frase no debe contener números.";
+        }
+
+    }
+
+    return $error;
+}
+
+
+        
+/**
+* esta funcion comprueba si existe el fichero de frasesMotivadoras.txt, si existe guarda el contenido del fichero en la variable de $contents como string, luego comprueba si hay algo en $contents, si $contents lleva algo va guardar todo el string en $fmotivadoras haciendo lineBreaks con el metodo nl2br. Finalmente si no hay nada en $contents retorna la variable de error.
+*/
+function readFrasesMotivadoras(): string {
+    $filename = './frasesMotivadoras.txt';
+    $contents = '';
+    $fmotivadoras = '';
+    $emptyTxt = '';
+
+    if (file_exists($filename)) {
+        $contents = file_get_contents($filename);
+    }
+
+    if (!empty($contents)) {
+        return $fmotivadoras =  nl2br($contents); //nl2br --> Inserts HTML line breaks before all newlines in a string
+                
+    }else {
+        return $emptyTxt = "No hay Frases motivadoras";
+    }
+}
+
+?>

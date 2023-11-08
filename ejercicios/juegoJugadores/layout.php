@@ -89,6 +89,11 @@ function myMenuLoggedIn()
                     <a class="nav-link" href="http://127.0.0.1/m07-php/ejercicios/juegoJugadores/viewEntrenador/frasesMotivadoras.php"> Frases Motivadoras </a>
                 </li>
 
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="http://127.0.0.1/m07-php/ejercicios/juegoJugadores/viewEntrenador/votarFraseMotivadora.php"> Votar Frase Motivadora </a>
+                </li>
+
                 <li class="nav-item">
                     <a class="nav-link" href="http://127.0.0.1/m07-php/ejercicios/juegoJugadores/login/logout.php"> Log Out </a>
                 </li>
