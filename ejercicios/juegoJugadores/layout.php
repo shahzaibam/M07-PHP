@@ -95,6 +95,11 @@ function myMenuLoggedIn()
                 </li>
 
                 <li class="nav-item">
+                    <a class="nav-link" href="http://127.0.0.1/m07-php/ejercicios/juegoJugadores/viewEntrenador/recuentoVotos.php"> Recuento de Votos </a>
+                </li>
+
+                
+                <li class="nav-item">
                     <a class="nav-link" href="http://127.0.0.1/m07-php/ejercicios/juegoJugadores/login/logout.php"> Log Out </a>
                 </li>
             </ul>
