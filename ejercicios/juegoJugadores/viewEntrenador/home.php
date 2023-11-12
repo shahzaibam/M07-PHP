@@ -21,53 +21,6 @@ session_start();
                 $_SESSION["imgVicente"] = "../csvFiles/imgEntrenadores/vicente.jpg";
 
 
-
-
-                function writeUsername($nombre):array {
-                    $info = [];
-                    if(isset($nombre)) {
-                        if($nombre == "luis_enrique") {
-                            $message =  "Bienvenido, Luis Enrique";
-                            $foto = $_SESSION["imgLuis"];
-                            array_push($info, $message);
-                            array_push($info, $foto);
-
-                            $cookie_name = "visitsLuis";
-                            if(isset($_COOKIE[$cookie_name])) {
-                                // Mostrar el número de visitas
-                                echo "Número de visitas: " . $_COOKIE[$cookie_name];
-                            }
-                            // echo "<img src='" . $foto . "' height='100px'/>";
-                        }else if($nombre == "xavi_hernand") {
-                            $message =  "Bienvenido, Xavi Hernández";
-                            $foto = $_SESSION["imgXavi"];
-                            array_push($info, $message);
-                            array_push($info, $foto);
-
-                            $cookie_name = "visitsXavi";
-                            if(isset($_COOKIE[$cookie_name])) {
-                                // Mostrar el número de visitas
-                                echo "Número de visitas: " . $_COOKIE[$cookie_name];
-                            }
-                            // echo "<img src='" . $foto . "' height='100px'/>";
-                        }else if($nombre == "vicente_bosque") {
-                            $message =  "Bienvenido, Vicente del Bosque";
-                            $foto = $_SESSION["imgVicente"];
-                            array_push($info, $message);
-                            array_push($info, $foto);
-
-                            $cookie_name = "visitsVicente";
-                            if(isset($_COOKIE[$cookie_name])) {
-                                // Mostrar el número de visitas
-                                echo "Número de visitas: " . $_COOKIE[$cookie_name];
-                            }
-                            // echo "<img src='" . $foto . "' height='100px'/>";
-                        }
-                    }
-
-                    return $info;
-                }
-
                 
     ?>
             <div class="container">

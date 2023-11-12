@@ -45,10 +45,6 @@ if(isset($_SESSION["entrado"])) {
                             </div>
                         </div>
 
-                        <div class="login__check">
-                            <input type="checkbox" class="login__check-input" id="input-check">
-                            <label for="input-check" class="login__check-label">Remember me</label>
-                        </div>
                     </div>
 
                     <div>
@@ -56,7 +52,6 @@ if(isset($_SESSION["entrado"])) {
                             <button class="login__button">Log In</button>
                         </div>
 
-                        <a href="#" class="login__forgot">Forgot Password?</a>
                     </div>
                 </form>
             </div>

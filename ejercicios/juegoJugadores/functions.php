@@ -179,6 +179,77 @@ function writeInFileTxtIndex($names_array)
 
 
 
+function mostrarEntreandores($archivo)
+{
+    // Abrir el archivo en modo lectura
+    if (($gestor = fopen($archivo, "r")) !== FALSE) {
+        // Leer el archivo línea por línea
+        while (($datos = fgetcsv($gestor, 1000, ",")) !== FALSE) {
+
+            if (strpos($datos[0], 'img') == true) {
+                echo " <img src=\"$datos[0]\" height='200px'/> <br>";
+            } else {
+                echo " $datos[0]<br>";
+            }
+        }
+        // Cerrar el archivo
+        fclose($gestor);
+    } else {
+        echo "No se pudo abrir el archivo.";
+    }
+}
+
+
+
+
+
+
+
+//home del entrenador
+function writeUsername($nombre):array {
+    $info = [];
+    if(isset($nombre)) {
+        if($nombre == "luis_enrique") {
+            $message =  "Bienvenido, Luis Enrique";
+            $foto = $_SESSION["imgLuis"];
+            array_push($info, $message);
+            array_push($info, $foto);
+
+            $cookie_name = "visitsLuis";
+            if(isset($_COOKIE[$cookie_name])) {
+                // Mostrar el número de visitas
+                echo "Número de visitas: " . $_COOKIE[$cookie_name];
+            }
+            // echo "<img src='" . $foto . "' height='100px'/>";
+        }else if($nombre == "xavi_hernand") {
+            $message =  "Bienvenido, Xavi Hernández";
+            $foto = $_SESSION["imgXavi"];
+            array_push($info, $message);
+            array_push($info, $foto);
+
+            $cookie_name = "visitsXavi";
+            if(isset($_COOKIE[$cookie_name])) {
+                // Mostrar el número de visitas
+                echo "Número de visitas: " . $_COOKIE[$cookie_name];
+            }
+            // echo "<img src='" . $foto . "' height='100px'/>";
+        }else if($nombre == "vicente_bosque") {
+            $message =  "Bienvenido, Vicente del Bosque";
+            $foto = $_SESSION["imgVicente"];
+            array_push($info, $message);
+            array_push($info, $foto);
+
+            $cookie_name = "visitsVicente";
+            if(isset($_COOKIE[$cookie_name])) {
+                // Mostrar el número de visitas
+                echo "Número de visitas: " . $_COOKIE[$cookie_name];
+            }
+            // echo "<img src='" . $foto . "' height='100px'/>";
+        }
+    }
+
+    return $info;
+}
 
 
 
@@ -232,31 +303,6 @@ function readFrasesMotivadoras()
 
 
 
-
-function leerArchivo($archivoAleer):array {
-    $recuento = [];
-
-    // open the file
-    $f = fopen($archivoAleer, 'r');
-
-    if ($f === false) {
-        die('Cannot open the file ' . $archivoAleer);
-    }
-
-    // read each line in CSV file at a time
-    while (($row = fgetcsv($f)) !== false) {
-        $recuento[] = $row;
-    }
-
-    // close the file
-    fclose($f);
-
-    return $recuento;
-}
-
-
-
-
 /**
  * esta funcion actualiza los votos, primero lee lo que hay, y según el numero de frase pasada le actualiza los votos, por ejemplo si es la frase 1 seria actualizar los votos de [0]. Cada numero de frase tiene un recuento al lado en el csv, al pulsar en el boton de la frase que numero de frase es, y se le actualiza el recuento haciendo un +1.
  */
@@ -307,5 +353,26 @@ function escribirRecuento($recuento, $archivoVotos)
     }
 
     fclose($f);
+}
 
+function leerArchivo($archivoAleer): array
+{
+    $recuento = [];
+
+    // open the file
+    $f = fopen($archivoAleer, 'r');
+
+    if ($f === false) {
+        die('Cannot open the file ' . $archivoAleer);
+    }
+
+    // read each line in CSV file at a time
+    while (($row = fgetcsv($f, 0, ',')) !== false) {
+        $recuento[] = $row;
+    }
+
+    // close the file
+    fclose($f);
+
+    return $recuento;
 }
