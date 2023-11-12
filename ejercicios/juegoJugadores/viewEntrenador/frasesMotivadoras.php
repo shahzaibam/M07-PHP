@@ -1,35 +1,36 @@
 <?php
 
 session_start();
+include("../layout.php");
+myHeader();
 
-if(isset($_SESSION["entrado"])){
-    if($_SESSION["entrado"] == true) {
-        include("../layout.php");
-        include("../functions.php");
-        
-        myHeader();
-        myMenuLoggedIn();
 
-        ?>
 
-<body>
-    <h1 class="text-center mt-4">Frases Motivadoras</h1>
-    <div class="text-center mt-5">
+if (isset($_SESSION["entrado"]) && $_SESSION["entrado"] == true) {
 
-        <?php
+    include("../functions.php");
+
+    myMenuLoggedIn();
+
+?>
+
+    <body>
+        <h1 class="text-center mt-4">Frases Motivadoras</h1>
+        <div class="text-center mt-5">
+
+            <?php
             $error = writeFrasesMotivadoras();
-    
-            if(empty($error)) {
-    
+
+            if (empty($error)) {
+
                 $fmotivadoras = readFrasesMotivadoras();
-                if($fmotivadoras == '') {
-    
+                if ($fmotivadoras == '') {
+
                     // echo "<p> $fmotivadoras </p>";
                     foreach ($fmotivadoras as $numeroFrase => $frase) {
                         echo "<p>$frase</p>";
                     }
-                
-                }else {
+                } else {
                     // echo "<p> $fmotivadoras </p>";
                     foreach ($fmotivadoras as $numeroFrase => $frase) {
                         echo "<p>$frase</p>";
@@ -39,34 +40,55 @@ if(isset($_SESSION["entrado"])){
                         // echo "</form>";
                     }
                 }
-    
-            }else {
+            } else {
                 echo "<p> $error </p>";
             }
+            ?>
+
+            <form method="post">
+                <label for="frase">Agregar una Frase:</label>
+                <input type="text" id="frase" name="frase" required>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+
+        <?php
+
+            myFooter();
+
         ?>
-    
-        <form method="post">
-            <label for="frase">Agregar una Frase:</label>
-            <input type="text" id="frase" name="frase" required>
-            <input type="submit" value="Submit">
-        </form>
-    </div>
-</body>
+    </body>
 
 <?php
-    }
-}else {
-    echo "No puedes acceder aquí, inicia sesión";
-    echo "<br>";
-    echo "<a href='../login/login.php'>Iniciar Sesión</a>";
-}
+
+} else {
 ?>
 
+    <section class="page_404">
 
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 ">
+                    <div class="col-sm-10 col-sm-offset-1  text-center">
+                        <div class="four_zero_four_bg">
+                            <h1 class="text-center ">404</h1>
+                        </div>
 
+                        <div class="contant_box_404">
+                            <h3 class="h2">
+                                Look like you're lost
+                            </h3>
 
+                            <p>the page you are looking for is not avaible!</p>
 
+                            <a href="http://127.0.0.1/m07-php/ejercicios/juegoJugadores/index.php" class="link_404">Go to Home</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-
-
-
+<?php
+}
+?>

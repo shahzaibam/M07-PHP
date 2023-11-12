@@ -48,6 +48,6 @@ $templateLocation = "../templateToRead/index.view.html"
     </div>
 
     <?
-    myFooter();
+        myFooter();
     ?>
 </body>

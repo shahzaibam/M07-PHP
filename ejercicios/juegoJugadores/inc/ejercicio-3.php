@@ -43,4 +43,10 @@ $templateLocation = "../templateToRead/index.view.html";
 
     </div>
 
+    <?php
+
+        myFooter();
+
+    ?>
+
 </body>

@@ -1,11 +1,11 @@
 <?php
 session_start();
+include("../layout.php");
+myHeader();
 
 if (isset($_SESSION["entrado"]) && $_SESSION["entrado"] == true) {
-    include("../layout.php");
     include("../functions.php");
 
-    myHeader();
     myMenuLoggedIn();
 
     $archivoAleer = './recuentoVotos.csv';
@@ -35,8 +35,8 @@ if (isset($_SESSION["entrado"]) && $_SESSION["entrado"] == true) {
                 echo "<tbody>";
                 foreach ($recuento as $fila) {
                     echo "<tr>";
-                    echo "<td>" . htmlspecialchars($fmotivadoras[$fila[0]]) . "</td>";
-                    echo "<td>" . htmlspecialchars($fila[1]) . "</td>";
+                    echo "<td>" . $fmotivadoras[$fila[0]] . "</td>";
+                    echo "<td>" . $fila[1] . "</td>";
                     echo "</tr>";
                 }
                 echo "</tbody>";
@@ -44,13 +44,40 @@ if (isset($_SESSION["entrado"]) && $_SESSION["entrado"] == true) {
             }
             ?>
         </div>
-
+        <?php
+            myFooter();
+        ?>
     </body>
 
 <?php
 } else {
-    echo "No puedes acceder aquí, inicia sesión";
-    echo "<br>";
-    echo "<a href='../login/login.php'>Iniciar Sesión</a>";
+?>
+
+    <section class="page_404">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 ">
+                    <div class="col-sm-10 col-sm-offset-1  text-center">
+                        <div class="four_zero_four_bg">
+                            <h1 class="text-center ">404</h1>
+                        </div>
+
+                        <div class="contant_box_404">
+                            <h3 class="h2">
+                                Look like you're lost
+                            </h3>
+
+                            <p>the page you are looking for is not avaible!</p>
+
+                            <a href="http://127.0.0.1/m07-php/ejercicios/juegoJugadores/index.php" class="link_404">Go to Home</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<?php
 }
 ?>

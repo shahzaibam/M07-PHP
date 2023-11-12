@@ -25,46 +25,42 @@ if (($handle = fopen($csvFile, "r")) !== false) {
 
                 header("Location: ../viewEntrenador/home.php");
 
-                if($username == "xavi_hernand") {
+                if ($username == "xavi_hernand") {
                     $cookie_name = "visitsXavi";
                     $visits = 1;
-    
+
                     // Verificar si la cookie existe
-                    if(isset($_COOKIE[$cookie_name])) {
+                    if (isset($_COOKIE[$cookie_name])) {
                         $visits = $_COOKIE[$cookie_name];
                         $visits++;
                     }
-    
+
                     // Establecer la cookie con el nuevo valor y una duración de 365 días
                     setcookie($cookie_name, $visits, time() + (365 * 24 * 60 * 60), "/");
-    
-    
-                }else if($username == "luis_enrique") {
+                } else if ($username == "luis_enrique") {
                     $cookie_name = "visitsLuis";
                     $visits = 1;
-    
+
                     // Verificar si la cookie existe
-                    if(isset($_COOKIE[$cookie_name])) {
+                    if (isset($_COOKIE[$cookie_name])) {
                         $visits = $_COOKIE[$cookie_name];
                         $visits++;
                     }
-    
+
                     // Establecer la cookie con el nuevo valor y una duración de 365 días
                     setcookie($cookie_name, $visits, time() + (365 * 24 * 60 * 60), "/");
-    
-                }else if($username == "vicente_bosque") {
+                } else if ($username == "vicente_bosque") {
                     $cookie_name = "visitsVicente";
                     $visits = 1;
-    
+
                     // Verificar si la cookie existe
-                    if(isset($_COOKIE[$cookie_name])) {
+                    if (isset($_COOKIE[$cookie_name])) {
                         $visits = $_COOKIE[$cookie_name];
                         $visits++;
                     }
-    
+
                     // Establecer la cookie con el nuevo valor y una duración de 365 días
                     setcookie($cookie_name, $visits, time() + (365 * 24 * 60 * 60), "/");
-    
                 }
 
 
@@ -75,6 +71,38 @@ if (($handle = fopen($csvFile, "r")) !== false) {
     fclose($handle);
 }
 
-echo "Inicio de sesión fallido. Verifica tu usuario y contraseña.";
+?>
+
+<?php
+
+include ("../layout.php");
+myHeader();
+
 
 ?>
+
+<body>
+
+  <header>
+    <div class="head-text">
+      <p>Incorrect Credentials</p>
+    </div>
+  </header>
+
+  <main>
+    <div class="main-wrapper">
+      <picture class="scarecrow-img">
+        <img src="https://raw.githubusercontent.com/nat-oku/devchallenges/main/Scarecrow.png" alt="scarecrow">
+      </picture>
+      <div class="error-text">
+        <h2>I have bad news for you</h2>
+        <p>The page you are looking for needs you to Login.</p>
+        <span class="input-group-btn">
+           <a href="http://127.0.0.1/m07-php/ejercicios/juegoJugadores/index.php"> <button class="btn" type="button"> Back to homepage</button></a>
+        </span>
+      </div>
+    </div>
+
+  </main>
+
+</body>

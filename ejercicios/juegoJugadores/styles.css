@@ -20,3 +20,17 @@ body {
   font-family: var(--body-font);
   color: var(--text-color);
 }
+
+.player-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.player {
+  margin: 10px;
+  text-align: center;
+}
+
+.image-container {
+  text-align: center;
+}

@@ -19,9 +19,14 @@ function myHeader()
         <!--=============== REMIXICONS ===============-->
         <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
 
+
         <!--=============== CSS ===============-->
-        <link rel="stylesheet" href="assets/css/styles.css">
+
+        
+
+        <link rel="stylesheet" href="./assets/css/styles.css">
         <link rel="stylesheet" href="./styles.css">
+        <link rel="stylesheet" href="./stylesDoLogin.css">
     </head>
     CABECERA;
 
@@ -121,7 +126,7 @@ function myFooter()
         <footer  class="footer navbar-fixed-bottom" style="margin-top: 80px; ">
             <hr>
             <p class="text-center">
-            &copy;Shah Zaib
+            &copy;Shah Zaib & &copy;Ivan
             </p>
         </footer>
 
@@ -129,12 +134,7 @@ function myFooter()
 
     MYFOOTER;
 
-    $fechaActual = date("d-m-Y");
-    $horaActual = date("h:i:s");
 
     echo $footerHTML;
-    // echo "La fecha es: $fechaActual y la hora es $horaActual " ;
-
-
 
 }

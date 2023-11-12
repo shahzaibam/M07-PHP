@@ -34,4 +34,10 @@ $archivo = "../csvFiles/entrenadores.csv";
 
     </div>
 
+    <?php
+
+        myFooter();
+
+    ?>
+
 </body>

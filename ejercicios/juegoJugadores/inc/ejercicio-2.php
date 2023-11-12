@@ -14,7 +14,7 @@ $names_array = array_keys($jugadores);
 
 
 
- 
+
 ?>
 
 <div>
@@ -22,20 +22,26 @@ $names_array = array_keys($jugadores);
         <h1 class="text-center mt-5">Ejercicio 2</h1>
     </div>
     <div>
-    <?php
+        <?php
 
         $getJugadoresLetter = make_letters($names_array);
 
         echo ("<pre>");
 
-            showTemplateJugadores($getJugadoresLetter);
+        showTemplateJugadores($getJugadoresLetter);
 
         echo ("</pre>");
 
-    ?>
+        ?>
     </div>
-
 </div>
-    
+
+    <?php
+
+        myFooter();
+
+    ?>
+
 </body>
+
 </html>

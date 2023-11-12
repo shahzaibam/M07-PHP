@@ -19,17 +19,20 @@ $names_array = array_keys($jugadores);
     </div>
     <?php
 
-    $indexTemplateArrays = make_letters_index($names_array);
+        $indexTemplateArrays = make_letters_index($names_array);
 
 
-    echo "<h3> Jugadores </h3>";
+        echo "<h3> Jugadores </h3>";
 
-    echo "<pre>";
+        echo "<pre>";
 
-    showTemplateJugadores($indexTemplateArrays);
+        showTemplateJugadores($indexTemplateArrays);
 
-    echo "</pre>";
+        echo "</pre>";
+        
+        myFooter();
     ?>
+
 </body>
 
 </html>
