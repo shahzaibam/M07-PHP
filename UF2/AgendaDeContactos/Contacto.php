@@ -42,19 +42,18 @@ class Contacto {
     public function setFNacimiento($fNacimiento)
     {
         $this->fNacimiento = $fNacimiento;
-
+    
         return $this;
     }
 
-
+        /**
+     * Get the value of fNacimiento
+     */ 
+    public function getFNacimiento()
+    {
+        return $this->fNacimiento;
+    }
     
-    // function calcularEdad($fNacimiento) {
-
-
-
-    //     return $edad;
-        
-    // }
 
     /**
      * Set the value of email
@@ -81,16 +80,14 @@ class Contacto {
     
     
 
+    function __toString() {
+        $message = "";
+       $message .= "Nombre : $this->nombre  <br>";
+       $message .= "Apellido : $this->apellidos  <br>";
+       $message .= "Fecha Nacimiento : $this->fNacimiento  <br>";
+       $message .= "Email : $this->email <br>";
 
-
-    function toString() {
-
-        echo "Nombre : $this->nombre  <br>";
-        echo "Apellido : $this->apellidos  <br>";
-        echo "Fecha Nacimiento : $this->fNacimiento  <br>";
-        echo "Email : $this->email <br>";
-
-        
+        return "$message";
     }
 
 
@@ -106,18 +103,33 @@ function showContacto($nombre, $apellido, $fNacimiento, $email) {
     return $contacto;
 }
 
-$contacto1 = showContacto("shahzaib", "asghar", "30-08-2004", "shah5@gmail.com");
-$contacto2 = showContacto("shahzaib", "asghar", "30-08-2010", "shah5@gmail.com");
-$contacto3 = showContacto("shahzaib", "asghar", "30-08-2016", "shah5@gmail.com");
+$agenda = [];
+
+$contacto1 = showContacto("shahzaib", "asghar", "2004-08-30", "shah5@gmail.com");
+$contacto2 = showContacto("shahzaib", "asghar", "2010-08-30", "shah5@gmail.com");
+$contacto3 = showContacto("shahzaib", "asghar", "2016-08-30", "shah5@gmail.com");
+$contacto4 = showContacto("shahzaib", "asghar", "1999-08-30", "shah5@gmail.com");
+
+$agenda[] = $contacto1;
+$agenda[] = $contacto2;
+$agenda[] = $contacto3;
+$agenda[] = $contacto4;
+
+function compararPorFechaNacimiento($a, $b) {
+    return strtotime($a->getFNacimiento()) - strtotime($b->getFNacimiento());
+}
 
 
-$contacto1->toString();
-echo "<br>";
-$contacto2->toString();
-echo "<br>";
-$contacto3->toString();
+// Ordenar el array de contactos por fecha de nacimiento pasando le una funcion declarada por nosotros
+usort($agenda, 'compararPorFechaNacimiento');
+
+// Mostrar los contactos ordenados
+foreach ($agenda as $contacto) {
+    echo "$contacto";
+    echo "<br>";
 
 
+}
 
 
 
