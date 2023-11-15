@@ -13,8 +13,6 @@ if (isset($_SESSION["entrado"]) && $_SESSION["entrado"] == true) {
     myMenuLoggedIn();
 
 
-
-
     $filename = '../csvFiles/jugadores.csv';
     $data = [];
 
