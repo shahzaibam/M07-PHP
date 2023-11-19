@@ -1,7 +1,5 @@
 <?php
 
-// session_start();
-
 class Contacto
 {
     private $nombre;
@@ -13,61 +11,24 @@ class Contacto
     public function __construct($nombre, $apellidos, $fNacimiento, $email)
     {
 
-        //si el nombre esta vacio redirige y muere el proceso
-        if ($nombre == "") {
+        $this->nombre = $nombre;
+        $this->apellidos = $apellidos;
 
-            header("Location: index.php");
-            die;
+
+        $this->fNacimiento = $fNacimiento;
+
+        $fecha = new DateTime($fNacimiento);
+        $actual = new DateTime();
+        $diff = $actual->diff($fecha);
+        $edad = $diff->y;
+
+        if ($edad > 18) {
+            $this->email = $email;
         } else {
-
-            $this->nombre = $nombre;
+            $this->email = "menor de edad";
         }
-
-
-
-        //si el apellido esta vacio redirige y muere el proceso
-        if ($apellidos == "") {
-
-            header("Location: index.php");
-            die;
-        } else {
-
-            $this->apellidos = $apellidos;
-        }
-
-
-
-        //si la fecha de Nacimiento esta vacia redirige y muere el proceso
-        if ($fNacimiento == "") {
-
-            header("Location: index.php");
-            die;
-        } else {
-
-            $this->fNacimiento = $fNacimiento;
-
-            $fecha = new DateTime($fNacimiento);
-            $actual = new DateTime();
-            $diff = $actual->diff($fecha);
-            $edad = $diff->y;
-
-            if ($edad > 18) {
-
-                if ($email == "") { //cada vez que se detecte que el email esta vacio, se rediriga al index.php y el proceso morirá.
-                    header("Location: index.php");
-                    die;
-                } else {
-
-                    $this->email = $email;
-                }
-            } else {
-                $this->email = "menor de edad";
-            }
-        }
-
-
-
     }
+
 
 
     /**
@@ -80,6 +41,15 @@ class Contacto
         $this->nombre = $nombre;
 
         return $this;
+    }
+
+
+    /**
+     * Get the value of nombre
+     */
+    public function getNombre()
+    {
+        return $this->nombre;
     }
 
 
@@ -97,6 +67,15 @@ class Contacto
 
 
     /**
+     * Get the value of apellidos
+     */
+    public function getApellidos()
+    {
+        return $this->apellidos;
+    }
+
+
+    /**
      * Set the value of fNacimiento
      *
      * @return  self
@@ -108,13 +87,17 @@ class Contacto
         return $this;
     }
 
+
+    
     /**
      * Get the value of fNacimiento
-     */
+     */ 
     public function getFNacimiento()
     {
         return $this->fNacimiento;
     }
+
+
 
 
     /**
@@ -140,8 +123,17 @@ class Contacto
         return $this;
     }
 
+    
+    /**
+     * Get the value of email
+     */ 
+    public function getEmail()
+    {
+        return $this->email;
+    }
 
-    // public static $_SESSION["agenda"] = [];
+    
+
 
     function __toString()
     {
@@ -160,9 +152,6 @@ function showContacto($nombre, $apellido, $fNacimiento, $email)
 {
     $contacto = new Contacto($nombre, $apellido, $fNacimiento, $email);
 
-    // $_SESSION["agenda"] = $contacto;
-
-
     return $contacto;
 }
 
@@ -170,4 +159,6 @@ function showContacto($nombre, $apellido, $fNacimiento, $email)
 function compararPorFechaNacimiento($a, $b)
 {
     return strtotime($a->getFNacimiento()) - strtotime($b->getFNacimiento());
+
+
 }
