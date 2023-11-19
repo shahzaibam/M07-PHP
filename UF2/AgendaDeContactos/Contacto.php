@@ -1,11 +1,32 @@
 <?php
 
+// session_start();
+
 class Contacto {
     private $nombre;
     private $apellidos;
     private $fNacimiento;
     private $email;
 
+
+    public function __construct($nombre, $apellidos, $fNacimiento, $email) {
+        $this->nombre = $nombre;
+        $this->apellidos = $apellidos;
+        $this->fNacimiento = $fNacimiento;
+
+        $fecha = new DateTime($fNacimiento);
+        $actual = new DateTime();
+        $diff = $actual->diff($fecha);
+        $edad = $diff->y;
+
+        if ($edad > 18) {
+            $this->email = $email;
+        } else {
+            $this->email = "menor de edad";
+        }
+
+        
+    }
 
 
     /**
@@ -79,6 +100,7 @@ class Contacto {
     }
     
     
+    // public static $_SESSION["agenda"] = [];
 
     function __toString() {
         $message = "";
@@ -93,44 +115,20 @@ class Contacto {
 
 }
 
+
 function showContacto($nombre, $apellido, $fNacimiento, $email) {
-    $contacto = new Contacto;
-    $contacto->setNombre($nombre);
-    $contacto->setApellidos($apellido);
-    $contacto->setFNacimiento($fNacimiento);
-    $contacto->setEmail($email);
+    $contacto = new Contacto($nombre, $apellido, $fNacimiento, $email);
+
+    // $_SESSION["agenda"] = $contacto;
+
 
     return $contacto;
 }
 
-$agenda = [];
-
-$contacto1 = showContacto("shahzaib", "asghar", "2004-08-30", "shah5@gmail.com");
-$contacto2 = showContacto("shahzaib", "asghar", "2010-08-30", "shah5@gmail.com");
-$contacto3 = showContacto("shahzaib", "asghar", "2016-08-30", "shah5@gmail.com");
-$contacto4 = showContacto("shahzaib", "asghar", "1999-08-30", "shah5@gmail.com");
-
-$agenda[] = $contacto1;
-$agenda[] = $contacto2;
-$agenda[] = $contacto3;
-$agenda[] = $contacto4;
 
 function compararPorFechaNacimiento($a, $b) {
     return strtotime($a->getFNacimiento()) - strtotime($b->getFNacimiento());
 }
-
-
-// Ordenar el array de contactos por fecha de nacimiento pasando le una funcion declarada por nosotros
-usort($agenda, 'compararPorFechaNacimiento');
-
-// Mostrar los contactos ordenados
-foreach ($agenda as $contacto) {
-    echo "$contacto";
-    echo "<br>";
-
-
-}
-
 
 
 ?>
