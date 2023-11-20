@@ -1,12 +1,14 @@
 <?php
 
+include_once("../Modelo/Contacto.php");
+
 class Personal extends Contacto{
     private $salario;
 
     public function __construct($nombre, $apellidos, $fNacimiento, $email, $salario)
     {
         parent::__construct($nombre, $apellidos, $fNacimiento, $email);
-        $this-> $salario = $salario;
+        $this-> salario = $salario;
     }
     
 
@@ -31,10 +33,18 @@ class Personal extends Contacto{
     }
 
 
+    public function ganaMasQue($otroPersonal) {
+        return $this->salario > $otroPersonal->getSalario();
+    }
 
     function __toString()
     {
         $message = "";
+
+        $message .= "Nombre : {$this->getNombre()}  <br>";
+        $message .= "Apellidos : {$this->getApellidos()}  <br>";
+        $message .= "Fecha Nacimiento : {$this->getFNacimiento()}  <br>";
+        $message .= "Email : {$this->getEmail()}  <br>";
         $message .= "Salario : $this->salario  <br>";
 
         return "$message";

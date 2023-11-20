@@ -1,6 +1,6 @@
 <?php
 
-include("../Modelo/Contacto.php");
+include_once("../Modelo/Contacto.php");
 
 class Alumno extends Contacto
 {

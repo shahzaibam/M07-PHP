@@ -1,16 +1,17 @@
 <?php
 
+include_once("../Modelo/Contacto.php");
 
-class Profesores extends Contacto
+class Profesor extends Contacto
 {
     private $salario;
     private $asignatura;
 
 
-    public function __construct($nombre, $apellidos, $fNacimiento, $email, $curso, $asignatura)
+    public function __construct($nombre, $apellidos, $fNacimiento, $email, $salario, $asignatura)
     {
         parent::__construct($nombre, $apellidos, $fNacimiento, $email);
-        $this-> $curso = $curso;
+        $this->salario = $salario;
         $this->asignatura = $asignatura;
     }
 
@@ -57,11 +58,23 @@ class Profesores extends Contacto
     }
 
 
+    public function imparteAsignatura($asignatura) {
+        return $this->asignatura === $asignatura;
+    }
+
+    public function ganaMasQue($otroProfesor) {
+        return $this->salario > $otroProfesor->getSalario();
+    }
 
 
     function __toString()
     {
         $message = "";
+
+        $message .= "Nombre : {$this->getNombre()}  <br>";
+        $message .= "Apellidos : {$this->getApellidos()}  <br>";
+        $message .= "Fecha Nacimiento : {$this->getFNacimiento()}  <br>";
+        $message .= "Email : {$this->getEmail()}  <br>";
         $message .= "Salario : $this->salario  <br>";
         $message .= "Asignatura : $this->asignatura  <br>";
 
