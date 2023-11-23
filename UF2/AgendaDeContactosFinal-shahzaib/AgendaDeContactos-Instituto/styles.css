@@ -1,0 +1,10 @@
+.contacto-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.contacto {
+    width: calc(16.666% - 10px); /* 6 elementos por fila con espacio entre ellos */
+    margin-bottom: 10px;
+}
