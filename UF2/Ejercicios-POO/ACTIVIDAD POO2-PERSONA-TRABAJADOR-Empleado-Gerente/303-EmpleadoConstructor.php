@@ -1,6 +1,6 @@
 <?php
 
-class EmpleadoTelefonos {
+class EmpleadoConstructor {
     private $nombre;
     private $apellidos;
     private $sueldo;
@@ -12,7 +12,7 @@ class EmpleadoTelefonos {
      * @param $apellidos
      * @param $sueldo
      */
-    public function __construct($nombre, $apellidos, $sueldo)
+    public function __construct($nombre, $apellidos, $sueldo=1000)
     {
         $this->nombre = $nombre;
         $this->apellidos = $apellidos;
@@ -30,33 +30,12 @@ class EmpleadoTelefonos {
 
 
 
-
-    /**
-     * @param mixed $nombre
-     */
-    public function setNombre($nombre): void
-    {
-        $this->nombre = $nombre;
-    }
-
-
-
     /**
      * @return mixed
      */
     public function getApellidos()
     {
         return $this->apellidos;
-    }
-
-
-
-    /**
-     * @param mixed $apellidos
-     */
-    public function setApellidos($apellidos): void
-    {
-        $this->apellidos = $apellidos;
     }
 
 
@@ -70,7 +49,6 @@ class EmpleadoTelefonos {
     }
 
 
-
     /**
      * @param mixed $sueldo
      */
@@ -78,6 +56,11 @@ class EmpleadoTelefonos {
     {
         $this->sueldo = $sueldo;
     }
+
+
+
+
+
 
 
     //FUNCIONES DECLARADAS POR EL USUARIO
@@ -101,16 +84,7 @@ class EmpleadoTelefonos {
     }
 
     public function listarTelefonos(): string {
-
-        $telefonos = $this->telefono;
-        $allTelefonos = "";
-
-
-        for ($i=0; $i<count($telefonos); $i++) {
-            $allTelefonos .= $telefonos . ',';
-        }
-
-        return $allTelefonos;
+        return implode(', ', $this->telefono);
     }
 
     public function vaciarTelefonos(): void {
@@ -130,7 +104,7 @@ class EmpleadoTelefonos {
 
 }
 
-$empleado1 = new EmpleadoTelefonos("Shah Zaib", "Asghar Munir", 3334);
+$empleado1 = new EmpleadoConstructor("Shah Zaib", "Asghar Munir");
 
 $nombreCompleto = $empleado1->getNombreCompleto();
 
@@ -146,6 +120,16 @@ if($pagaImpuestos) {
 }else {
     echo "Te libras de los Impuestos";
 }
+
+
+$empleado1->anyadirTelefono(662272781);
+$empleado1->anyadirTelefono(631314597);
+
+
+
+$allNumeros = $empleado1->listarTelefonos();
+echo "<br>";
+echo "Numero de Telefono: $allNumeros";
 
 
 
