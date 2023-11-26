@@ -1,21 +1,14 @@
 <?php
 
 
-class Persona {
+class Personaej {
 
     protected $nombre;
 
     protected $apellidos;
 
-    /**
-     * @param $nombre
-     * @param $apellidos
-     */
-    public function __construct($nombre, $apellidos)
-    {
-        $this->nombre = $nombre;
-        $this->apellidos = $apellidos;
-    }
+    protected $edad;
+
 
     /**
      * @return mixed
@@ -34,12 +27,13 @@ class Persona {
     }
 
     /**
-     * @return string --> retorna el nombre completo
+     * @return mixed
      */
-    public function getNombreCompleto() {
-        $nombreCompleto = "$this->nombre, $this->apellidos";
-        return $nombreCompleto;
+    public function getEdad()
+    {
+        return $this->edad;
     }
+
 
 }
 

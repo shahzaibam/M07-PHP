@@ -1,113 +1,70 @@
 <?php
 
-include_once ("Persona.php");
-class Empleado extends Persona {
+include_once ("Trabajador.php");
 
-    public static $sueldoTope = 3333;
+class Empleado extends Trabajador {
 
-    private $sueldo;
+    private $horasTrabajadas;
 
-    private $telefono = [];
-
+    private $precioPorHora;
 
     /**
-     * @param $nombre
-     * @param $apellidos
-     * @param $sueldo
+     * @param $horasTrabajadas
+     * @param $precioPorHora
      */
-    public function __construct($sueldo=1000)
+    public function __construct($nombre, $apellidos, $edad, $horasTrabajadas, $precioPorHora)
     {
-        $this->sueldo = $sueldo;
-    }
-
-    /**
-     * @return int|mixed
-     */
-    public function getSueldo()
-    {
-        return $this->sueldo;
-    }
-
-    /**
-     * @param int|mixed $sueldo
-     */
-    public function setSueldo($sueldo): void
-    {
-        $this->sueldo = $sueldo;
+        $this->horasTrabajadas = $horasTrabajadas;
+        $this->precioPorHora = $precioPorHora;
     }
 
 
+    public function calcularSueldo():int
+    {
+        $sueldo = "";
+        $sueldo = $this->horasTrabajadas * $this->precioPorHora;
 
-    /** FUNCIONES IMPLEMENTADAS POR NOSOTROS **/
+        return $sueldo;
+    }
 
-    public function debePagarImpuestos():bool {
-        if($this->sueldo > self::$sueldoTope) {
+    public function debePagarImpuestos(): bool
+    {
+        if($this->calcularSueldo() > 3333) {
             return true;
         }else {
             return false;
         }
     }
 
-
-    public function anyadirTelefono(int $tel) {
-        $this->telefono[] = $tel;
-    }
-
-
-    public function listarTelefonos():string {
-
-        $telefonos = $this->telefono;
-        $message = "";
-
-        for ($index = 0; $index < count($telefonos); $index++) {
-            $message .= " "  . $telefonos[$index] . ",";
-        }
-
-        return $message;
-    }
-
-
-
-    public function vaciarTelefonos() {
-        $this->telefono = [];
-    }
-
-
-    public static function toHtml(Empleado $emp): string {
-        $message = "";
-
-        $message = "$emp";
-
-        return $message;
-    }
-
-
-
     public function __toString()
     {
         $message = "";
 
-        $message .= "Sueldo --> " . $this->sueldo . "<br>";
-        $message .= "Listar Telefonos --> " . $this->listarTelefonos();
+        $message .= "Horas Trabajadas --> " . $this->horasTrabajadas . "<br>";
+        $message .= "Precio por hora -->" . $this->precioPorHora . "<br>";
+        $message .= "Calcular sueldo --> " . $this->calcularSueldo() . "<br>";
 
         return $message;
     }
 
 
+
+}
+
+$empleado = new Empleado(160, 25);
+
+echo $empleado;
+
+$sueldo = $empleado->calcularSueldo();
+
+$impuestos = $empleado->debePagarImpuestos();
+
+if($impuestos) {
+    echo "Pagas impuetos";
+}else{
+    echo "No pagas impuestos";
 }
 
 
-$empleado = new Empleado(3500);
-
-$sueldo = $empleado->getSueldo();
-
-$empleado->anyadirTelefono(662272781);
-$empleado->anyadirTelefono(631314597);
-
-$telefonosAll = $empleado->listarTelefonos();
-
-$toHtml = $empleado->toHtml($empleado);
-
-echo $toHtml;
 
 ?>
