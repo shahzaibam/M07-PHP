@@ -1,8 +1,9 @@
 <?php
-include "./Classes/Soporte.php";
-include "./Classes/CintaVideo.php";
-include "./Classes/Dvd.php";
-include "./Classes/Juego.php";
+
+include "../Modelo/Soporte.php";
+include "../Modelo/CintaVideo.php";
+include "../Modelo/Dvd.php";
+include "../Modelo/Juego.php";
 
 
 $soporte1 = new Soporte("Tenet", 22, 3);
