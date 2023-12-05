@@ -33,6 +33,11 @@ class Juego extends Soporte {
             echo "De {$this->minNumJugadores} a {$this->maxNumJugadores} jugadores";
         }
     }
+
+
+
+
+
 }
 
 ?>

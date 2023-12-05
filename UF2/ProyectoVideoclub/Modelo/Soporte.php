@@ -3,6 +3,7 @@
 class Soporte {
     // Atributos
     public $titulo;
+
     protected $numero;
     private $precio;
 
@@ -49,6 +50,12 @@ class Soporte {
     // Obtener número
     protected function getNumero() {
         return $this->numero;
+    }
+
+
+    // Public method para hacer un get del number porque es protected
+    public function obtenerNumero() {
+        return $this->getNumero();
     }
 
     // Mostrar resumen

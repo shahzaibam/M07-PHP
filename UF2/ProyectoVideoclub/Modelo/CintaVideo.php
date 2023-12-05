@@ -1,4 +1,5 @@
 <?php
+include_once "../Modelo/Soporte.php";
 
 class CintaVideo extends Soporte {
     // Atributo adicional
