@@ -75,15 +75,12 @@ include_once "../Modelo/Videoclub.php";
 $cliente1 = new Cliente("Bruce Wayne", 23);
 $cliente2 = new Cliente("Clark Kent", 33);
 
-//mostramos el número de cada cliente creado
-//echo "<br>El identificador del cliente 1 es: " . $cliente1->getNumero();
-//echo "<br>El identificador del cliente 2 es: " . $cliente2->getNumero();
-
 //instancio algunos soportes
 $soporte1 = new CintaVideo("Los cazafantasmas", 1, 3.5, 107);
 $soporte2 = new Juego("The Last of Us Part II", 2, 49.99, "PS4", 1, 1);
 $soporte3 = new Dvd("Origen", 3, 15, "es,en,fr", "16:9");
 $soporte4 = new Dvd("El Imperio Contraataca", 4, 3, "es,en", "16:9");
+
 
 //alquilo algunos soportes
 $cliente1->alquilar($soporte1);
@@ -105,8 +102,11 @@ $cliente1->devolver(4);
 $cliente1->devolver(2);
 
 //alquilo otro soporte
+
 $cliente1->alquilar($soporte4);
+
 //listo los elementos alquilados
+
 $cliente1->listarAlquileres();
 //este cliente no tiene alquileres
 $cliente2->devolver(2);
@@ -115,6 +115,7 @@ $cliente2->devolver(2);
 
 // Crear una instancia de Videoclub
 $vc = new Videoclub();
+
 
 // Crear una instancia de Juego
 $juego1 = new Juego("God of War", 1, 19.99, "PS4", 1, 1);
@@ -125,7 +126,9 @@ $vc->incluirJuego($juego1);
 //voy a incluir unos cuantos soportes de prueba
 
 $juego1 = new Juego("God of War", 1, 19.99, "PS4", 1, 1);
+echo "<br>";
 $vc->incluirJuego($juego1);
+echo "<br>";
 
 
 // Crear una instancia de Juego
@@ -133,37 +136,42 @@ $juego2 = new Juego("The Last of Us Part II", 2, 49.99, "PS4", 1, 1);
 
 // Incluir el juego en el Videoclub
 $vc->incluirJuego($juego2);
+echo "<br>";
 
 $dvd1 = new Dvd("Torrente", 4.5, 15,"es", "16:9");
 $vc->incluirSoporte($dvd1);
+echo "<br>";
+
 
 $dvd2 = new Dvd("Origen", 4.5, 15, "es,en,fr", "16:9");
 $vc->incluirSoporte($dvd2);
+echo "<br>";
+
 
 $dvd3 = new Dvd("El Imperio Contraataca",3, 13, "es,en", "16:9");
 $vc->incluirSoporte($dvd3);
+echo "<br>";
+
 
 $cintaVideo1 = new CintaVideo("Los cazafantasmas", 3.5,15, 107);
 $vc->incluirSoporte($cintaVideo1);
+echo "<br>";
 
 $cintaVideo2 = new CintaVideo("El nombre de la Rosa", 1.5,15, 140);
 $vc->incluirSoporte($cintaVideo2);;
+echo "<br>";
 
 //listo los productos
 $vc->listarProductos();
+echo "<br>";
+
 
 //voy a crear algunos socios
-$vc->incluirSocio("Amancio Ortega");
-$vc->incluirSocio("Pablo Picasso", 2);
+// Crear una instancia de Videoclub
+$videoclub = new Videoclub();
 
-$vc->alquilaSocioProducto(1, 2);
-$vc->alquilaSocioProducto(1, 3);
-//alquilo otra vez el soporte 2 al socio 1.
-// no debe dejarme porque ya lo tiene alquilado
-$vc->alquilaSocioProducto(1, 2);
-//alquilo el soporte 6 al socio 1.
-//no se puede porque el socio 1 tiene 2 alquileres como máximo
-$vc->alquilaSocioProducto(1, 6);
+// Crear una instancia de Cliente
+$nuevoSocio = new Cliente("Amancio Ortega", 123); // Asumiendo que Cliente toma un nombre y un número como parámetros
 
-//listo los socios
-$vc->listarSocios();
+// Incluir el socio en el Videoclub
+$videoclub->incluirSocio($nuevoSocio);

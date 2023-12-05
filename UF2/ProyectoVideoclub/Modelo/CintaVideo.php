@@ -2,14 +2,14 @@
 include_once "../Modelo/Soporte.php";
 
 class CintaVideo extends Soporte {
-    // Atributo adicional
+
     public $duracion;
 
-    // Constructor sobrescrito
+
     public function __construct($titulo, $numero, $precio, $duracion) {
         // Llamada al constructor de la clase padre
         parent::__construct($titulo, $numero, $precio);
-        // Inicialización del atributo propio de la clase hija
+
         $this->duracion = $duracion;
     }
 

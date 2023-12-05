@@ -1,22 +1,31 @@
 <?php
 
-class Soporte {
-    // Atributos
+include_once "../Modelo/Resumible.php";
+
+abstract class Soporte implements Resumible {
+
     public $titulo;
 
     protected $numero;
     private $precio;
 
-    // Constructor
     public function __construct($titulo, $numero, $precio) {
         $this->titulo = $titulo;
         $this->numero = $numero;
         $this->precio = $precio;
     }
 
+    // Métodos abstractos
+    public function muestraResumen() {
+        // Implementación específica para la clase Soporte
+        // Puedes personalizar cómo se muestra el resumen aquí
+        echo "Título: {$this->titulo} <br>";
+        echo "Número: {$this->getNumero()} <br>";
+        echo "Precio: {$this->precio} <br>";
+        echo "Precio con IVA: {$this->getPrecioConIva()} <br>";
+    }
 
 
-    // Métodos
     /**
      * @return mixed
      */
@@ -32,9 +41,6 @@ class Soporte {
     {
         $this->titulo = $titulo;
     }
-
-
-
 
     // Obtener precio
     public function getPrecio() {
@@ -52,20 +58,10 @@ class Soporte {
         return $this->numero;
     }
 
-
-    // Public method para hacer un get del number porque es protected
+    // Public method para hacer un get del número porque es protected
     public function obtenerNumero() {
         return $this->getNumero();
     }
-
-    // Mostrar resumen
-    public function muestraResumen() {
-        echo "Título: {$this->titulo} <br>";
-        echo "Número: {$this->getNumero()} <br>";
-        echo "Precio: {$this->precio} <br>";
-        echo "Precio con IVA: {$this->getPrecioConIva()} <br>";
-    }
 }
-
 
 ?>

@@ -5,33 +5,45 @@ class Videoclub
     private $productos = [];
     private $socios = [];
 
-    // Métodos públicos para incluir soportes y clientes
+    // metods públicos para incluir soportes y clientes
     public function incluirSoporte(Soporte $soporte)
     {
         $this->incluirProducto($soporte, $this->productos);
     }
 
-    public function incluirCliente(Cliente $cliente)
-    {
-        $this->incluirProducto($cliente, $this->socios);
-    }
 
-    // Método público para incluir un juego
+    // metods público para incluir un juego
     public function incluirJuego(Juego $juego)
     {
         $this->incluirProducto($juego, $this->productos);
     }
 
-    // Método privado para incluir un producto (soporte o cliente)
+    // metods privado para incluir un producto (soporte o cliente)
     private function incluirProducto($producto, &$array)
     {
         $array[] = $producto;
         echo "Producto incluido correctamente.\n";
     }
-    public function incluirDvd(Dvd $dvd)
+
+    public function incluirSocio(Cliente $socio)
     {
-        $this->incluirProducto($dvd, $this->productos);
+        $this->incluirProducto($socio, $this->socios);
     }
+
+
+    public function listarProductos()
+    {
+        foreach ($this->productos as $producto) {
+            echo "Tipo: " . get_class($producto) . "<br>";
+            echo "Título: " . $producto->getTitulo() . "<br>";
+            echo "Número: " . $producto->obtenerNumero() . "<br>";
+            echo "Precio: " . $producto->getPrecio() . " euros<br>";
+            echo "<br>";
+        }
+    }
+
+
 }
 
 ?>
+
