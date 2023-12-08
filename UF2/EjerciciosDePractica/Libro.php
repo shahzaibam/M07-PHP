@@ -2,7 +2,7 @@
 
 class Libro {
 
-    protected $titulo;
+    protected $titulo;   
 
     protected $autor;
 
