@@ -13,12 +13,12 @@ class CintaVideo extends Soporte {
         $this->duracion = $duracion;
     }
 
-    // Método muestraResumen sobrescrito
+    // método muestraResumen sobrescrito
     public function muestraResumen() {
         // Llamada al método muestraResumen de la clase padre
         parent::muestraResumen();
         // Mostrar la duración específica de la cinta de video
-        echo "Duración: {$this->duracion}\n";
+        echo "Duración: {$this->duracion} <br>";
     }
 }
 

@@ -17,8 +17,6 @@ abstract class Soporte implements Resumible {
 
     // Métodos abstractos
     public function muestraResumen() {
-        // Implementación específica para la clase Soporte
-        // Puedes personalizar cómo se muestra el resumen aquí
         echo "Título: {$this->titulo} <br>";
         echo "Número: {$this->getNumero()} <br>";
         echo "Precio: {$this->precio} <br>";
