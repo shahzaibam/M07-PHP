@@ -1,0 +1,17 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.club-container {
+    display: flex;
+}
+
+.club-card {
+    border: 1px solid black;
+    margin: 10px;
+    padding: 10px;
+}
+
+.club-logo {
+    max-height: 100px;
+}
