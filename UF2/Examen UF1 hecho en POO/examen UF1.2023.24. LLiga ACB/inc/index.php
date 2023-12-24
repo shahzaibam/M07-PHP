@@ -57,7 +57,7 @@ if (!empty($allClubs)) {
             $image_src = $instanciaClub[$nombreVariable]->getImage();
 
             // aquí muestro las imágenes, hago un get del nombre de la imagen y lo muestro
-            echo "<a href='./players_$club.php'><img class='club-logo' src='../images/logos_clubs/$image_src' alt='$club Logo'/></a>";
+            echo "<a href='./players/players_$club.php'><img class='club-logo' src='../images/logos_clubs/$image_src' /></a>";
 
             echo "</div>";
         }
