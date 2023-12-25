@@ -1,3 +1,27 @@
+<?php
+
+session_start();
+
+if(isset($_SESSION["contador"])) {
+    $_SESSION["contador"] = $_SESSION["contador"] + 1;
+}else {
+    $_SESSION["contador"] = 1;
+
+}
+
+
+
+
+
+
+$cookie_name = "estil";
+$value = "hola";
+
+
+setcookie($cookie_name, $value, time() + (365 * 24 * 60 * 60), "/");
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -7,6 +31,8 @@
     <link rel="stylesheet" href="styles/styles.css">
 </head>
 <body>
+
+<h3>Contador de visitas <?php echo $_SESSION["contador"] ?></h3>
 
 <?php
 

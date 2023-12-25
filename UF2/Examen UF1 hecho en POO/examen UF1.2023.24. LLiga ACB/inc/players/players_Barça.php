@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 include_once("../Jugador.php");
 
@@ -10,6 +11,13 @@ $players = new Jugador("BARÇA", $fichero);
 
 $all = $players->mostrarEquipo();
 
+//miro si el contador existe y le sumo 1
+if(isset($_SESSION["contador"])) {
+    $_SESSION["contador"] = $_SESSION["contador"] + 1;
+}
+
+$cookie_name = "estil";
+
 ?>
 
 
@@ -17,6 +25,7 @@ $all = $players->mostrarEquipo();
 
 <div>
     <h1>Jugadores</h1>
+    <h3>Contador de visitas <?php echo $_SESSION["contador"] ?></h3>
 
     <div>
         <div class="p-4">
@@ -35,7 +44,13 @@ $all = $players->mostrarEquipo();
 
 
                 <?php foreach ($all as $player) { ?>
-                    <tr>
+                    <?php
+                        if(isset($_COOKIE[$cookie_name])) {
+                            echo '<tr style="background: blue; font-size: 20px;">';
+                        }else {
+                            echo '<tr>';
+                        }
+                    ?>
                         <td><?php echo $player["nom"]; ?></td>
                         <td><?php echo $player["samarreta"]; ?></td>
                         <td><?php echo $player["club"]; ?></td>
@@ -45,7 +60,11 @@ $all = $players->mostrarEquipo();
                         <td><?php echo $player["altura"]; ?></td>
                         <td><?php echo $player["edad"]; ?></td>
                         <td><?php echo $player["temp"]; ?></td>
-                        <td><img src="../../images/jugadores/<?php echo $player["foto"]; ?>" height="100px"></td>
+                        <td>
+                            <a href="../singlePlayerView/singlePlayer.php?nombre=<?= urlencode($player["nom"]) ?>&imagen=<?= urlencode($player["foto"]) ?>&club=<?= urlencode($player["club"]) ?>">
+                                <img src="../../images/jugadores/<?php echo $player["foto"]; ?>" height="100px">
+                            </a>
+                        </td>
                     </tr>
                 <?php } ?>
 
