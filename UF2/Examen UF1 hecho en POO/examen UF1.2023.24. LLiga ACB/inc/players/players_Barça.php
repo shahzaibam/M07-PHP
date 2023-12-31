@@ -2,19 +2,16 @@
 session_start();
 
 include_once("../Jugador.php");
+include_once("../functions.php");
+
+$nombreEquipo = "BARÇA";
 
 $fichero = "../../ligaEquipos.csv";
-
-
-$players = new Jugador("BARÇA", $fichero);
-
-
+$players = new Jugador($nombreEquipo, $fichero);
 $all = $players->mostrarEquipo();
 
-//miro si el contador existe y le sumo 1
-if(isset($_SESSION["contador"])) {
-    $_SESSION["contador"] = $_SESSION["contador"] + 1;
-}
+checkSessionContador();
+
 
 $cookie_name = "estil";
 
@@ -26,6 +23,12 @@ $cookie_name = "estil";
 <div>
     <h1>Jugadores</h1>
     <h3>Contador de visitas <?php echo $_SESSION["contador"] ?></h3>
+
+
+
+    <div>
+        <a href="./comprarEntradas.php">Comprar Entradas</a>
+    </div>
 
     <div>
         <div class="p-4">
@@ -43,30 +46,11 @@ $cookie_name = "estil";
                 <th class='p-3'>Foto</th>
 
 
-                <?php foreach ($all as $player) { ?>
-                    <?php
-                        if(isset($_COOKIE[$cookie_name])) {
-                            echo '<tr style="background: blue; font-size: 20px;">';
-                        }else {
-                            echo '<tr>';
-                        }
-                    ?>
-                        <td><?php echo $player["nom"]; ?></td>
-                        <td><?php echo $player["samarreta"]; ?></td>
-                        <td><?php echo $player["club"]; ?></td>
-                        <td><?php echo $player["posicion"]; ?></td>
-                        <td><?php echo $player["nacionalidad"]; ?></td>
-                        <td><?php echo $player["licencia"]; ?></td>
-                        <td><?php echo $player["altura"]; ?></td>
-                        <td><?php echo $player["edad"]; ?></td>
-                        <td><?php echo $player["temp"]; ?></td>
-                        <td>
-                            <a href="../singlePlayerView/singlePlayer.php?nombre=<?= urlencode($player["nom"]) ?>&imagen=<?= urlencode($player["foto"]) ?>&club=<?= urlencode($player["club"]) ?>">
-                                <img src="../../images/jugadores/<?php echo $player["foto"]; ?>" height="100px">
-                            </a>
-                        </td>
-                    </tr>
-                <?php } ?>
+                <?php
+
+                    mostrarJugadores($all, $cookie_name, $nombreEquipo);
+
+                ?>
 
 
             </table>
@@ -76,6 +60,7 @@ $cookie_name = "estil";
 
 
     </div>
+
 </div>
 
 

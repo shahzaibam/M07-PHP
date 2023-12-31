@@ -42,6 +42,11 @@ Plantilla bàsica per a tota l'aplicació
                 <a href="http://www.ies-provensana.com"><img src="<?=PATH_IMG?>proven.jpg" alt="proven.jpg"></a>
                 <h1>Institut Provençana Exemple-2 MVC amb PHP</h1>
             </header>
+            
+            <?php
+
+                //    include './view/menu/MainMenu.html';
+            ?>
             <?php
                 $controlMain=new MainController();
                 //únic mètode del controlador principal que es pregunta per l'opció del menú
