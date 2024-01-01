@@ -3,6 +3,9 @@ session_start();
 
 include_once("../Jugador.php");
 include_once("../functions.php");
+include_once ("../layout.php");
+myHeader();
+myMenu();
 
 $nombreEquipo = "BARÇA";
 
@@ -14,7 +17,6 @@ checkSessionContador();
 
 
 $cookie_name = "estil";
-
 ?>
 
 

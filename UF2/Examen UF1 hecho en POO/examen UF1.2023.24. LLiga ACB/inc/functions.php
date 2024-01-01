@@ -116,7 +116,7 @@ function mostrarJugadores($all, $cookie_name, $nombreEquipo) {
  */
 function generarSelector($partidos) {
     echo "<label>Partido: </label>";
-    echo '<select name="selectorPartidos">';
+    echo '<select name="partidos">';
     foreach ($partidos as $partido) {
         echo '<option value="' . $partido . '" ' . $partido . '>' . $partido . '</option>';
     }
@@ -134,7 +134,7 @@ function generarSelector($partidos) {
 function generarRadioBtn($zonas) {
     foreach ($zonas as $zona) {
         echo '<label>';
-        echo '<input type="radio" name="zona" value="' . $zona . '"> ' . $zona;
+        echo '<input type="radio" name="zona" value="' . $zona . '" required> ' . $zona;
         echo '</label><br>';
     }
 }
@@ -145,7 +145,7 @@ function generarRadioBtn($zonas) {
  */
 function generarNumeroEntradas($entradas) {
     echo "<label>Numero de Entradas: </label>";
-    echo '<select name="selectorEntradas">';
+    echo '<select name="entradas">';
     foreach ($entradas as $entrada) {
         echo '<option value="' . $entrada . '" ' . $entrada . '>' . $entrada . '</option>';
     }

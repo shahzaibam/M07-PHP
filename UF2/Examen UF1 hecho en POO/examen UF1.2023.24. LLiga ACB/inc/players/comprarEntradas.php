@@ -1,7 +1,9 @@
 <?php
 
-    include_once ("../functions.php");
-
+include_once ("../functions.php");
+include_once ("../layout.php");
+myHeader();
+myMenu();
 ?>
 
 <!DOCTYPE html>
@@ -18,7 +20,7 @@
         <h3>
             Formulario Booking
         </h3>
-        <form action="" method="post">
+        <form action="resumenCompra.php" method="post">
             <?php
 
                 $partidos = ["Barça VS AS Monaco", "Barça VS Casademont Zaragoza", "Barça VS Río Breogán"];
