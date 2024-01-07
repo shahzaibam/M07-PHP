@@ -1,0 +1,5 @@
+1;Cosmetic;
+2;Health;
+3;Exemple;
+
+4;Food;
