@@ -1,4 +1,4 @@
-<div id="info">
+    <div id="info">
     <?php
         if (is_array($_SESSION['info']) == TRUE) {
             foreach ($_SESSION['info'] as $info) {

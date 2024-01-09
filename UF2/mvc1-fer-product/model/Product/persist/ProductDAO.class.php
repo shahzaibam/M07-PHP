@@ -1,6 +1,7 @@
 <?php
 
 namespace persist;
+
 use Product;
 use ProductMessage;
 use identificador;
@@ -49,7 +50,7 @@ class ProductDAO implements \ModelInterface
     }
 
     /**
-     * Afegeix una categoria
+     * Afegeix un product
      * @param Product objecte
      * @return TRUE O FALSE
      */
@@ -68,21 +69,56 @@ class ProductDAO implements \ModelInterface
 
 
     /**
-     * Modificar una categoria
+     * Modificar un product
      * @param Product objecte donat
      * @return TRUE o FALSE
      */
     public function modify($product)
     {
 
-        // to do
+        $actual_lines = $this->dbConnect->realAllLines();
+        $newPieces = [];
+        if($product[0] != -1) {
+            foreach ($actual_lines as $line) {
+                if (!empty($line)) {
+                    $pieces = explode(";", $line);
+
+                    if($pieces[0] == $product[0]) {
+
+                        $pieces[0] = $product[0];
+                        $pieces[1] = $product[1];
+
+                    }
+
+                    print_r($pieces);
+
+                    $newPieces[] = $pieces;
+
+                }
+
+            }
+        }
+//        echo "2 <br>";
+//        print_r($newPieces);
+//
+//        echo "<br>";
+
+        $arrayUnidimensional = array_map(function ($subarray) {
+            return $subarray[1];
+        }, $newPieces);
+
+//        print_r($arrayUnidimensional);
+
+
+
+        $this->dbConnect->writeToFile($arrayUnidimensional);
 
     }
 
 
     /**
-     * Esborra una categoria donat l' id
-     * @param $id identificador de la categoria a buscar
+     * Esborra un product donat l' id
+     * @param $id identificador del product a buscar
      * @return TRUE O FALSE
      */
     public function delete($id)
@@ -93,14 +129,26 @@ class ProductDAO implements \ModelInterface
     }
 
     /**
-     * Selecionar una categoria per id
-     * @param $id identificador de la categoria a buscar
-     * @return Product objecte or NULL
+     * Selecionar un product per id
+     * @param $id identificador de la product a buscar
+     * @return identificador objecte or NULL
      */
     public function searchById($id)
     {
 
-        //to do
+        $actual_lines = $this->dbConnect->realAllLines();
+        $VALOR_NO_ENCONTRADO = -1;
+
+        foreach ($actual_lines as $line) {
+            if (!empty($line)) {
+                $pieces = explode(";", $line);
+                if($pieces[0] == $id) {
+                    return $id;
+                }
+            }
+
+        }
+        return $VALOR_NO_ENCONTRADO;
 
     }
 }

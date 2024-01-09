@@ -65,9 +65,14 @@ class ProductController implements ControllerInterface
                 $this->formAdd();
                 break;
 
+            case "modify"://opció de menu que trobem a MainMenu.html, menú de la vista que carreguem el primer cop amb el display
+                $this->modify();
+                break;
+
             case "add": //opció de formulari
                 $this->add();
                 break;
+
 
             default: //en el cas que vinguem per primer cop a productes o no haguem escollit res de res, $request=NULL;
                 $this->view->display(); //mètode de la classe ProductView.class.php
@@ -128,7 +133,28 @@ class ProductController implements ControllerInterface
 //aquests mètodes els deixem ara per ara així
     public function modify()
     {
-//to do
+        //validem i omplim missatges d'error, si n'hi hagués
+        $productValid = ProductFormValidation::checkData(ProductFormValidation::MODIFY_FIELDS);
+
+
+        //si no hi ha declarat cap sessió d'error
+        if (empty($_SESSION['error'])) {
+            $searchID = $this->model->searchById($productValid->getId());
+
+
+            $getName = $productValid->getName();
+
+            if($searchID){
+                $product = [$searchID, $getName];
+
+
+                $this->model->modify($product);
+            }
+
+        }
+
+        $this->view->display("view/form/ProductForm/ProductFormModify.php", $productValid);
+
     }
 
     public function delete()

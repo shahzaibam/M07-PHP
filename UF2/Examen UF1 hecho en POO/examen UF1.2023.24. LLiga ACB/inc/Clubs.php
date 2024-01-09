@@ -5,6 +5,7 @@ class Clubs {
 
     private $image;
 
+
     /**
      * @param $nomClub
      * @param $image
@@ -15,6 +16,7 @@ class Clubs {
         $this->image = $this->nomClub . ".png";
     }
 
+
     /**
      * @return mixed
      */
@@ -22,6 +24,8 @@ class Clubs {
     {
         return $this->nomClub;
     }
+
+
 
     /**
      * @param mixed $nomClub
@@ -40,6 +44,8 @@ class Clubs {
     {
         return $this->image;
     }
+
+
 
     public function __toString()
     {

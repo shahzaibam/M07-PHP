@@ -71,8 +71,10 @@ class DBConnect
         if (count($data) > 0) {
             // abre el fichero en modo write
             if ($this->openFile("w")) {
-                foreach ($data as $line) {
-                    fputs($this->getHandle(), $line);
+                foreach ($data as $index => $name) {
+                    // Modificar para escribir el índice y luego el nombre en dos líneas consecutivas
+                    $num = $index+1;
+                    fputs($this->getHandle(), "{$num};{$name};\n");
                 }
             }
             $this->closeFile();
