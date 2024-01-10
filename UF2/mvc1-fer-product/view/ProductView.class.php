@@ -25,4 +25,22 @@ class ProductView {
         //sempre incloim una zona de missatgeria
         include("view/form/ProductForm/MessageForm.php");
     }
+
+
+    public function displaySearch($template=NULL, $content=NULL) {
+
+        //$template es fa servir per incloure "coses" al body d'index.php. Per exemple, per incloure un formulari
+        //$content ens servirà per imprimir llistats d'objectes dins d'un bucle per formatat
+
+
+
+
+
+        if (!empty($template)) { //si rebem alguna cosa
+            include($template); //simplement la incloem
+        }
+
+        //sempre incloim una zona de missatgeria
+        include("view/form/ProductForm/MessageForm.php");
+    }
 }

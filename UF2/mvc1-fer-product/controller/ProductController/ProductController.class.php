@@ -69,6 +69,10 @@ class ProductController implements ControllerInterface
                 $this->modify();
                 break;
 
+            case "search"://opció de menu que trobem a MainMenu.html, menú de la vista que carreguem el primer cop amb el display
+                $this->searchById();
+                break;
+
             case "add": //opció de formulari
                 $this->add();
                 break;
@@ -139,12 +143,12 @@ class ProductController implements ControllerInterface
 
         //si no hi ha declarat cap sessió d'error
         if (empty($_SESSION['error'])) {
-            $searchID = $this->model->searchById($productValid->getId());
+            $searchID = $this->model->searchByIdModify($productValid->getId());
 
 
             $getName = $productValid->getName();
 
-            if($searchID){
+            if ($searchID) {
                 $product = [$searchID, $getName];
 
 
@@ -164,7 +168,30 @@ class ProductController implements ControllerInterface
 
     public function searchById()
     {
-//to do
+        //validem i omplim missatges d'error, si n'hi hagués
+        $productValid = ProductFormValidation::checkData(ProductFormValidation::SEARCH_FIELDS);
+
+        $this->view->display("view/form/ProductForm/ProductFormSearch.php");
+
+        $searchID = $this->model->searchById($productValid->getId());
+
+
+        //si no hi ha declarat cap sessió d'error
+        if ($searchID) {
+
+            if (!empty($searchID)) { // array void or array of Products objects?
+                $_SESSION['info'] = ProductMessage::INF_FORM['found'];
+                $this->view->displaySearch("view/form/ProductForm/ProductList.php", $searchID);
+
+            } else {
+                $_SESSION['error'] = ProductMessage::ERR_FORM['not_found'];
+            }
+
+        }else {
+            $_SESSION['error'] = ProductMessage::ERR_FORM['not_found'];
+
+        }
+
     }
     /*
     // carregaria el formulari de modificar si el programessim al menú

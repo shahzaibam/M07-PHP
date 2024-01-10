@@ -76,7 +76,36 @@ class CategoryDAO implements \ModelInterface
     public function modify($category)
     {
 
-        // to do
+        $actual_lines = $this->dbConnect->realAllLines();
+        $newPieces = [];
+        if($category[0] != -1) {
+            foreach ($actual_lines as $line) {
+                if (!empty($line)) {
+                    $pieces = explode(";", $line);
+
+                    if($pieces[0] == $category[0]) {
+
+                        $pieces[0] = $category[0];
+                        $pieces[1] = $category[1];
+
+                    }
+
+                    print_r($pieces);
+
+                    $newPieces[] = $pieces;
+
+                }
+
+            }
+        }
+
+        //paso de un array bidimensional a un array unidimensional para poder pasarlo a la function writeToFile del dbConnect
+        $arrayUnidimensional = array_map(function ($subarray) {
+            return $subarray[1];
+        }, $newPieces);
+
+
+        $this->dbConnect->writeToFile($arrayUnidimensional);
 
     }
 
@@ -93,6 +122,32 @@ class CategoryDAO implements \ModelInterface
 
     }
 
+
+
+    /**
+     * Selecionar un product per id
+     * @param $id identificador de la product a buscar
+     * @return identificador objecte or NULL
+     */
+    public function searchByIdModify($id)
+    {
+
+        $actual_lines = $this->dbConnect->realAllLines();
+        $VALOR_NO_ENCONTRADO = -1;
+
+        foreach ($actual_lines as $line) {
+            if (!empty($line)) {
+                $pieces = explode(";", $line);
+                if($pieces[0] == $id) {
+                    return $id;
+                }
+            }
+
+        }
+        return $VALOR_NO_ENCONTRADO;
+
+    }
+
     /**
      * Selecionar una categoria per id
      * @param $id identificador de la categoria a buscar
@@ -101,7 +156,21 @@ class CategoryDAO implements \ModelInterface
     public function searchById($id)
     {
 
-        //to do
+        $actual_lines = $this->dbConnect->realAllLines();
+
+        foreach ($actual_lines as $line) {
+            if (!empty($line)) {
+                $pieces = explode(";", $line);
+                if($pieces[0] == $id) {
+                    $pieces = explode(";", $line);
+                    $category = new Category($pieces[0], $pieces[1]);
+                    $response[] = $category;
+                    return $response;
+                }
+            }
+
+        }
+        return false;
 
     }
 

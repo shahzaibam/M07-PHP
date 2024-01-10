@@ -64,6 +64,14 @@ class CategoryController implements ControllerInterface {
             case "add": //opció de formulari
                 $this->add();
                 break;
+
+            case "modify": //opció de formulari
+                $this->modify();
+                break;
+
+            case "search": //opció de formulari
+                $this->searchById();
+                break;
            
             default: //en el cas que vinguem per primer cop a categories o no haguem escollit res de res, $request=NULL;
                 $this->view->display(); //mètode de la classe CategoryView.class.php
@@ -122,13 +130,58 @@ class CategoryController implements ControllerInterface {
 
 //aquests mètodes els deixem ara per ara així
     public function modify(){
-//to do
+        //validem i omplim missatges d'error, si n'hi hagués
+        $categoryValid = ProductFormValidation::checkData(ProductFormValidation::MODIFY_FIELDS);
+
+
+        //si no hi ha declarat cap sessió d'error
+        if (empty($_SESSION['error'])) {
+            $searchID = $this->model->searchByIdModify($categoryValid->getId());
+
+
+            $getName = $categoryValid->getName();
+
+            if ($searchID) {
+                $product = [$searchID, $getName];
+
+
+                $this->model->modify($product);
+            }
+
+        }
+
+        $this->view->display("view/form/CategoryForm/CategoryFormModify.php");
+
     }
     public function delete(){
 //to do
     }
-    public function searchById(){
-//to do
+    public function searchById()
+    {
+        //validem i omplim missatges d'error, si n'hi hagués
+        $categoryValid = CategoryFormValidation::checkData(CategoryFormValidation::SEARCH_FIELDS);
+
+        $this->view->display("view/form/CategoryForm/CategoryFormSearch.php");
+
+        $searchID = $this->model->searchById($categoryValid->getId());
+
+
+        //si no hi ha declarat cap sessió d'error
+        if ($searchID) {
+
+            if (!empty($searchID)) { // array void or array of Products objects?
+                $_SESSION['info'] = CategoryMessage::INF_FORM['found'];
+                $this->view->displaySearch("view/form/CategoryForm/CategoryList.php", $searchID);
+
+            } else {
+                $_SESSION['error'] = CategoryMessage::ERR_FORM['not_found'];
+            }
+
+        }else {
+            $_SESSION['error'] = CategoryMessage::ERR_FORM['not_found'];
+
+        }
+
     }
     /*
     // carregaria el formulari de modificar si el programessim al menú  

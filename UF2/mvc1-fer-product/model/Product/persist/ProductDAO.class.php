@@ -98,17 +98,10 @@ class ProductDAO implements \ModelInterface
 
             }
         }
-//        echo "2 <br>";
-//        print_r($newPieces);
-//
-//        echo "<br>";
 
         $arrayUnidimensional = array_map(function ($subarray) {
             return $subarray[1];
         }, $newPieces);
-
-//        print_r($arrayUnidimensional);
-
 
 
         $this->dbConnect->writeToFile($arrayUnidimensional);
@@ -133,7 +126,7 @@ class ProductDAO implements \ModelInterface
      * @param $id identificador de la product a buscar
      * @return identificador objecte or NULL
      */
-    public function searchById($id)
+    public function searchByIdModify($id)
     {
 
         $actual_lines = $this->dbConnect->realAllLines();
@@ -149,6 +142,34 @@ class ProductDAO implements \ModelInterface
 
         }
         return $VALOR_NO_ENCONTRADO;
+
+    }
+
+
+
+
+    /**
+     * Selecionar un product per id
+     * @param $id identificador de la product a buscar
+     * @return identificador objecte or NULL
+     */
+    public function searchById($id)
+    {
+        $actual_lines = $this->dbConnect->realAllLines();
+
+        foreach ($actual_lines as $line) {
+            if (!empty($line)) {
+                $pieces = explode(";", $line);
+                if($pieces[0] == $id) {
+                    $pieces = explode(";", $line);
+                    $product = new Product($pieces[0], $pieces[1]);
+                    $response[] = $product;
+                    return $response;
+                }
+            }
+
+        }
+        return false;
 
     }
 }
