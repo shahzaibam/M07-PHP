@@ -72,6 +72,10 @@ class CategoryController implements ControllerInterface {
             case "search": //opció de formulari
                 $this->searchById();
                 break;
+
+            case "delete": //opció de formulari
+                $this->delete();
+                break;
            
             default: //en el cas que vinguem per primer cop a categories o no haguem escollit res de res, $request=NULL;
                 $this->view->display(); //mètode de la classe CategoryView.class.php
@@ -111,7 +115,7 @@ class CategoryController implements ControllerInterface {
             $category=$this->model->searchById($categoryValid->getId());
 
             //si no hem trobat l'id...
-            if (is_null($category)) {
+            if ($category == null) {
                 //afegim la categoria a l'arxiu
                 $result=$this->model->add($categoryValid);
 
@@ -144,8 +148,11 @@ class CategoryController implements ControllerInterface {
             if ($searchID) {
                 $product = [$searchID, $getName];
 
-
                 $this->model->modify($product);
+                $_SESSION['info'] = ProductMessage::INF_FORM['update'];
+
+            }else {
+                $_SESSION['error'] = ProductMessage::ERR_FORM['not_exists_id'];
             }
 
         }
@@ -154,7 +161,26 @@ class CategoryController implements ControllerInterface {
 
     }
     public function delete(){
-//to do
+        //validem i omplim missatges d'error, si n'hi hagués
+        $categoryValid = CategoryFormValidation::checkData(CategoryFormValidation::DELETE_FIELDS);
+
+
+        //si no hi ha declarat cap sessió d'error
+        if (empty($_SESSION['error'])) {
+            $searchID = $this->model->searchByIdModify($categoryValid->getId());
+
+            if ($searchID != -1) {
+
+                $this->model->delete($searchID);
+                $_SESSION['info'] = ProductMessage::INF_FORM['delete'];
+
+            }else {
+                $_SESSION['error'] = CategoryMessage::ERR_FORM['not_exists_id'];
+            }
+
+        }
+
+        $this->view->display("view/form/ProductForm/ProductFormDelete.php");
     }
     public function searchById()
     {

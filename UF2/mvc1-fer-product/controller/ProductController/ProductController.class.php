@@ -65,16 +65,20 @@ class ProductController implements ControllerInterface
                 $this->formAdd();
                 break;
 
-            case "modify"://opció de menu que trobem a MainMenu.html, menú de la vista que carreguem el primer cop amb el display
+            case "add": //opció de formulari
+                $this->add();
+                break;
+
+            case "modify": //opció de formulari
                 $this->modify();
                 break;
 
-            case "search"://opció de menu que trobem a MainMenu.html, menú de la vista que carreguem el primer cop amb el display
+            case "search": //opció de formulari
                 $this->searchById();
                 break;
 
-            case "add": //opció de formulari
-                $this->add();
+            case "delete": //opció de formulari
+                $this->delete();
                 break;
 
 
@@ -112,13 +116,15 @@ class ProductController implements ControllerInterface
         //validem i omplim missatges d'error, si n'hi hagués
         $productValid = ProductFormValidation::checkData(ProductFormValidation::ADD_FIELDS);
 
+
         //si no hi ha declarat cap sessió d'error
         if (empty($_SESSION['error'])) {
             //busco per id, a veure si n'hi ha un altre d'igual
             $product = $this->model->searchById($productValid->getId());
 
+
             //si no hem trobat l'id...
-            if (is_null($product)) {
+            if ($product == null) {
                 //afegim la categoria a l'arxiu
                 $result = $this->model->add($productValid);
 
@@ -148,11 +154,15 @@ class ProductController implements ControllerInterface
 
             $getName = $productValid->getName();
 
-            if ($searchID) {
+            if ($searchID != -1) {
                 $product = [$searchID, $getName];
 
-
                 $this->model->modify($product);
+
+                $_SESSION['info'] = ProductMessage::INF_FORM['update'];
+
+            }else {
+                $_SESSION['error'] = ProductMessage::ERR_FORM['not_exists_id'];
             }
 
         }
@@ -163,7 +173,28 @@ class ProductController implements ControllerInterface
 
     public function delete()
     {
-//to do
+
+        //validem i omplim missatges d'error, si n'hi hagués
+        $productValid = ProductFormValidation::checkData(ProductFormValidation::DELETE_FIELDS);
+
+
+        //si no hi ha declarat cap sessió d'error
+        if (empty($_SESSION['error'])) {
+            $searchID = $this->model->searchByIdModify($productValid->getId());
+
+            if ($searchID != -1) {
+
+                $this->model->delete($searchID);
+                $_SESSION['info'] = ProductMessage::INF_FORM['delete'];
+
+            } else {
+                $_SESSION['error'] = ProductMessage::ERR_FORM['not_exists_id'];
+            }
+
+        }
+
+        $this->view->display("view/form/CategoryForm/CategoryFormDelete.php");
+
     }
 
     public function searchById()
@@ -176,20 +207,15 @@ class ProductController implements ControllerInterface
         $searchID = $this->model->searchById($productValid->getId());
 
 
+
         //si no hi ha declarat cap sessió d'error
         if ($searchID) {
 
-            if (!empty($searchID)) { // array void or array of Products objects?
-                $_SESSION['info'] = ProductMessage::INF_FORM['found'];
-                $this->view->displaySearch("view/form/ProductForm/ProductList.php", $searchID);
+            $this->view->displaySearch("view/form/ProductForm/ProductList.php", $searchID);
+            $_SESSION['info'] = ProductMessage::INF_FORM['found'];
 
-            } else {
-                $_SESSION['error'] = ProductMessage::ERR_FORM['not_found'];
-            }
-
-        }else {
-            $_SESSION['error'] = ProductMessage::ERR_FORM['not_found'];
-
+        } else {
+            $_SESSION['error'] = ProductMessage::ERR_FORM['not_exists_id'];
         }
 
     }

@@ -97,14 +97,15 @@ class ProductDAO implements \ModelInterface
                 }
 
             }
+            $arrayUnidimensional = array_map(function ($subarray) {
+                return $subarray[1];
+            }, $newPieces);
+
+
+            $this->dbConnect->writeToFile($arrayUnidimensional);
         }
 
-        $arrayUnidimensional = array_map(function ($subarray) {
-            return $subarray[1];
-        }, $newPieces);
 
-
-        $this->dbConnect->writeToFile($arrayUnidimensional);
 
     }
 
@@ -116,8 +117,42 @@ class ProductDAO implements \ModelInterface
      */
     public function delete($id)
     {
+        $actual_lines = $this->dbConnect->realAllLines();
+        $newPieces = [];
 
-        //to do
+        if($id != -1) {
+            foreach ($actual_lines as $line) {
+                if (!empty($line)) {
+                    $pieces = explode(";", $line);
+
+                    //he agregado una instrucción continue para que, cuando se encuentre una línea con $pieces[0] igual a $id,
+                    // se salte esa iteración del bucle y no se incluya en el array $newPieces.
+                    // De esta manera, esa línea se "eliminará" del resultado final. El resto de las líneas seguirán siendo procesadas
+                    // y mostradas según el código existente.
+
+                    /*
+                    continue is used to end the current iteration in a for , foreach , while or do.. while loop, and continue to the next iteration.
+                    */
+                    if($pieces[0] == $id) {
+                        continue;
+                    }
+
+
+                    print_r($pieces);
+
+                    $newPieces[] = $pieces;
+
+                }
+
+            }
+
+            $arrayUnidimensional = array_map(function ($subarray) {
+                return $subarray[1];
+            }, $newPieces);
+
+
+            $this->dbConnect->writeToFile($arrayUnidimensional);
+        }
 
     }
 
@@ -151,7 +186,7 @@ class ProductDAO implements \ModelInterface
     /**
      * Selecionar un product per id
      * @param $id identificador de la product a buscar
-     * @return identificador objecte or NULL
+     * @return NULL or identificador objecte
      */
     public function searchById($id)
     {
