@@ -175,7 +175,19 @@ class Jugador {
 
 
 
+    public function calculate_age():string {
+        // Formateamos la cadena a tipo Date con el formato día/mes/año
+        $fechaNacimiento = DateTime::createFromFormat('d/m/Y', $this->fNacimiento);
 
+        // Creamos una variable que almacena la fecha actual
+        $hoy = new DateTime();
+
+        // Calculamos la edad usando el método diff de DateTime || diff -> Devuelve la diferencia entre dos objetos DateTime
+        $edad = $hoy->diff($fechaNacimiento);
+
+        // Devolvemos solo el componente de años de la diferencia (y) || y -> year, m -> month, d -> day
+        return $edad->y;
+    }
 
 
 

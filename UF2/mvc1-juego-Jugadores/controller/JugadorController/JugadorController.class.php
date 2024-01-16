@@ -7,8 +7,8 @@ require_once "controller/ControllerInterface.php";
 require_once "view/JugadorView.class.php";
 require_once "model/Jugador/persist/JugadorDAO.class.php";
 require_once "model/Jugador/Jugador.class.php";
-require_once "util/Jugador/JugadorMessage.class.php";
-require_once "util/Jugador/JugadorFormValidation.class.php";
+require_once "util/Jugador/JugadorValidation/JugadorMessage.class.php";
+require_once "util/Jugador/JugadorValidation/JugadorFormValidation.class.php";
 
 class JugadorController implements ControllerInterface {
 
@@ -84,7 +84,6 @@ class JugadorController implements ControllerInterface {
 
 //carrega el llistat de totes les categories
     public function home() {
-
 
         //necessitem cridar al model
         $mensaje=$this->model->home();

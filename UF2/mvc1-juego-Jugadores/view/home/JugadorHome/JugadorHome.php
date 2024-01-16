@@ -11,7 +11,7 @@
                 echo "<span>Nombre: {$jugador->getNombre()}</span> <br>";
                 echo "<span>País: {$jugador->getPais()}</span> <br>";
                 echo "<span>Dorsal: {$jugador->getNumCamiseta()}</span> <br>";
-                echo "<span>DOB: {$jugador->getFNacimiento()}</span> <br>";
+                echo "<span>Edad: {$jugador->calculate_age()}</span> <br>";
                 echo "<span>Role: {$jugador->getRolJugador()}</span> <br>";
                 echo "<span>Goals: {$jugador->getNumGoles()}</span> <br>";
                 echo "<span>Partidos: {$jugador->getNumPartidos()}</span> <br>";
