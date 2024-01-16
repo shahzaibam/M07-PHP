@@ -1,6 +1,6 @@
 <?php
 //per poder fer servir l'únic controlador d'aquesta aplicació
-require_once "controller/CategoryController/CategoryController.class.php";
+require_once "controller/CategoryController/JugadorController.class.php";
 require_once "controller/ProductController/ProductController.class.php";
 
 class MainController {

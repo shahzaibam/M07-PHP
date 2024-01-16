@@ -7,8 +7,8 @@ require_once "controller/ControllerInterface.php";
 require_once "view/CategoryView.class.php";
 require_once "model/Category/persist/CategoryDAO.class.php";
 require_once "model/Category/Category.class.php";
-require_once "util/Category/CategoryMessage.class.php";
-require_once "util/Category/CategoryFormValidation.class.php";
+require_once "util/Category/JugadorMessage.class.php";
+require_once "util/Category/JugadorFormValidation.class.php";
 
 class CategoryController implements ControllerInterface {
 
@@ -101,7 +101,7 @@ class CategoryController implements ControllerInterface {
     
 // carrega el formulari d'insertar categoria
     public function formAdd() {
-        $this->view->display("view/form/CategoryForm/CategoryFormAdd.php"); //li passem la variable que es diu $template a la vista CategoryView.class.php
+        $this->view->display("view/form/CategoryForm/JugadorHome.php"); //li passem la variable que es diu $template a la vista CategoryView.class.php
     }
 
 // ejecuta la acción de insertar categoría
@@ -129,7 +129,7 @@ class CategoryController implements ControllerInterface {
             }
         }
 
-        $this->view->display("view/form/CategoryForm/CategoryFormAdd.php", $categoryValid);
+        $this->view->display("view/form/CategoryForm/JugadorHome.php", $categoryValid);
     }
 
 //aquests mètodes els deixem ara per ara així

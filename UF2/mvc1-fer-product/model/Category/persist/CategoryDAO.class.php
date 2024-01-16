@@ -21,7 +21,7 @@ class CategoryDAO implements \ModelInterface
 
     public function __construct()
     {
-        $this->dbConnect = new \DBConnect("model/Category/resources/categories.txt");
+        $this->dbConnect = new \DBConnect("model/Category/resources/jugadores.txt");
     }
 
     /**
