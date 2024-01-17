@@ -9,8 +9,10 @@ require_once "model/Jugador/persist/JugadorDAO.class.php";
 require_once "model/Jugador/Jugador.class.php";
 require_once "util/Jugador/JugadorValidation/JugadorMessage.class.php";
 require_once "util/Jugador/JugadorValidation/JugadorFormValidation.class.php";
+require_once "util/Jugador/templateToRead/make_letters.php";
+require_once "util/Jugador/functions_extra/funcions_archivos.php";
 
-class JugadorController implements ControllerInterface {
+class JugadorController {
 
     //atributs que segur que tindran tots els controladors
     private $view;
@@ -57,8 +59,8 @@ class JugadorController implements ControllerInterface {
                 $this->home();
                 break;
 
-            case "form_add"://opció de menu que trobem a MainMenu.html, menú de la vista que carreguem el primer cop amb el display
-                $this->formAdd();
+            case "ejer1"://opció de menu que trobem a MainMenu.html, menú de la vista que carreguem el primer cop amb el display
+                $this->ejer1();
                 break;
 
             case "add": //opció de formulari
@@ -95,16 +97,36 @@ class JugadorController implements ControllerInterface {
             $_SESSION['error']=JugadorMessage::ERR_FORM['not_found'];
         }
         
-        $this->view->display("view/home/JugadorHome/JugadorHome.php", $mensaje);
+        $this->view->display("view/options/JugadorHome/JugadorHome.php", $mensaje);
     }
 
-    
-// carrega el formulari d'insertar categoria
-    public function formAdd() {
-        $this->view->display("view/form/JugadorForm/JugadorFormAdd.php"); //li passem la variable que es diu $template a la vista JugadorView.class.php
+
+    // carrega el formulari d'insertar categoria
+    public function ejer1() {
+
+
+        $mensaje=$this->model->ejer1_arrayNombres();
+
+        $directory = "./util/Jugador/dataCreatedWithTemplate/";
+
+        $written = writeInFileTxt($mensaje, $directory);
+
+
+        if($written) {
+            $_SESSION['info']=JugadorMessage::INF_FORM['written'];
+        }else {
+            $_SESSION['error']=JugadorMessage::ERR_FORM['not_written'];
+        }
+
+        $this->view->display("view/options/JugadorEj1/JugadorEj1.php",); //li passem la variable que es diu $template a la vista JugadorView.class.php
+
+
+
     }
 
-// ejecuta la acción de insertar categoría
+
+
+    // ejecuta la acción de insertar categoría
     public function add() {
        //validem i omplim missatges d'error, si n'hi hagués
         $jugadorValid=JugadorFormValidation::checkData(JugadorFormValidation::ADD_FIELDS);

@@ -14,7 +14,7 @@ require_once "model/ModelInterface.php";
 
 
 //class to handle a jugador
-class JugadorDAO implements \ModelInterface
+class JugadorDAO
 {
 
     //propietat que tenen tots els DAO per connectar-se a l'arxiu i poder fer les accions bàsiques generals
@@ -55,22 +55,33 @@ class JugadorDAO implements \ModelInterface
 
 
     /**
-     * Afegeix una categoria
-     * @param Jugador objecte
-     * @return TRUE O FALSE
+     * ejeercicio 1 lee del fichero los jugadores y devuelve un array con solo los nombres de los jugadores
+     * @return array de Nombres de jugadores
      */
-    public function add($jugador)
+    public function ejer1_arrayNombres()
     {
+        $jugadorName = [];
+        $linesToFile = array();
+        $linesToFile = $this->dbConnect->realAllLines();
+        if (count($linesToFile) > 0) {
+            foreach ($linesToFile as $line) {
+                if (!empty($line)) {
+                    $pieces = explode(";", $line);
+                    $jugadorName[] = $pieces[1];
+                }
 
-        $result = $this->dbConnect->addNewLine($jugador->writingNewLine());
-
-        if ($result == FALSE) {
-            $_SESSION['error'] = JugadorMessage::ERR_DAO['insert'];
+            }
         }
 
-        return $result;
+
+        return $jugadorName;
 
     }
+
+
+
+
+
 
 
     /**
