@@ -9,7 +9,7 @@ require_once "model/Jugador/persist/JugadorDAO.class.php";
 require_once "model/Jugador/Jugador.class.php";
 require_once "util/Jugador/JugadorValidation/JugadorMessage.class.php";
 require_once "util/Jugador/JugadorValidation/JugadorFormValidation.class.php";
-require_once "util/Jugador/templateToRead/make_letters.php";
+require_once "util/Jugador/functions_extra/make_letters.php";
 require_once "util/Jugador/functions_extra/funcions_archivos.php";
 
 class JugadorController {
@@ -63,21 +63,18 @@ class JugadorController {
                 $this->ejer1();
                 break;
 
-            case "add": //opció de formulari
-                $this->add();
+            case "ejer2": //opció de formulari
+                $this->ejer2();
                 break;
 
-            case "modify": //opció de formulari
-                $this->modify();
+            case "ejer3": //opció de formulari
+                $this->ejer3();
                 break;
 
-            case "search": //opció de formulari
-                $this->searchById();
+            case "ejer4": //opció de formulari
+                $this->ejer4();
                 break;
 
-            case "delete": //opció de formulari
-                $this->delete();
-                break;
            
             default: //en el cas que vinguem per primer cop a categories o no haguem escollit res de res, $request=NULL;
                 $this->view->display(); //mètode de la classe JugadorView.class.php
@@ -127,82 +124,68 @@ class JugadorController {
 
 
     // ejecuta la acción de insertar categoría
-    public function add() {
-       //validem i omplim missatges d'error, si n'hi hagués
-        $jugadorValid=JugadorFormValidation::checkData(JugadorFormValidation::ADD_FIELDS);
-        
-        //si no hi ha declarat cap sessió d'error
-        if (empty($_SESSION['error'])) {
-            //busco per id, a veure si n'hi ha un altre d'igual
-            $jugador=$this->model->searchById($jugadorValid->getId());
+    public function ejer2() {
 
-            //si no hem trobat l'id...
-            if ($jugador == null) {
-                //afegim la categoria a l'arxiu
-                $result=$this->model->add($jugadorValid);
+        $mensaje=$this->model->ejer1_arrayNombres();
 
-                if ($result == TRUE) {
-                    $_SESSION['info']=JugadorMessage::INF_FORM['insert'];
-                    $jugadorValid=NULL;
-                }
-            }
-            else {
-                $_SESSION['error']=JugadorMessage::ERR_FORM['exists_id'];
-            }
+        $text = createCardFormat($mensaje);
+
+        if($mensaje) {
+            $_SESSION['info']=JugadorMessage::INF_FORM['found'];
+            $this->view->display("view/options/JugadorEj2/JugadorEj2.php", $text); //li passem la variable que es diu $template a la vista JugadorView.class.php
+
+        }else {
+            $_SESSION['error']=JugadorMessage::ERR_FORM['not_found'];
         }
 
-        $this->view->display("view/form/JugadorForm/JugadorFormAdd.php", $jugadorValid);
+
+
     }
 
-//aquests mètodes els deixem ara per ara així
-    public function modify(){
-        //validem i omplim missatges d'error, si n'hi hagués
-        $jugadorValid = ProductFormValidation::checkData(ProductFormValidation::MODIFY_FIELDS);
+
+    //aquests mètodes els deixem ara per ara així
+    public function ejer3(){
+        $mensaje=$this->model->ejer1_arrayNombres();
+
+        $location = "./util/Jugador/templateToRead/index.view.html";
 
 
-        //si no hi ha declarat cap sessió d'error
-        if (empty($_SESSION['error'])) {
-            $searchID = $this->model->searchByIdModify($jugadorValid->getId());
+        $text = make_letters_file_html($location, $mensaje);
 
+        if($mensaje) {
+            $_SESSION['info']=JugadorMessage::INF_FORM['found'];
+            $this->view->display("view/options/JugadorEj2/JugadorEj2.php", $text); //li passem la variable que es diu $template a la vista JugadorView.class.php
 
-            $getName = $jugadorValid->getName();
-
-            if ($searchID) {
-                $product = [$searchID, $getName];
-
-                $this->model->modify($product);
-                $_SESSION['info'] = ProductMessage::INF_FORM['update'];
-
-            }else {
-                $_SESSION['error'] = ProductMessage::ERR_FORM['not_exists_id'];
-            }
-
+        }else {
+            $_SESSION['error']=JugadorMessage::ERR_FORM['not_found'];
         }
 
-        $this->view->display("view/form/JugadorForm/JugadorFormModify.php");
 
     }
-    public function delete(){
-        //validem i omplim missatges d'error, si n'hi hagués
-        $jugadorValid = JugadorFormValidation::checkData(JugadorFormValidation::DELETE_FIELDS);
 
 
-        //si no hi ha declarat cap sessió d'error
-        if (empty($_SESSION['error'])) {
-            $searchID = $this->model->searchByIdModify($jugadorValid->getId());
+    public function ejer4(){
 
-            if ($searchID != -1) {
+        $mensaje=$this->model->ejer1_arrayNombres();
 
-                $this->model->delete($searchID);
-                $_SESSION['info'] = JugadorMessage::INF_FORM['delete'];
+        $location = "./util/Jugador/templateToRead/index.view.html";
 
-            }else {
-                $_SESSION['error'] = JugadorMessage::ERR_FORM['not_exists_id'];
-            }
+        $text = make_letters_file_html($location, $mensaje);
 
+        $directoryToWrite = "./util/Jugador/dataCreatedWithTemplate/html/";
+
+        $written = writeInFilehtml($mensaje, $directoryToWrite);
+
+        if($written) {
+            $_SESSION['info']=JugadorMessage::INF_FORM['found'];
+            $this->view->display("view/options/JugadorEj4/JugadorEj4.php", $mensaje); //li passem la variable que es diu $template a la vista JugadorView.class.php
+
+        }else {
+            $_SESSION['error']=JugadorMessage::ERR_FORM['not_found'];
         }
 
-        $this->view->display("view/form/ProductForm/ProductFormDelete.php");
+
+
     }
     public function searchById()
     {

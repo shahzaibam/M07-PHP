@@ -30,10 +30,34 @@ function write_info_arch(string $ruta_archivo, mixed $data)
 
 
 
+//this function gets the location of the file, reads its content and replaces the name with the value of the array and returns the array with the names of all players replaced
+function make_letters_file_html($templateLocation, $names_array)
+{
+    $letter_template_content = file_get_contents($templateLocation);
+    $letters = [];
+
+    foreach ($names_array as $key => $value) {
+        $strParams = [
+            '{{name}}' => $value,
+        ];
+        $letter =  strtr($letter_template_content, $strParams);
+        $letters[] = strip_tags($letter);  // Elimina las etiquetas HTML
+    }
+
+    return $letters;
+}
+
+function createCardFormat($names_array) {
+    $letters_array = make_letters($names_array);
+
+    return $letters_array;
+}
+
+
 
 function writeInFileTxt($names_array, $directory)
 {
-    $letters_array = make_letters($names_array);
+    $letters_array = createCardFormat($names_array);
 
     // Check if the directory exists, if not, create it
     if (!is_dir($directory)) {
@@ -51,6 +75,36 @@ function writeInFileTxt($names_array, $directory)
     }
 
 
+}
+
+
+
+function writeInFilehtml($names_array, $directory)
+{
+    // Check if the directory exists, if not, create it
+    if (!is_dir($directory)) {
+        mkdir($directory, 0777, true);
+    }
+
+    foreach ($names_array as $name) {
+        $file_name = $directory . $name . ".html";
+
+        $html_content = '<!DOCTYPE html>
+<html>
+<head>
+    <title>Player Letter</title>
+</head>
+<body>
+    <h1>Hola Dear ' . $name . ',</h1>
+    <p>Congratulations! You have been selected to the Spanish national football team.</p>
+    <p>Wishing you the best,</p>
+</body>
+</html>';
+
+        file_put_contents($file_name, $html_content);
+    }
+
+    return true;
 }
 
 
