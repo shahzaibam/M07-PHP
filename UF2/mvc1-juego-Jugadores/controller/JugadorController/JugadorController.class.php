@@ -1,5 +1,4 @@
 <?php
-//crido de manera general tot el que necessitaré cridar
 
 use persist\JugadorDAO;
 
@@ -9,7 +8,6 @@ require_once "model/Jugador/persist/JugadorDAO.class.php";
 require_once "model/Jugador/Jugador.class.php";
 require_once "util/Jugador/JugadorValidation/JugadorMessage.class.php";
 require_once "util/Jugador/JugadorValidation/JugadorFormValidation.class.php";
-require_once "util/Jugador/functions_extra/make_letters.php";
 require_once "util/Jugador/functions_extra/funcions_archivos.php";
 
 class JugadorController {
@@ -75,13 +73,22 @@ class JugadorController {
                 $this->ejer4();
                 break;
 
+            case "login": //opció de formulari
+                $this->login();
+                break;
+
            
             default: //en el cas que vinguem per primer cop a categories o no haguem escollit res de res, $request=NULL;
                 $this->view->display(); //mètode de la classe JugadorView.class.php
         }
     }
 
-//carrega el llistat de totes les categories
+
+    /**
+     * Displays the home page with a menu containing 4 options: Ejercicio1, Ejercicio2, Ejercicio3, and Ejercicio4.
+     * The body of the home page welcomes the selection and presents the entire team of players (20 icons/photos).
+     * @return void
+     */
     public function home() {
 
         //necessitem cridar al model
@@ -98,7 +105,11 @@ class JugadorController {
     }
 
 
-    // carrega el formulari d'insertar categoria
+    /**
+     * Activity 1: Generates a letter for each player and saves the files on disk.
+     * Players are defined in a file, and the generated files will be named, for example, ferranTorres.txt, gavi.txt.
+     * @return void
+     */
     public function ejer1() {
 
 
@@ -117,13 +128,14 @@ class JugadorController {
 
         $this->view->display("view/options/JugadorEj1/JugadorEj1.php",); //li passem la variable que es diu $template a la vista JugadorView.class.php
 
-
-
     }
 
 
-
-    // ejecuta la acción de insertar categoría
+    /**
+     * This function is part of Activity 2. It retrieves an array of names from the model,
+     * formats them into card-like structures, and displays them using HTML <pre> tags.
+     * @return void
+     */
     public function ejer2() {
 
         $mensaje=$this->model->ejer1_arrayNombres();
@@ -143,7 +155,12 @@ class JugadorController {
     }
 
 
-    //aquests mètodes els deixem ara per ara així
+    /**
+     * Activity 3: Similar to exercise 2, but the letter template is in a file that the program reads.
+     * The file is named index.view.html, and it contains HTML with the text of the letter.
+     *
+     * @return void
+     */
     public function ejer3(){
         $mensaje=$this->model->ejer1_arrayNombres();
 
@@ -164,6 +181,12 @@ class JugadorController {
     }
 
 
+    /**
+     * Activity 4: Based on exercise 3, generate letters and save them to disk in HTML files (e.g., ferranTorres.html, gavi.html).
+     * Also, create a file 'index.html' with a list of links to the generated letter files.
+     *
+     * @return void
+     */
     public function ejer4(){
 
         $mensaje=$this->model->ejer1_arrayNombres();
@@ -184,136 +207,15 @@ class JugadorController {
             $_SESSION['error']=JugadorMessage::ERR_FORM['not_found'];
         }
 
-
-
-    }
-    public function searchById()
-    {
-        //validem i omplim missatges d'error, si n'hi hagués
-        $jugadorValid = JugadorFormValidation::checkData(JugadorFormValidation::SEARCH_FIELDS);
-
-        $this->view->display("view/form/JugadorForm/JugadorFormSearch.php");
-
-        $searchID = $this->model->searchById($jugadorValid->getId());
-
-
-        //si no hi ha declarat cap sessió d'error
-        if ($searchID) {
-
-            if (!empty($searchID)) { // array void or array of Products objects?
-                $_SESSION['info'] = JugadorMessage::INF_FORM['found'];
-                $this->view->displaySearch("view/form/JugadorForm/JugadorHome.php", $searchID);
-
-            } else {
-                $_SESSION['error'] = JugadorMessage::ERR_FORM['not_found'];
-            }
-
-        }else {
-            $_SESSION['error'] = JugadorMessage::ERR_FORM['not_found'];
-
-        }
-
-    }
-    /*
-    // carregaria el formulari de modificar si el programessim al menú  
-    public function formModify() {
-        $this->view->display("view/form/CategoryForm/CategoryFormModify.php");
-    }    
-
-    // executaria la modificació si el programessim al menú 
-    public function modify() {
-        $categoryValid=CategoryFormValidation::checkData(CategoryFormValidation::MODIFY_FIELDS);        
-        
-        if (empty($_SESSION['error'])) {
-            $category=$this->model->searchById($categoryValid->getId());
-
-            if (!is_null($category)) {            
-                $result=$this->model->modify($categoryValid);
-
-                if ($result == TRUE) {
-                    $_SESSION['info']=CategoryMessage::INF_FORM['update'];
-                }
-            }
-            else {
-                $_SESSION['error']=CategoryMessage::ERR_FORM['not_exists_id'];
-            }
-        }
-        
-        $this->view->display("view/form/CategoryForm/CategoryFormModify.php", $categoryValid);
     }
 
-    // ejecuta la acción de eliminar categoría    
-    public function delete() {
-        $categoryValid=CategoryFormValidation::checkData(CategoryFormValidation::DELETE_FIELDS);
-        
-        if (empty($_SESSION['error'])) {
-            $category=$this->model->searchById($categoryValid->getId());
 
-            if (!is_null($category)) {            
-                $result=$this->model->delete($categoryValid->getId());
 
-                if ($result == TRUE) {
-                    $_SESSION['info']=CategoryMessage::INF_FORM['delete'];
-                    $categoryValid=NULL;
-                }
-            }
-            else {
-                $_SESSION['error']=CategoryMessage::ERR_FORM['not_exists_id'];
-            }
-        }
-        
-        $this->view->display("view/form/CategoryForm/CategoryFormModify.php", $categoryValid);
+    public function login(){
+
+
+            $this->view->display("view/form/JugadorForm/LoginForm/LoginForm.php"); //li passem la variable que es diu $template a la vista JugadorView.class.php
+
     }
 
-    
-    
-
-    // ejecuta la acción de buscar categoría por id de categoría
-    public function searchById() {
-        $categoryValid=CategoryFormValidation::checkData(CategoryFormValidation::SEARCH_FIELDS);
-        
-        if (empty($_SESSION['error'])) {
-            $category=$this->model->searchById($categoryValid->getId());
-
-            if (!is_null($category)) { // is NULL or Category object?
-                $_SESSION['info']=CategoryMessage::INF_FORM['found'];
-                $categoryValid=$category;
-            }
-            else {
-                $_SESSION['error']=CategoryMessage::ERR_FORM['not_found'];
-            }
-        }
-            
-        $this->view->display("view/form/CategoryForm/CategoryFormModify.php", $categoryValid);
-    }    
-
-    // carga el formulario de buscar productos por nombre de categoría
-    public function formListProducts() {
-        $this->view->display("view/form/CategoryForm/CategoryFormSearchProduct.php");
-    }    
-    
-    // ejecuta la acción de buscar productos por nombre de categoría
-    public function listProducts() {
-        $name=trim(filter_input(INPUT_POST, 'name'));
-
-        $result=NULL;
-        if (!empty($name)) { // Category Name is void?
-            $result=$this->model->listProducts($name);            
-
-            if (!empty($result)) { // array void or array of Product objects?
-                $_SESSION['info']="Data found"; 
-            }
-            else {
-                $_SESSION['error']=CategoryMessage::ERR_FORM['not_found'];
-            }
-            
-            $this->view->display("view/form/CategoryForm/CategoryListProduct.php", $result);
-        }
-        else {
-            $_SESSION['error']=CategoryMessage::ERR_FORM['invalid_name'];
-            
-            $this->view->display("view/form/CategoryForm/CategoryFormSearchProduct.php", $result);
-        }
-    }
-    */
 }

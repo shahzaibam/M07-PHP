@@ -30,6 +30,33 @@ function write_info_arch(string $ruta_archivo, mixed $data)
 
 
 
+//function that makes letters by a template using strtr() and saves all the templates with the players name in a associative array
+function make_letters($names_array)
+{
+
+    $letter_template = <<<TEMPLATE
+    Dear {{name}},
+    Congratulations! You have been selected to be part of the Spanish national football team. 
+    I wish you the best!
+    TEMPLATE;
+
+
+    $letters = [];
+
+    foreach ($names_array as $key => $value) {
+        $strParams = [
+            '{{name}}' => $value,
+        ];
+        $letter =  strtr($letter_template, $strParams);
+        $letters[] = $letter;
+    }
+
+
+    return $letters;
+}
+
+
+
 //this function gets the location of the file, reads its content and replaces the name with the value of the array and returns the array with the names of all players replaced
 function make_letters_file_html($templateLocation, $names_array)
 {
