@@ -139,7 +139,6 @@ class EntrenadorController
 
 
     public function login(){
-
         $csvFile = 'util/Entrenador/csvEntrenadores/entrenadoresLogin.csv';
         $username = '';
         $password = '';
@@ -147,33 +146,35 @@ class EntrenadorController
         $loggedIn = '';
         $mensaje = '';
 
-        $_SESSION["loggedIn"] = false;
-
-
-
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $username = $_POST['username'] ?? '';
-            $password = $_POST['password'] ?? '';
-        }
-
-        if($username && $password) {
-            $loggedIn = $this->model->login($username, $password, $csvFile);
-        }else {
-            $_SESSION['error']=JugadorMessage::ERR_FORM['empty_username'];
-            $_SESSION['error']=JugadorMessage::ERR_FORM['empty_pass'];
-        }
-
-        if($loggedIn) {
-
-            $_SESSION["loggedIn"] = true;
-        }
-
         if($_SESSION["loggedIn"]) {
-            $mensaje = $this->modelJugador->home();
-            $this->view->displayLoggedIn("view/options/JugadorHome/JugadorHome.php", $mensaje);
+                $mensaje = $this->modelJugador->home();
+                $this->view->displayLoggedIn("view/options/JugadorHome/JugadorHome.php", $mensaje);
+
         }else {
-            $this->view->display("view/form/EntrenadorForm/LoginForm/LoginForm.php"); //li passem la variable que es diu $template a la vista JugadorView.class.php
+
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                $username = $_POST['username'] ?? '';
+                $password = $_POST['password'] ?? '';
+            }
+
+            if($username && $password) {
+                $loggedIn = $this->model->login($username, $password, $csvFile);
+            }else {
+                $_SESSION['error']=JugadorMessage::ERR_FORM['empty_username'];
+                $_SESSION['error']=JugadorMessage::ERR_FORM['empty_pass'];
+            }
+
+            if($loggedIn) {
+                $_SESSION["loggedIn"] = true;
+                $mensaje = $this->modelJugador->home();
+                $this->view->displayLoggedIn("view/options/JugadorHome/JugadorHome.php", $mensaje);
+            }else {
+                $this->view->display("view/form/EntrenadorForm/LoginForm/LoginForm.php"); //li passem la variable que es diu $template a la vista JugadorView.class.php
+            }
+
         }
+
+
 
 
     }
