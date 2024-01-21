@@ -1,6 +1,7 @@
 <?php
 //per poder fer servir l'únic controlador d'aquesta aplicació
 require_once "controller/JugadorController/JugadorController.class.php";
+require_once "controller/EntrenadorController/EntrenadorController.class.php";
 
 class MainController {
 
@@ -45,8 +46,10 @@ class MainController {
             //en el cas que volguessim carregar alguna vista per defecte fora de la que ens vindrà dels controladors
             //per a nosaltres, la vista primera és la que ens ofereix el menú de categories
 
-
-
+            case "entrenador":
+                $controlEntrenador=new EntrenadorController();
+                $controlEntrenador->processRequest();
+                break;
 
             default:
                 $controlJugador=new JugadorController();

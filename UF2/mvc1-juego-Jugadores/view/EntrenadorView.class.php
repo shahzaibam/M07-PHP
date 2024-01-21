@@ -1,5 +1,5 @@
 <?php
-class JugadorView {
+class EntrenadorView {
     
     public function __construct() {
 
@@ -24,8 +24,26 @@ class JugadorView {
         }
         
         //sempre incloim una zona de missatgeria
-        include("view/form/JugadorForm/MessageForm.php");
+        include("view/form/EntrenadorForm/MessageForm.php");
     }
 
 
+
+    public function displayLoggedIn($template=NULL, $content=NULL) {
+
+        //$template es fa servir per incloure "coses" al body d'index.php. Per exemple, per incloure un formulari
+        //$content ens servirà per imprimir llistats d'objectes dins d'un bucle per formatat
+
+
+        include("view/menu/MenuLoggedIn.html");
+
+
+
+        if (!empty($template)) { //si rebem alguna cosa
+            include($template); //simplement la incloem
+        }
+
+        //sempre incloim una zona de missatgeria
+        include("view/form/EntrenadorForm/MessageForm.php");
+    }
 }

@@ -72,26 +72,6 @@ class JugadorController {
             case "ejer4": //opció de formulari
                 $this->ejer4();
                 break;
-
-            case "login": //opció de formulari
-                $this->login();
-                break;
-
-            case "homeLoggedIn": //opció de formulari
-                $this->homeLoggedIn();
-                break;
-
-            case "listar": //opció de formulari
-                $this->listarJugadores();
-                break;
-
-            case "add": //opció de formulari
-                $this->anyadirJugador();
-                break;
-
-            case "logout": //opció de formulari
-                $this->logout();
-                break;
            
             default: //en el cas que vinguem per primer cop a categories o no haguem escollit res de res, $request=NULL;
                 $this->view->display(); //mètode de la classe JugadorView.class.php
@@ -120,34 +100,6 @@ class JugadorController {
     }
 
 
-
-
-    /**
-     * Displays the home page with a menu containing 4 options: Ejercicio1, Ejercicio2, Ejercicio3, and Ejercicio4.
-     * The body of the home page welcomes the selection and presents the entire team of players (20 icons/photos).
-     * @return void
-     */
-    public function homeLoggedIn() {
-
-        if($_SESSION["loggedIn"]) {
-            print_r($_SESSION["loggedIn"]);
-
-            //necessitem cridar al model
-            $mensaje=$this->model->home();
-
-            if (!empty($mensaje)) { // array void or array of Jugador objects?
-                $_SESSION['info']=JugadorMessage::INF_FORM['found'];
-            }
-            else {
-                $_SESSION['error']=JugadorMessage::ERR_FORM['not_found'];
-            }
-
-            $this->view->displayLoggedIn("view/options/JugadorHome/JugadorHome.php", $mensaje);
-        }else {
-            $this->view->display("view/form/JugadorForm/LoginForm/LoginForm.php"); //li passem la variable que es diu $template a la vista JugadorView.class.php
-        }
-
-    }
 
 
     /**
@@ -255,64 +207,5 @@ class JugadorController {
     }
 
 
-
-    public function login(){
-
-        $csvFile = 'util/Jugador/csvEntrenadores/entrenadoresLogin.csv';
-        $username = '';
-        $password = '';
-
-        $loggedIn = '';
-        $mensaje = '';
-
-        $_SESSION["loggedIn"] = false;
-
-
-
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $username = $_POST['username'] ?? '';
-            $password = $_POST['password'] ?? '';
-        }
-
-        if($username && $password) {
-            $loggedIn = $this->model->login($username, $password, $csvFile);
-        }else {
-            $_SESSION['error']=JugadorMessage::ERR_FORM['empty_username'];
-            $_SESSION['error']=JugadorMessage::ERR_FORM['empty_pass'];
-        }
-
-        if($loggedIn) {
-
-            $_SESSION["loggedIn"] = true;
-        }
-
-        if($_SESSION["loggedIn"]) {
-            $mensaje = $this->model->home();
-            $this->view->displayLoggedIn("view/options/JugadorHome/JugadorHome.php", $mensaje);
-        }else {
-            $this->view->display("view/form/JugadorForm/LoginForm/LoginForm.php"); //li passem la variable que es diu $template a la vista JugadorView.class.php
-        }
-
-
-    }
-
-
-
-    public function listarJugadores() {
-        $this->view->displayLoggedIn("view/options/JugadorLogged/ListarJugador.php");
-    }
-
-
-
-    public function anyadirJugador() {
-        $this->view->displayLoggedIn("view/options/JugadorLogged/AnyadirJugador.php");
-    }
-
-
-    public function logout() {
-        $mensaje = $this->model->home();
-        $_SESSION["loggedIn"] = false;
-
-        $this->view->display("view/options/JugadorHome/JugadorHome.php", $mensaje);    }
 
 }
