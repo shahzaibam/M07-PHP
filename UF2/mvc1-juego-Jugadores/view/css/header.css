@@ -28,7 +28,7 @@ li {
 }
 
 /*Style for menu links*/
-li a {
+.menu-link {
     background: black;
     color: white;
     display: block;
@@ -37,8 +37,21 @@ li a {
     text-align: center;
     line-height: 2.5em;
     text-decoration: none;
-    margin-right: 0.1em;    
+    margin-right: 0.1em;
 }
+
+.menu-loggedIn {
+    background: blue;
+    color: white;
+    display: block;
+    min-width: 10em;
+    height: 2.5em;
+    text-align: center;
+    line-height: 2.5em;
+    text-decoration: none;
+    margin-right: 0.1em;
+}
+
 
 /*Hover state for top level links*/
 li:hover a {

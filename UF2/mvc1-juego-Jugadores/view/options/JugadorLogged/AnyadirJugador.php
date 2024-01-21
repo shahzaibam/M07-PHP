@@ -6,6 +6,7 @@
         foreach ($content as $item) {
             echo '<div style="width: 16.66%; margin: 10px; text-align: center; background-color: white; padding: 10px; border-radius: 8px;">';
             echo '<div style="overflow: hidden;">';
+            // Use htmlspecialchars to escape HTML entities in each array element
             echo "<pre>" . htmlspecialchars($item) . "</pre>";
             echo '</div>';
             echo '</div>';

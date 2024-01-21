@@ -16,6 +16,8 @@ class JugadorMessage {
         array(
             'empty_id'      => 'Id must be filled',
             'empty_name'    => 'Name must be filled',
+            'empty_username'    => 'Username must be filled',
+            'empty_pass'    => 'Password must be filled',
             'invalid_id'    => 'Id must be valid values',
             'invalid_name'  => 'Name must be valid values',
             'exists_id'     => 'Id already exists',

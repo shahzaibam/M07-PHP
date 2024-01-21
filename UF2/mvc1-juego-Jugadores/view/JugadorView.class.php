@@ -28,12 +28,13 @@ class JugadorView {
     }
 
 
-    public function displaySearch($template=NULL, $content=NULL) {
+    public function displayLoggedIn($template=NULL, $content=NULL) {
 
-//$template es fa servir per incloure "coses" al body d'index.php. Per exemple, per incloure un formulari
-//$content ens servirà per imprimir llistats d'objectes dins d'un bucle per formatat
+        //$template es fa servir per incloure "coses" al body d'index.php. Per exemple, per incloure un formulari
+        //$content ens servirà per imprimir llistats d'objectes dins d'un bucle per formatat
 
 
+        include("view/menu/MenuLoggedIn.html");
 
 
 

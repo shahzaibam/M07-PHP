@@ -78,6 +78,24 @@ class JugadorDAO
     }
 
 
+    public function login($username, $password, $csvFile)
+    {
+
+        $lines = file($csvFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+
+        foreach ($lines as $line) {
+            list($storedUsername, $storedPassword) = explode(';', $line);
+
+            if ($username === $storedUsername && $password === $storedPassword) {
+                return true; // Credentials match
+            }
+        }
+
+        return false; // No matching credentials found
+    }
+
+
+
 }
 
 ?>
