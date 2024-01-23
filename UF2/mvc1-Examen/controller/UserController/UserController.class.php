@@ -99,9 +99,11 @@ class UserController
 
         if($username && $password) {
             $loggedIn = $this->model->login($username, $password, $csvFile);
-            echo $loggedIn;
-        }else {
-            $_SESSION['error']=UserMessage::ERR_FORM['passUser'];
+
+            if(!$loggedIn) {
+                $_SESSION['error']=UserMessage::ERR_FORM['passUser'];
+            }
+
         }
 
 
@@ -110,6 +112,7 @@ class UserController
             $_SESSION["loggedIn"] = true;
             $mensaje = $this->modelCategory->home();
             $_SESSION["rol"] = $loggedIn;
+            $_SESSION["username"] = $username;
 
 
             $this->view->displayLoggedIn("view/options/CategoryHome/CategoryHome.php", $mensaje);

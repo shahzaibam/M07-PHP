@@ -42,16 +42,15 @@ class UserDAO
             list($storedUsername, $storedPassword, $storedRol) = explode(';', $line);
 
 
-
             if ($username === $storedUsername && $password === $storedPassword) {
                 return $storedRol;
-            }else {
-                return false;
             }
         }
 
         return false; // No matching credentials found
     }
+
+
 
 
 

@@ -7,6 +7,12 @@
             if(isset($_SESSION["rol"])) {
                 echo $_SESSION["rol"];
             }
+
+            echo "-";
+
+            if(isset($_SESSION["username"])) {
+                echo $_SESSION["username"];
+            }
         ?>
     </ul>
 </nav>
