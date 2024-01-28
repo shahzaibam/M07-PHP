@@ -22,8 +22,8 @@
             echo "<td>{$element->getName()}</td>";
             echo "<td>{$element->getEmail()}</td>";
             echo "<td>{$element->getPhone()}</td>";
-            echo '<td><button class="btn btn-warning"><a href="http://localhost/M07-PHP/UF3/Practica%20mascotas/index.php?menu=owner&option=update&nif=' . $element->getNif() . '" style="text-decoration: none;">Update</a></button></td>';
-            echo '<td><button class="btn btn-danger"><a href="http://localhost/M07-PHP/UF3/Practica%20mascotas/index.php?menu=owner&option=delete&nif=' . $element->getNif() . '" style="text-decoration: none;">Delete</a></button></td>';
+            echo '<td><button class="btn btn-warning"><a href="http://localhost/M07-PHP/UF3/Practica_mascotas_ampliacion/index.php?menu=owner&option=update&nif=' . $element->getNif() . '" style="text-decoration: none;">Update</a></button></td>';
+            echo '<td><button class="btn btn-danger"><a href="http://localhost/M07-PHP/UF3/Practica_mascotas_ampliacion/index.php?menu=owner&option=delete&nif=' . $element->getNif() . '" style="text-decoration: none;">Delete</a></button></td>';
             echo "</tr>";
         }
         ?>
