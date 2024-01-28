@@ -203,6 +203,11 @@ class OwnerDAO implements ModelInterface
     }
 
 
+    /**
+     * if there is data that is associated with the owner, then first we will delete that data and then the OWNER so we will not have constraint error
+     * @param $nif --> nif del propietario (OWNER)
+     * @return bool
+     */
     private function deleteAssociatedMascotas($nif)
     {
         // Delete associated records in the `lineas_de_historial` table first

@@ -170,9 +170,9 @@ class PetDAO implements ModelInterface
 
 
 
-    //GET NIF FROM URL WITH METHOD $GET
+    //GET ID FROM URL WITH METHOD $GET
     /**
-     * GET NIF from the URL to do the sql and get the owner paramaters
+     * GET ID from the URL to do the sql and get the pets paramaters
      */
     public function getOwnerByUrl() {
         if(isset($_GET['id'])) {
@@ -190,6 +190,12 @@ class PetDAO implements ModelInterface
     /*--------------------------------------------- Existen Mascotas ------------------------------------------------------------ */
 
 
+    /**
+     * whenever we delete a pet we will check if the pet has an associative data, like any other table is using the pets $id, so if there is
+     * we will delete first that data and then the pet
+     * @param $id --> id of the pet
+     * @return bool
+     */
     private function deleteAssociatedMascotasHistory($id)
     {
         // Delete associated records in the `lineas_de_historial` table first
