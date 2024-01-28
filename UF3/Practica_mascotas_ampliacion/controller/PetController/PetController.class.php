@@ -81,6 +81,14 @@ class PetController implements ControllerInterface
                 $this->add();
                 break;
 
+            case "update":
+                $this->updatePetByBtn();
+                break;
+
+            case "delete":
+                $this->delete();
+                break;
+
                 // DEFAULT
 
             default:
@@ -268,7 +276,7 @@ class PetController implements ControllerInterface
         }
 
         // DISPLAY FORM AGAIN WITH PET'S PARAMETERS, AND SUCCESS/ERROR MESSAGES
-        $this->view->display("view/form/PetForm/PetFormAdd.php", $petFinal);
+        $this->view->display("view/form/PetForm/PetFormUpdate.php", $petFinal);
     }
 
     public function add_pet()
@@ -307,11 +315,51 @@ class PetController implements ControllerInterface
         $this->view->display("view/form/PetForm/PetFormAdd.php", $item);
     }
 
+
+
+
+
+    //UPDATE BUTTON FOR OWNER
+
+    /**
+     * Update owner By clicking on the button Update
+     */
+    public function updatePetByBtn()
+    {
+        $pet = $this->model->getOwnerByUrl();
+
+        if($pet !== NULL) {
+            $this->view->display("view/form/PetForm/PetFormUpdate.php", $pet);
+        }else {
+            $_SESSION["error"][] = PetMessage::SELECT_ERROR;
+        }
+
+    }
+
+
+
     /**
      * Delete pet.
      * Access user's form input through $_POST, and access database through the DAO. Then display the result using the view.
      */
     public function delete()
     {
+        $pet = $this->model->getOwnerByUrl();
+
+        if($pet !== NULL) {
+
+            $deletePet = $this->model->delete($pet->getId());
+
+            if($deletePet) {
+                $_SESSION["info"][] = PetMessage::DELETE_SUCCESS;
+                $this->view->display("view/form/PetForm/PetDeleteMessageShow.php");
+            }else {
+                $_SESSION["error"][] = PetMessage::DELETE_ERROR;
+            }
+
+        }else {
+            $_SESSION["error"][] = PetMessage::SELECT_ERROR;
+        }
     }
+
 }

@@ -148,17 +148,59 @@ class PetDAO implements ModelInterface
      */
     public function delete($id)
     {
-        // myQuery params
-        $sql = "DELETE FROM mascotas WHERE id=?";
-        $vector = array($id);
 
-        // prepare sentence
-        $sentence = $this->dbConnection->myQuery($sql, $vector);
+        $deleteAssociatedHistory = $this->deleteAssociatedMascotasHistory($id);
 
-        if ($sentence != null && $sentence->rowCount() != 0) {
-            return true;
+        if($deleteAssociatedHistory) {
+            // myQuery params
+            $sql = "DELETE FROM mascotas WHERE id=?";
+            $vector = array($id);
+
+            // prepare sentence
+            $sentence = $this->dbConnection->myQuery($sql, $vector);
+
+            if ($sentence != null && $sentence->rowCount() != 0) {
+                return true;
+            }
         }
+
 
         return false;
     }
+
+
+
+    //GET NIF FROM URL WITH METHOD $GET
+    /**
+     * GET NIF from the URL to do the sql and get the owner paramaters
+     */
+    public function getOwnerByUrl() {
+        if(isset($_GET['id'])) {
+            $id = $_GET['id'];
+
+            return $this->searchById($id);
+        } else {
+            return null;
+        }
+    }
+
+
+
+
+    /*--------------------------------------------- Existen Mascotas ------------------------------------------------------------ */
+
+
+    private function deleteAssociatedMascotasHistory($id)
+    {
+        // Delete associated records in the `lineas_de_historial` table first
+        $sql1 = "DELETE FROM lineas_de_historial WHERE idmascota IN (SELECT id FROM mascotas WHERE id=?)";
+        $vector1 = array($id);
+        $sentence1 = $this->dbConnection->myQuery($sql1, $vector1);
+
+        // Check if the deletion was successful
+        return ($sentence1 !== null);
+    }
+
+
+
 }
