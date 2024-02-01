@@ -14,17 +14,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-//    return view('welcome');
-    return 'Bienvenido';
+    return view('welcome');
+//    return 'Bienvenido';
 });
 
-Route::get('posts', [\App\Http\Controllers\PostController::class, 'index']); //shows all the posts
-Route::get('posts/create', [\App\Http\Controllers\PostController::class, 'create']); //shows a create form
-Route::post('posts', [\App\Http\Controllers\PostController::class, 'store']); //sends forms data to /posts by method POST
-Route::get('posts/{post}', [\App\Http\Controllers\PostController::class, 'show']);//shows a single post
-Route::get('posts/{post}/edit', [\App\Http\Controllers\PostController::class, 'edit']);//Edits a single post
-Route::put('posts/{post}', [\App\Http\Controllers\PostController::class, 'update']);//updates a single post
-Route::delete('posts/{post}', [\App\Http\Controllers\PostController::class, 'destroy']);//deletes a single post
+Route::get('posts', [\App\Http\Controllers\PostController::class, 'index'])->name("posts.index"); //shows all the posts
+Route::get('posts/create', [\App\Http\Controllers\PostController::class, 'create'])->name("posts.create"); //shows a create form
+Route::post('posts', [\App\Http\Controllers\PostController::class, 'store'])->name("posts.store"); //sends forms data to /posts by method POST
+Route::get('posts/{post}', [\App\Http\Controllers\PostController::class, 'show'])->name("posts.show");//shows a single post
+Route::get('posts/{post}/edit', [\App\Http\Controllers\PostController::class, 'edit'])->name("posts.edit");//Edits a single post
+Route::put('posts/{post}', [\App\Http\Controllers\PostController::class, 'update'])->name("posts.update");//updates a single post
+Route::delete('posts/{post}', [\App\Http\Controllers\PostController::class, 'destroy'])->name("posts.destroy");//deletes a single post
 
 
 
