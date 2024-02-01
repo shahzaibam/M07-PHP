@@ -21,15 +21,15 @@
 
         <ul>
             <li>
-                <a href="/posts/1"> Post 1 </a>
+                <a href="{{route("posts.show", 1)}}"> Post 1 </a>
             </li>
 
             <li>
-                <a href="/posts/2"> Post 2 </a>
+                <a href="{{route("posts.show", 2)}}"> Post 2 </a>
             </li>
 
             <li>
-                <a href="/posts/3"> Post 3 </a>
+                <a href="{{route("posts.show", 3)}}"> Post 3 </a>
             </li>
         </ul>
 
