@@ -7,11 +7,13 @@ use Illuminate\Http\Request;
 class PostController extends Controller
 {
     public function index() {
-        return "Aqui se mostrará el Listado de todos los POSTS";
+        return view('posts.index', [
+            'prueba' => 'Este mensaje es de prueba en DAW2'
+        ]);
     }
 
     public function create() {
-        return "Aquí se mostrará el formulario para crear el POST";
+        return view('posts.create');
     }
 
     public function store() {
@@ -19,11 +21,20 @@ class PostController extends Controller
     }
 
     public function show($post) {
-        return "Aquí se mostrará el POST con id '$post'";
+        return view('posts.show', [
+            'post' => $post
+        ]);
+
+
+        //forma de enviar datos con el ->with()
+//        return view ('posts.show')->with('post', $post);
+
     }
 
     public function edit($post) {
-        return "Aquí se mostrará el FORMULARIO para editar el post $post";
+        return view('posts.edit', [
+            'post' => $post
+        ]);
     }
 
     public function update($post) {
