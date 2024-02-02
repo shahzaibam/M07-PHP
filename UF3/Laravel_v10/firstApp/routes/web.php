@@ -13,10 +13,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-//    return 'Bienvenido';
-});
+//Route::get('/', function () {
+//    return view('welcome');
+////    return 'Bienvenido';
+//});
+
+
+//Route::view('/', 'welcomedaw2') ->name('home');
+//Route::view('contact', 'contact') ->name('contact');
+//Route::view('blog', 'blog') ->name('blog');
+//Route::view('about', 'about') ->name('about');
+
+
+
+Route::get('/', [\App\Http\Controllers\NavBarController::class, 'welcomedaw2'])->name("navbar.welcomedaw2");
+Route::get('contact', [\App\Http\Controllers\NavBarController::class, 'contact'])->name("navbar.contact");
+Route::get('blog', [\App\Http\Controllers\NavBarController::class, 'blog'])->name("navbar.blog");
+Route::get('about', [\App\Http\Controllers\NavBarController::class, 'about'])->name("navbar.about");
+
+
 
 Route::get('posts', [\App\Http\Controllers\PostController::class, 'index'])->name("posts.index"); //shows all the posts
 Route::get('posts/create', [\App\Http\Controllers\PostController::class, 'create'])->name("posts.create"); //shows a create form
@@ -25,6 +40,8 @@ Route::get('posts/{post}', [\App\Http\Controllers\PostController::class, 'show']
 Route::get('posts/{post}/edit', [\App\Http\Controllers\PostController::class, 'edit'])->name("posts.edit");//Edits a single post
 Route::put('posts/{post}', [\App\Http\Controllers\PostController::class, 'update'])->name("posts.update");//updates a single post
 Route::delete('posts/{post}', [\App\Http\Controllers\PostController::class, 'destroy'])->name("posts.destroy");//deletes a single post
+
+
 
 
 
