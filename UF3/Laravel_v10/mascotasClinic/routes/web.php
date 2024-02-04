@@ -14,5 +14,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home.index');
 });
+
+
+Route::get('owner/listAll', [\App\Http\Controllers\OwnerController::class, 'listAll']) ->name('owner.listAll');
+Route::get('owner/searchPet', [\App\Http\Controllers\OwnerController::class, 'searchPet']) ->name('owner.searchPet');
+Route::get('owner/modify', [\App\Http\Controllers\OwnerController::class, 'modify']) ->name('owner.modify');
+Route::get('owner/add', [\App\Http\Controllers\OwnerController::class, 'add']) ->name('owner.add');
