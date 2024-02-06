@@ -13,8 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [\App\Http\Controllers\OwnerController::class, 'index']) ->name('home.index');
-Route::get('/events', [\App\Http\Controllers\OwnerController::class, 'events']) ->name('navbar.events');
-Route::get('/aboutus', [\App\Http\Controllers\OwnerController::class, 'aboutus']) ->name('navbar.aboutus');
-Route::get('/contact', [\App\Http\Controllers\OwnerController::class, 'contact']) ->name('navbar.contact');
+Route::get('/', [\App\Http\Controllers\HomeController::class, 'index']) ->name('home.index');
+Route::get('/events', [\App\Http\Controllers\EventsController::class, 'index']) ->name('events.index');
+Route::get('/aboutus', [\App\Http\Controllers\AboutUsController::class, 'index']) ->name('aboutus.index');
+Route::get('/contact', [\App\Http\Controllers\ContactUsController::class, 'index']) ->name('contact.index');
 
