@@ -1,6 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
 body {
+    background-image: url("../../img/fondo.jpg");
     background-size: 100% 107%;
     background-repeat: no-repeat;
     width: 97vw;
     height: 98.2vh;
 }
+
+#menuBar {
+    background-color: transparent;
+}
+
+.navbar-nav li a {
+    color: black;
+}
+
+
+#homeBody {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+}
+
+#title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-weight: bold;
+    position: fixed;
+    bottom: 2rem;
+    letter-spacing: 3px;
+}
+

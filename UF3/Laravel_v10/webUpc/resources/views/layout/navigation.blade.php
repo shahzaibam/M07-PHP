@@ -8,7 +8,7 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="../../../public/css/home/styles.css">
+    <link rel="stylesheet" href="../../../public/css/home/hola.css">
 </head>
 <body>
 
@@ -17,7 +17,7 @@
         <div class="collapse navbar-collapse" id="navbarColor01">
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
-                    <a class="nav-link active" href="{{ route('home.index') }}">Home</a>
+                    <a class="nav-link" href="{{ route('home.index') }}">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('events.index') }}">Events</a>
@@ -29,6 +29,10 @@
                     <a class="nav-link" href="{{ route('contact.index') }}">Contact Us</a>
                 </li>
             </ul>
+            <div style="margin-right: 100px;">
+                <img src="{{ asset('img/logo.png') }}" width="100px" height="100px">
+
+            </div>
         </div>
     </div>
 </nav>

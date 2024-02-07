@@ -3,16 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Documento</title>
+    <title>Street Racers</title>
     <link rel="icon" href="{{ asset('favicon.ico') }}">
-    <!-- Enlace al archivo CSS -->
-    <link rel="stylesheet" href="../../../public/css/home/styles.css">
+    <link href="{{ asset('css/home/styles.css') }}" rel="stylesheet">
 </head>
 <body>
 
 @include('layout.navigation')
 
-<img src="{{ asset('img/fondo.jpg') }}" alt="Descripción de la imagen">
+<div id="homeBody">
+
+    <h1 id="title" class="text-white" >
+    </h1>
+
+</div>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        const title = "Racing, the never Ending...";
+        let currentTitle = '';
+        let index = 0;
+        const intervalId = setInterval(() => {
+            currentTitle += title[index];
+            document.getElementById('title').textContent = currentTitle;
+            index++;
+            if (index === title.length) {
+                clearInterval(intervalId);
+            }
+        }, 100);
+    });
+</script>
 
 </body>
 </html>
