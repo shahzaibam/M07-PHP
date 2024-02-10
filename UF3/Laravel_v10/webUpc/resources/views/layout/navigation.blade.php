@@ -17,16 +17,16 @@
         <div class="collapse navbar-collapse" id="navbarColor01">
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('home.index') }}">Home</a>
+                    <a class="nav-link text-dark" href="{{ route('home.index') }}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('events.index') }}">Events</a>
+                    <a class="nav-link text-dark" href="{{ route('events.index') }}">Events</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('aboutus.index') }}">About Us</a>
+                    <a class="nav-link text-dark" href="{{ route('aboutus.index') }}">About Us</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('contact.index') }}">Contact Us</a>
+                    <a class="nav-link text-dark" href="{{ route('contact.index') }}">Contact Us</a>
                 </li>
             </ul>
             <div style="margin-right: 100px;">
