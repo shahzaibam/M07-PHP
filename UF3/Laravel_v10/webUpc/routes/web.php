@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [\App\Http\Controllers\HomeController::class, 'index']) ->name('home.index');
 Route::get('/events', [\App\Http\Controllers\EventsController::class, 'index']) ->name('events.index');
+Route::get('/tournaments', [\App\Http\Controllers\TournamentsController::class, 'index']) ->name('tournaments.index');
 Route::get('/aboutus', [\App\Http\Controllers\AboutUsController::class, 'index']) ->name('aboutus.index');
 Route::get('/contact', [\App\Http\Controllers\ContactUsController::class, 'index']) ->name('contact.index');
 

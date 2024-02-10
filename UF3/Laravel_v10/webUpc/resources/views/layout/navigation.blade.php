@@ -12,7 +12,8 @@
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg" id="menuBar" style="width: 100vw; height: 12vh;" data-bs-theme="dark">
+<nav class="navbar navbar-expand-lg" id="menuBar" style="width: 100vw; height: 12vh; text-shadow: 2px 2px 8px #FFFFFF;
+" data-bs-theme="dark">
     <div class="container-fluid">
         <div class="collapse navbar-collapse" id="navbarColor01">
             <ul class="navbar-nav me-auto">
@@ -23,14 +24,23 @@
                     <a class="nav-link text-dark" href="{{ route('events.index') }}">Events</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link text-dark" href="{{ route('tournaments.index') }}">Tournaments</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link text-dark" href="{{ route('aboutus.index') }}">About Us</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-dark" href="{{ route('contact.index') }}">Contact Us</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="{{ route('contact.index') }}">Sign Up</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="{{ route('contact.index') }}">Sign In</a>
+                </li>
             </ul>
             <div style="margin-right: 100px;">
-                <img src="{{ asset('img/logo.png') }}" width="100px" height="100px">
+                <img id="logo" src="{{ asset('img/logo.png') }}" width="100px" height="100px">
 
             </div>
         </div>
