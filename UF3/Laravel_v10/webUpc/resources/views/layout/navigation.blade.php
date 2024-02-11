@@ -33,10 +33,10 @@
                     <a class="nav-link text-dark" href="{{ route('contact.index') }}">Contact Us</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-dark" href="{{ route('contact.index') }}">Sign Up</a>
+                    <a class="nav-link text-dark" href="{{ route('signUp.index') }}">Sign Up</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-dark" href="{{ route('contact.index') }}">Sign In</a>
+                    <a class="nav-link text-dark" href="{{ route('signIn.index') }}">Sign In</a>
                 </li>
             </ul>
             <div style="margin-right: 100px;">
@@ -52,5 +52,38 @@
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
 
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        const title = "Racing, the never Ending...";
+        let currentTitle = '';
+        let index = 0;
+        const intervalId = setInterval(() => {
+            currentTitle += title[index];
+            document.getElementById('title').textContent = currentTitle;
+            index++;
+            if (index === title.length) {
+                clearInterval(intervalId);
+            }
+        }, 100);
+    });
+
+    window.addEventListener('scroll', function () {
+        const header = document.querySelector('header'); // Selecciona el header
+        if (window.scrollY > 0) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+
+        const logo = document.getElementById('logo'); // Asegúrate de que tu logo tenga este id o cámbialo por el que esté usando
+        if (window.scrollY > 0) {
+            logo.src = '{{ asset('img/logo_black.png') }}'; // Cambia esto por la ruta al logo para cuando hay scroll
+        } else {
+            logo.src = '{{ asset('img/logo.png') }}'; // Cambia esto por la ruta al logo predeterminado
+        }
+    });
+
+
+</script>
 </body>
 </html>

@@ -18,4 +18,7 @@ Route::get('/events', [\App\Http\Controllers\EventsController::class, 'index']) 
 Route::get('/tournaments', [\App\Http\Controllers\TournamentsController::class, 'index']) ->name('tournaments.index');
 Route::get('/aboutus', [\App\Http\Controllers\AboutUsController::class, 'index']) ->name('aboutus.index');
 Route::get('/contact', [\App\Http\Controllers\ContactUsController::class, 'index']) ->name('contact.index');
+Route::get('/signUp', [\App\Http\Controllers\SignUpController::class, 'index']) ->name('signUp.index');
+Route::post('/signUp', [\App\Http\Controllers\SignUpController::class, 'store'])->name('signUp.store'); //method store para guardar el registro de sign up
+Route::get('/signIn', [\App\Http\Controllers\SignInController::class, 'index']) ->name('signIn.index');
 
