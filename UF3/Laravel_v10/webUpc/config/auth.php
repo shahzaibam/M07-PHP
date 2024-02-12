@@ -40,7 +40,16 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'empresa' => [
+            'driver' => 'session',
+            'provider' => 'empresas',
+        ],
+        'autonomo' => [
+            'driver' => 'session',
+            'provider' => 'autonomos',
+        ],
     ],
+
 
     /*
     |--------------------------------------------------------------------------
@@ -64,11 +73,14 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
-
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'empresas' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Empresa::class,
+        ],
+        'autonomos' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Autonomo::class,
+        ],
     ],
 
     /*

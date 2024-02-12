@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Autonomo;
 use Illuminate\Http\Request;
 use App\Models\Empresa;
+use Illuminate\Support\Facades\Hash;
 
 class SignUpController extends Controller
 {
@@ -33,7 +34,7 @@ class SignUpController extends Controller
                 'nombre' => $validatedData['nombre'],
                 'email' => $validatedData['email'],
                 'type' => $validatedData['type'],
-                'password' => $validatedData['password'],
+                'password' => Hash::make($validatedData['password']),
             ]);
         }else { //si es un autonomo lo metemos en una tabla de autonomos
             $autonomo = Autonomo::create([
@@ -41,7 +42,7 @@ class SignUpController extends Controller
                 'nombre' => $validatedData['nombre'],
                 'email' => $validatedData['email'],
                 'type' => $validatedData['type'],
-                'password' => $validatedData['password'],
+                'password' => Hash::make($validatedData['password']),
             ]);
         }
 

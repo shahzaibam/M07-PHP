@@ -21,4 +21,5 @@ Route::get('/contact', [\App\Http\Controllers\ContactUsController::class, 'index
 Route::get('/signUp', [\App\Http\Controllers\SignUpController::class, 'index']) ->name('signUp.index');
 Route::post('/signUp', [\App\Http\Controllers\SignUpController::class, 'store'])->name('signUp.store'); //method store para guardar el registro de sign up
 Route::get('/signIn', [\App\Http\Controllers\SignInController::class, 'index']) ->name('signIn.index');
+Route::post('/signIn', [\App\Http\Controllers\SignInController::class, 'check']) ->name('signIn.check');
 
