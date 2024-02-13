@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Sign Up</title>
+    <title>Sign In</title>
     <link href="{{ asset('css/signIn/styles.css') }}" rel="stylesheet">
 </head>
 <body>
@@ -29,8 +29,8 @@
                                     <h4 class="mt-1 mb-5 pb-1">We are the Street Racer Team</h4>
                                 </div>
 
-                                @csrf
                                 <form method="POST" action="{{ route('signIn.check') }}">
+                                    @csrf
                                     <p>Please login to your account</p>
 
                                     <div class="form-outline mb-4">
@@ -44,6 +44,9 @@
                                         <label class="form-label" for="password">Password</label>
                                     </div>
 
+                                    <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                                        <button type="submit" class="btn btn-primary btn-lg">Sign In</button>
+                                    </div>
 
                                     <div class="d-flex align-items-center justify-content-center pb-4">
                                         <p class="mb-0 me-2">Don't have an account?</p>
