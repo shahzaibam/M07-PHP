@@ -1,0 +1,32 @@
+1. Configurar la Conexión a la Base de Datos en el archivo .env, ajustando DB_CONNECTION, DB_HOST,
+DB_PORT, DB_DATABASE, DB_USERNAME, y DB_PASSWORD según el entorno de base de datos.
+
+2. Crear una Migración para la tabla empresas con el comando php artisan make:migration create_empresas_table --create=empresas.
+
+3. Modificar la Migración para incluir las columnas necesarias, como nombre, email, direccion, telefono, y cualquier otra que necesites.
+
+4. Ejecutar la Migración con php artisan migrate. (para que cree la tabla en el phpmyadmin)
+
+5. Crear el Modelo que necesites por ejemplo Empresa, usando php artisan make:model Empresa.
+
+6. Especificar Atributos Rellenables en el modelo Empresa agregando un array $fillable para permitir la asignación masiva.
+
+7. Crear un Controlador para manejar el registro de empresas, usando php artisan make:controller EmpresaController.
+
+8. Dentro del controlador, definir métodos index para mostrar el formulario de registro y store para procesar los datos enviados del formulario.
+
+9. Definir Rutas en routes/web.php para acceder al formulario de registro y procesar el formulario con algo como:
+    - Route::get('/register', [EmpresaController::class, 'index'])->name('register');
+    - Route::post('/register', [EmpresaController::class, 'store']);
+10. Crear una Vista en resources/views/empresas/register.blade.php para el formulario de registro.
+
+11. Asegúrate de que el formulario envíe los datos al método store del controlador EmpresaController.
+
+12. En el método store del controlador, validar los datos del formulario de registro.
+
+13. Almacenar la Empresa en la base de datos usando el modelo Empresa.
+
+14. Probar el Sistema de Registro accediendo a tu formulario de registro a través del navegador y
+ completando el proceso de registro para asegurarte de que todo funcione correctamente.
+
+

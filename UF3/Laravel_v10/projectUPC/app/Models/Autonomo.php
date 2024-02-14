@@ -17,4 +17,9 @@ class Autonomo extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function eventos()
+    {
+        return $this->morphMany(Evento::class, 'creatable');
+    }
 }
