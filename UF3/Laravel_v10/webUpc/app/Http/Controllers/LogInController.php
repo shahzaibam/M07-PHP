@@ -7,15 +7,16 @@ use App\Models\Empresa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class SignInController extends Controller
+class LogInController extends Controller
 {
-    public function index() {
-        return view('signIn.index');
+    public function index()
+    {
+        return view('logIn.index');
     }
 
 
-    public function check(Request $request) {
-
+    public function check(Request $request)
+    {
 
 
         // Validar los datos del formulario
@@ -32,14 +33,15 @@ class SignInController extends Controller
         // Intentar autenticar como empresa
         if (Auth::guard('empresa')->attempt($credentials)) {
             // Autenticación exitosa, redirigir al dashboard de empresa
-            return redirect()->intended('/')->with('success', 'Inicio de sesión exitoso como empresa.');
+            return redirect()->intended('/signUp')->with('success', 'Inicio de sesión exitoso como empresa.');
         }
 
-        // Si la autenticación de empresa falla, intentar como autónomo
+// Si la autenticación de autónomo tiene éxito
         if (Auth::guard('autonomo')->attempt($credentials)) {
             // Autenticación exitosa, redirigir al dashboard de autónomo
-            return redirect()->intended('/')->with('success', 'Inicio de sesión exitoso como empresa.');
+            return redirect()->intended('/signUp')->with('success', 'Inicio de sesión exitoso como autónomo.');
         }
+
 
         // Autenticación fallida, redirigir de vuelta con un mensaje de error
         return back()->withErrors(['login_error' => 'Las credenciales proporcionadas no coinciden con nuestros registros.']);

@@ -13,13 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [\App\Http\Controllers\HomeController::class, 'index']) ->name('home.index');
-Route::get('/events', [\App\Http\Controllers\EventsController::class, 'index']) ->name('events.index');
-Route::get('/tournaments', [\App\Http\Controllers\TournamentsController::class, 'index']) ->name('tournaments.index');
-Route::get('/aboutus', [\App\Http\Controllers\AboutUsController::class, 'index']) ->name('aboutus.index');
-Route::get('/contact', [\App\Http\Controllers\ContactUsController::class, 'index']) ->name('contact.index');
-Route::get('/signUp', [\App\Http\Controllers\SignUpController::class, 'index']) ->name('signUp.index');
-Route::post('/signUp', [\App\Http\Controllers\SignUpController::class, 'store'])->name('signUp.store'); //method store para guardar el registro de sign up
-Route::get('/signIn', [\App\Http\Controllers\SignInController::class, 'index']) ->name('signIn.index');
-Route::post('/signIn', [\App\Http\Controllers\SignInController::class, 'check']) ->name('signIn.check');
-
+Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('home.index');
+Route::get('/events', [\App\Http\Controllers\EventsController::class, 'index'])->name('events.index');
+Route::get('/tournaments', [\App\Http\Controllers\TournamentsController::class, 'index'])->middleware('auth')->name('tournaments.index');
+Route::get('/aboutus', [\App\Http\Controllers\AboutUsController::class, 'index'])->name('aboutus.index');
+Route::get('/contact', [\App\Http\Controllers\ContactUsController::class, 'index'])->name('contact.index');
+Route::get('/signUp', [\App\Http\Controllers\SignUpController::class, 'index'])->name('signUp.index');
+Route::post('/signUp', [\App\Http\Controllers\SignUpController::class, 'store'])->name('signUp.store');
+Route::get('/login', [\App\Http\Controllers\LogInController::class, 'index'])->name('login');
+Route::post('/login', [\App\Http\Controllers\LogInController::class, 'check'])->name('login.check');

@@ -36,7 +36,7 @@
                     <a class="nav-link text-dark" href="{{ route('signUp.index') }}">Sign Up</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-dark" href="{{ route('signIn.index') }}">Sign In</a>
+                    <a class="nav-link text-dark" href="{{ route('login') }}">Sign In</a>
                 </li>
             </ul>
             <div style="margin-right: 100px;">

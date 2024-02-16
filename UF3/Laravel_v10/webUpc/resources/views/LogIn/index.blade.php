@@ -29,7 +29,7 @@
                                     <h4 class="mt-1 mb-5 pb-1">We are the Street Racer Team</h4>
                                 </div>
 
-                                <form method="POST" action="{{ route('signIn.check') }}">
+                                <form method="POST" action="{{ route('login.check') }}">
                                     @csrf
                                     <p>Please login to your account</p>
 
