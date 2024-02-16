@@ -73,19 +73,6 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
 
-        $userData = [
-            'user_id' => $user->id, // Asignamos el user_id correctamente
-            'email' => $data['email'], // Agregamos el campo 'email'
-            'type' => $data['type'],
-            'password' => Hash::make($data['password']), // Agregamos el campo 'password'
-        ];
-
-        if ($data['type'] == 'autonomo') {
-            Autonomo::create($userData); // Creamos un autónomo con los datos proporcionados
-        } else {
-            Empresa::create($userData); // Creamos una empresa con los datos proporcionados
-        }
-
         return $user;
     }
 

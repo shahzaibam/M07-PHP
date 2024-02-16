@@ -44,14 +44,4 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-
-    public function autonomo()
-    {
-        return $this->hasOne(Autonomo::class);
-    }
-
-    public function empresa()
-    {
-        return $this->hasOne(Empresa::class);
-    }
 }

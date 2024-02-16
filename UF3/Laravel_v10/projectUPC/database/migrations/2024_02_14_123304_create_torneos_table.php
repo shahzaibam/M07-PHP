@@ -17,10 +17,10 @@ return new class extends Migration
             $table->string('description', 300);
             $table->date('fecha');
             $table->string('hora');
-            $table->unsignedBigInteger('empresa_id')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->timestamps();
 
-            $table->foreign('empresa_id')->references('id')->on('empresas')->onDelete('set null');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
         });
     }
 

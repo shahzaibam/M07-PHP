@@ -16,37 +16,40 @@
 
                         {{--                    {{ __('You are logged in!') }}--}}
 
-                            <div class="container">
-                                <h2>Eventos</h2>
-                                @if($eventos->isEmpty())
-                                    <p>No hay eventos disponibles.</p>
-                                @else
-                                    <table class="table">
-                                        <thead>
+                        <div class="container">
+                            <h2>Eventos</h2>
+                            @if($eventos->isEmpty())
+                                <p>No hay eventos disponibles.</p>
+                            @else
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Nombre</th>
+                                        <th>Descripción</th>
+                                        <th>Fecha</th>
+                                        <th>Hora</th>
+                                        <th>Creado por</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @foreach($eventos as $evento)
                                         <tr>
-                                            <th>ID</th>
-                                            <th>Nombre</th>
-                                            <th>Descripción</th>
-                                            <th>Fecha</th>
-                                            <th>Hora</th>
-                                            <th>Creado por</th>
+                                            <td>{{ $evento->id }}</td>
+                                            <td>{{ $evento->name }}</td>
+                                            <td>{{ $evento->description }}</td>
+                                            <td>{{ $evento->fecha }}</td>
+                                            <td>{{ $evento->hora }}</td>
+{{--                                            @foreach($names as $name)--}}
+                                                <td>{{ $names }}</td>
+{{--                                            @endforeach--}}
+
                                         </tr>
-                                        </thead>
-                                        <tbody>
-                                        @foreach($eventos as $evento)
-                                            <tr>
-                                                <td>{{ $evento->id }}</td>
-                                                <td>{{ $evento->name }}</td>
-                                                <td>{{ $evento->description }}</td>
-                                                <td>{{ $evento->fecha }}</td>
-                                                <td>{{ $evento->hora }}</td>
-                                                <td>{{ $evento->autonomo_id ? 'Autónomo' : 'Empresa' }}</td>
-                                            </tr>
-                                        @endforeach
-                                        </tbody>
-                                    </table>
-                                @endif
-                            </div>
+                                    @endforeach
+                                    </tbody>
+                                </table>
+                            @endif
+                        </div>
 
 
                     </div>

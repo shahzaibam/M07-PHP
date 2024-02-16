@@ -11,14 +11,4 @@ class Evento extends Model
 
     protected $fillable = ['name', 'description', 'fecha', 'hora', 'autonomo_id' ,'empresa_id'];
 
-
-    public function autonomo()
-    {
-        return $this->belongsTo(Autonomo::class, 'autonomo_id');
-    }
-
-    public function empresa()
-    {
-        return $this->belongsTo(Empresa::class, 'empresa_id');
-    }
 }
