@@ -16,38 +16,38 @@
 
                         {{--                    {{ __('You are logged in!') }}--}}
 
-                        <div class="container">
-{{--                            <h2>Gestión de {{ __('Events') }}</h2>--}}
-                            <div class="mb-2">
-                                <a href="#" class="btn btn-success">Agregar Evento</a>
+                            <div class="container">
+                                <h2>Eventos</h2>
+                                @if($eventos->isEmpty())
+                                    <p>No hay eventos disponibles.</p>
+                                @else
+                                    <table class="table">
+                                        <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Nombre</th>
+                                            <th>Descripción</th>
+                                            <th>Fecha</th>
+                                            <th>Hora</th>
+                                            <th>Creado por</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        @foreach($eventos as $evento)
+                                            <tr>
+                                                <td>{{ $evento->id }}</td>
+                                                <td>{{ $evento->name }}</td>
+                                                <td>{{ $evento->description }}</td>
+                                                <td>{{ $evento->fecha }}</td>
+                                                <td>{{ $evento->hora }}</td>
+                                                <td>{{ $evento->autonomo_id ? 'Autónomo' : 'Empresa' }}</td>
+                                            </tr>
+                                        @endforeach
+                                        </tbody>
+                                    </table>
+                                @endif
                             </div>
-                            <table class="table table-bordered table-striped">
-                                <thead class="thead-dark">
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Nombre</th>
-                                    <th>Acciones</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>'hhh'</td>
-                                    <td>aaa</td>
-                                    <!-- Muestra más datos de tu modelo aquí -->
-                                    <td>
-                                        <a href="#" class="btn btn-info btn-sm">Ver</a>
-                                        <a href="#" class="btn btn-primary btn-sm">Editar</a>
-                                        <form action="#" method="POST" style="display: inline-block;">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
-                                        </form>
-                                    </td>
-                                </tr>
-                                </tbody>
-                            </table>
-                            <!-- Aquí puedes agregar paginación si es necesario -->
-                        </div>
+
 
                     </div>
                 </div>

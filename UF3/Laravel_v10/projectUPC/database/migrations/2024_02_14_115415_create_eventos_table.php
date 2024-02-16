@@ -21,8 +21,8 @@ return new class extends Migration
             $table->unsignedBigInteger('empresa_id')->nullable();
             $table->timestamps();
 
-            $table->foreign('autonomo_id')->references('id')->on('autonomos')->onDelete('set null');
-            $table->foreign('empresa_id')->references('id')->on('empresas')->onDelete('set null');
+            $table->foreign('autonomo_id')->references('user_id')->on('autonomos')->onDelete('set null');
+            $table->foreign('empresa_id')->references('user_id')->on('empresas')->onDelete('set null');
         });
 
 

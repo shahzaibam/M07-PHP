@@ -1,0 +1,15 @@
+me acaba de pasar este error y lo que he hecho es comprobar en el composer.json que version de php usa el proyecto y con el comando
+php --ini comprobar que version usa el ordenador.
+
+instalar todos los paquetes de composer con composer install por si falta alguno
+
+hacer un composer update
+
+comprobar que el fichero .env esté, porque se tiene que conectar con la DB
+
+si no esta copiar y pegar el .env.example y cambiar los paramrtros necesarios para conectarse a la base de datos
+
+despues ejecutar el comando php artisan key:generate --> este comando sirve para crear una key para el .env ya que lo estamos copiando y pegando
+debe generar el key, asi que lo creamos de esta manera.
+
+y ya deberia funcionar

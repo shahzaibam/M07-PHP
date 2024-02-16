@@ -15,11 +15,10 @@ class Autonomo extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
-
     public function eventos()
     {
-        return $this->morphMany(Evento::class, 'creatable');
+        return $this->hasMany(Evento::class, 'autonomo_id');
     }
 }
