@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Owner;
 use Illuminate\Http\Request;
 
 class OwnerController extends Controller
@@ -12,14 +13,10 @@ class OwnerController extends Controller
     }
 
     public function listAll() {
-        $owner = [
-            ["title" => "1st Owner"],
-            ["title" => "2nd Owner"],
-            ["title" => "3rd Owner"],
-            ["title" => "4th Owner"],
-        ];
+        $owners = Owner::get();
 
-        return view('owner.listAll', ['post' => $owner]);
+        return view('owner.listAll', compact('owners'));
+
     }
 
     public function searchPet() {
@@ -30,7 +27,25 @@ class OwnerController extends Controller
         return view('owner.modify');
     }
 
+
+
     public function add() {
         return view('owner.addOwner');
+    }
+
+    public function store(Request $request) {
+
+        $validatedData = $request->validate([
+            'nif' => 'required|string|max:255',
+            'name' => 'required|string|max:255',
+            'email' => 'required|string',
+            'phone' => 'required|string',
+        ]);
+
+
+        $evento = Owner::create($validatedData);
+
+        return redirect()->route('owner.listAll')->with('status', 'Evento creado con éxito.');
+
     }
 }

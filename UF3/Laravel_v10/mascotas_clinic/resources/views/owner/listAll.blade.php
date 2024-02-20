@@ -1,7 +1,28 @@
 @include('components.layout')
 
-<h1>List All Owners</h1>
-<h1>{{ $post[0]['title'] }}</h1>
-<h1>{{ $post[1]['title'] }}</h1>
-<h1>{{ $post[2]['title'] }}</h1>
-<h1>{{ $post[3]['title'] }}</h1>
+<div class="table-responsive">
+    <table class="table table-bordered table-striped">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>NIF</th>
+            <th>Nombre</th>
+            <th>Email</th>
+            <th>Teléfono</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach ($owners as $owner)
+            <tr>
+                <td>{{ $owner->id }}</td>
+                <td>{{ $owner->nif }}</td>
+                <td>{{ $owner->name }}</td>
+                <td>{{ $owner->email }}</td>
+                <td>{{ $owner->phone }}</td>
+            </tr>
+        @endforeach
+        </tbody>
+    </table>
+</div>
+
+
