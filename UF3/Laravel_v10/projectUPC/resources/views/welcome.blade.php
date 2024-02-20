@@ -13,7 +13,7 @@
 
 <header>
     <!-- Aquí se incluiría la barra de navegación, asegurándose de que es responsiva -->
-    @include('layouts.navigation')
+    @include('layouts.app')
 </header>
 
 <div class="hero">

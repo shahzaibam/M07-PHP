@@ -8,7 +8,7 @@
     <title>Document</title>
 </head>
 <body>
-@include('layouts.navigation')
+@include('layouts.app')
 
 <h1>contact us</h1>
 </body>
