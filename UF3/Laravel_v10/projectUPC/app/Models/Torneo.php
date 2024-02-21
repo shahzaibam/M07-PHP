@@ -9,6 +9,13 @@ class Torneo extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'description', 'fecha', 'hora' ,'empresa_id'];
+    protected $fillable = ['name', 'description', 'fecha', 'hora' ,'user_id'];
+
+
+    //indicamos que Torneo pertenece a User
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User');
+    }
 
 }

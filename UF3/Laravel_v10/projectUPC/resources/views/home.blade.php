@@ -111,7 +111,8 @@
                                                    class="btn btn-success m-1"><i
                                                         class="fa-solid fa-pencil"></i></a>
 
-                                                <form id="delete-form-{{ $evento->id }}" action="{{ route('events.delete', $evento->id) }}" method="POST">
+                                                <form id="delete-form-{{ $evento->id }}"
+                                                      action="{{ route('events.delete', $evento->id) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger m-1">
@@ -130,8 +131,159 @@
 
 
                     </div>
+
+
                 </div>
+
+
             </div>
+
+
         </div>
+
+
+        @if($userType == 'empresa')
+            <div class="row justify-content-center mt-5">
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-header">Gestión de {{ __('Tournaments') }}</div>
+
+                        <div class="card-body">
+                            @if (session('status'))
+                                <div class="alert alert-success" role="alert">
+                                    {{ session('status') }}
+                                </div>
+                            @endif
+
+                            <div class="container">
+                                <div class="d-flex justify-content-between m-3">
+                                    <div class="title">
+                                        <h2>Tournaments</h2>
+
+                                    </div>
+
+                                    <div class="buttonAdd">
+                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                                data-bs-target="#addTorneoModal">
+                                            <i class="fa-solid fa-square-plus"></i>
+                                        </button>
+
+
+                                        <!-- Modal para añadir un torneo -->
+                                        <div class="modal fade" id="addTorneoModal" tabindex="-1"
+                                             aria-labelledby="addTorneoModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="addTorneoModalLabel">Añadir
+                                                            Tournaments</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                                aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <!-- Formulario de Torneo -->
+                                                        <form method="POST" action="{{ route('tournaments.store') }}">
+                                                            <!-- Cambia 'tournaments.store' por tu ruta correcta -->
+                                                            @csrf
+                                                            <div class="mb-3">
+                                                                <label for="torneoName" class="form-label">Nombre del
+                                                                    Torneo</label>
+                                                                <input type="text" class="form-control" id="torneoName"
+                                                                       name="name" required>
+                                                            </div>
+                                                            <div class="mb-3">
+                                                                <label for="torneoDescription"
+                                                                       class="form-label">Descripción</label>
+                                                                <textarea class="form-control" id="torneoDescription"
+                                                                          name="description" rows="3"
+                                                                          required></textarea>
+                                                            </div>
+
+                                                            <div class="mb-3">
+                                                                <label for="fecha" class="form-label">Fecha</label>
+                                                                <input class="form-control" type="date" id="fecha"
+                                                                       name="fecha" rows="3" required></input>
+                                                            </div>
+
+
+                                                            <div class="mb-3">
+                                                                <label for="hora" class="form-label">Hora</label>
+                                                                <input class="form-control" type="time" id="hora"
+                                                                       name="hora" rows="3" required></input>
+                                                            </div>
+
+                                                            <button type="submit" class="btn btn-primary">Guardar Torneo
+                                                            </button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                @if($tournaments->isEmpty())
+                                    <p>No hay tournaments disponibles.</p>
+                                @else
+                                    <table class="table">
+                                        <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Nombre</th>
+                                            <th>Descripción</th>
+                                            <th>Fecha</th>
+                                            <th>Hora</th>
+                                            <th>Creado por</th>
+                                            <th>Acciones</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        @foreach($tournaments as $torneo)
+                                            <tr>
+                                                <td>{{ $torneo->id }}</td>
+                                                <td>{{ $torneo->name }}</td>
+                                                <td>{{ $torneo->description }}</td>
+                                                <td>{{ $torneo->fecha }}</td>
+                                                <td>{{ $torneo->hora }}</td>
+                                                <td>{{ $names }}</td>
+                                                <td class="d-flex">
+
+
+                                                    <a href="{{ route('tournaments.edit', $torneo->id) }}"
+                                                       class="btn btn-success m-1"><i
+                                                            class="fa-solid fa-pencil"></i></a>
+
+                                                    <form id="delete-form-{{ $torneo->id }}"
+                                                          action="{{ route('tournaments.delete', $torneo->id) }}"
+                                                          method="POST">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-danger m-1">
+                                                            <i class="fa-solid fa-trash"></i>
+                                                        </button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                        </tbody>
+                                    </table>
+                                @endif
+
+
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+        @endif
     </div>
 @endsection

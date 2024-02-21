@@ -41,6 +41,10 @@ Route::delete('/events/{id}', [App\Http\Controllers\EventsController::class, 'de
 
 //tournaments
 Route::get('/tournaments', [\App\Http\Controllers\TournamentsController::class, 'index'])->name('tournaments.index');
+Route::post('/tournaments/create', [\App\Http\Controllers\TournamentsController::class, 'store'])->middleware('auth')->name('tournaments.store');
+Route::get('/tournaments/{torneo}/edit', [App\Http\Controllers\TournamentsController::class, 'edit'])->middleware('auth')->name('tournaments.edit');
+Route::put('/tournaments/{torneo}', [App\Http\Controllers\TournamentsController::class, 'update'])->middleware('auth')->name('tournaments.update');
+Route::delete('/tournaments/{id}', [App\Http\Controllers\TournamentsController::class, 'delete'])->middleware('auth')->name('tournaments.delete');
 
 //aboutus
 Route::get('/aboutus', [\App\Http\Controllers\AboutUsController::class, 'index'])->name('aboutus.index');
