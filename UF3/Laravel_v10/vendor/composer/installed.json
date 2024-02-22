@@ -381,8 +381,8 @@
         },
         {
             "name": "illuminate/bus",
-            "version": "v10.45.0",
-            "version_normalized": "10.45.0.0",
+            "version": "v10.45.1",
+            "version_normalized": "10.45.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/bus.git",
@@ -437,8 +437,8 @@
         },
         {
             "name": "illuminate/collections",
-            "version": "v10.45.0",
-            "version_normalized": "10.45.0.0",
+            "version": "v10.45.1",
+            "version_normalized": "10.45.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/collections.git",
@@ -495,8 +495,8 @@
         },
         {
             "name": "illuminate/conditionable",
-            "version": "v10.45.0",
-            "version_normalized": "10.45.0.0",
+            "version": "v10.45.1",
+            "version_normalized": "10.45.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/conditionable.git",
@@ -544,8 +544,8 @@
         },
         {
             "name": "illuminate/console",
-            "version": "v10.45.0",
-            "version_normalized": "10.45.0.0",
+            "version": "v10.45.1",
+            "version_normalized": "10.45.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/console.git",
@@ -612,8 +612,8 @@
         },
         {
             "name": "illuminate/container",
-            "version": "v10.45.0",
-            "version_normalized": "10.45.0.0",
+            "version": "v10.45.1",
+            "version_normalized": "10.45.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/container.git",
@@ -666,8 +666,8 @@
         },
         {
             "name": "illuminate/contracts",
-            "version": "v10.45.0",
-            "version_normalized": "10.45.0.0",
+            "version": "v10.45.1",
+            "version_normalized": "10.45.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/contracts.git",
@@ -717,8 +717,8 @@
         },
         {
             "name": "illuminate/events",
-            "version": "v10.45.0",
-            "version_normalized": "10.45.0.0",
+            "version": "v10.45.1",
+            "version_normalized": "10.45.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/events.git",
@@ -775,8 +775,8 @@
         },
         {
             "name": "illuminate/filesystem",
-            "version": "v10.45.0",
-            "version_normalized": "10.45.0.0",
+            "version": "v10.45.1",
+            "version_normalized": "10.45.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/filesystem.git",
@@ -845,8 +845,8 @@
         },
         {
             "name": "illuminate/macroable",
-            "version": "v10.45.0",
-            "version_normalized": "10.45.0.0",
+            "version": "v10.45.1",
+            "version_normalized": "10.45.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/macroable.git",
@@ -894,8 +894,8 @@
         },
         {
             "name": "illuminate/pipeline",
-            "version": "v10.45.0",
-            "version_normalized": "10.45.0.0",
+            "version": "v10.45.1",
+            "version_normalized": "10.45.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/pipeline.git",
@@ -945,8 +945,8 @@
         },
         {
             "name": "illuminate/support",
-            "version": "v10.45.0",
-            "version_normalized": "10.45.0.0",
+            "version": "v10.45.1",
+            "version_normalized": "10.45.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
@@ -1019,8 +1019,8 @@
         },
         {
             "name": "illuminate/translation",
-            "version": "v10.45.0",
-            "version_normalized": "10.45.0.0",
+            "version": "v10.45.1",
+            "version_normalized": "10.45.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/translation.git",
@@ -1073,8 +1073,8 @@
         },
         {
             "name": "illuminate/validation",
-            "version": "v10.45.0",
-            "version_normalized": "10.45.0.0",
+            "version": "v10.45.1",
+            "version_normalized": "10.45.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/validation.git",
@@ -1137,8 +1137,8 @@
         },
         {
             "name": "illuminate/view",
-            "version": "v10.45.0",
-            "version_normalized": "10.45.0.0",
+            "version": "v10.45.1",
+            "version_normalized": "10.45.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/view.git",
@@ -3230,51 +3230,5 @@
         }
     ],
     "dev": true,
-    "dev-package-names": [
-        "brick/math",
-        "carbonphp/carbon-doctrine-types",
-        "doctrine/inflector",
-        "doctrine/lexer",
-        "egulias/email-validator",
-        "illuminate/bus",
-        "illuminate/collections",
-        "illuminate/conditionable",
-        "illuminate/console",
-        "illuminate/container",
-        "illuminate/contracts",
-        "illuminate/events",
-        "illuminate/filesystem",
-        "illuminate/macroable",
-        "illuminate/pipeline",
-        "illuminate/support",
-        "illuminate/translation",
-        "illuminate/validation",
-        "illuminate/view",
-        "laravel/prompts",
-        "laravel/ui",
-        "nesbot/carbon",
-        "nunomaduro/termwind",
-        "psr/clock",
-        "psr/container",
-        "psr/simple-cache",
-        "symfony/console",
-        "symfony/deprecation-contracts",
-        "symfony/finder",
-        "symfony/http-foundation",
-        "symfony/mime",
-        "symfony/polyfill-ctype",
-        "symfony/polyfill-intl-grapheme",
-        "symfony/polyfill-intl-idn",
-        "symfony/polyfill-intl-normalizer",
-        "symfony/polyfill-mbstring",
-        "symfony/polyfill-php72",
-        "symfony/polyfill-php80",
-        "symfony/polyfill-php83",
-        "symfony/process",
-        "symfony/service-contracts",
-        "symfony/string",
-        "symfony/translation",
-        "symfony/translation-contracts",
-        "voku/portable-ascii"
-    ]
+    "dev-package-names": []
 }
