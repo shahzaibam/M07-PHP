@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Roboto:wght@300&display=swap');
 
 
-body {
-    font-family: 'Montserrat', sans-serif;
-}
+/*body {*/
+/*    font-family: 'Montserrat', sans-serif;*/
+/*}*/
 
 h1 {
     color: #fff;
@@ -100,9 +100,5 @@ h1 {
         background: rgba(235, 21, 40, 0.3786);
         background: linear-gradient(0deg, rgba(235, 21, 40, 0.3786) 0%, rgba(235, 21, 40, 1) 100%);
     }
-
-}
-
-@media (max-width: 767px) {
 
 }

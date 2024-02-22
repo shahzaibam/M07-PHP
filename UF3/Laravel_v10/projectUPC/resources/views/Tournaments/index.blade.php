@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+    <div class="container py-4">
         <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">Gestión de {{ __('Tournaments') }}</div>
+            <div class="col-md-10">
+                <div class="card border-0 shadow">
+                    <div class="card-header bg-primary text-white">Gestión de {{ __('Tournaments') }}</div>
 
                     <div class="card-body">
                         @if (session('status'))
@@ -14,30 +14,35 @@
                             </div>
                         @endif
 
-                        <div class="container">
-                            <div class="d-flex justify-content-between m-3">
-                                <h2>Tournaments</h2>
-                            </div>
+                        <div class="text-center mb-4">
+                            <h2 class="mb-0">Torneos Destacados</h2>
+                            <p>Explora y participa en los próximos torneos</p>
+                        </div>
 
-                            @if($tournaments->isEmpty())
-                                <p>No hay torneos disponibles.</p>
-                            @else
-                                <div class="row">
-                                    @foreach($tournaments as $torneo)
-                                        <div class="col-md-4">
-                                            <div class="card mb-3">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">{{ $torneo->name }}</h5>
-                                                    <p class="card-text">{{ $torneo->description }}</p>
-                                                    <p class="card-text"><small class="text-muted">Fecha: {{ $torneo->fecha }} | Hora: {{ $torneo->hora }} </small></p>
-                                                    <p><small>Autor: {{$torneo->nombreCreador}}</small></p>
-                                                </div>
+                        @if($tournaments->isEmpty())
+                            <div class="alert alert-info">No hay torneos disponibles en este momento.</div>
+                        @else
+                            <div class="row row-cols-1 row-cols-md-3 g-4">
+                                @foreach($tournaments as $torneo)
+                                    <div class="col">
+                                        <div class="card h-100 border-0">
+                                            <div class="card-body">
+                                                <h5 class="card-title text-primary">{{ $torneo->name }}</h5>
+                                                <p class="card-text">{{ $torneo->description }}</p>
+                                                <p class="card-text">
+                                                    <small class="text-muted">Fecha: {{ $torneo->fecha }}</small> |
+                                                    <small class="text-muted">Hora: {{ $torneo->hora }}</small>
+                                                </p>
+                                                <p class="card-text"><small class="text-muted">Organizador: {{ $torneo->nombreCreador }}</small></p>
+                                            </div>
+                                            <div class="card-footer bg-transparent">
+                                                <a href="#" class="btn btn-outline-primary">Más info</a>
                                             </div>
                                         </div>
-                                    @endforeach
-                                </div>
-                            @endif
-                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>

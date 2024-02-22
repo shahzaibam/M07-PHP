@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+    <div class="container py-4">
         <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">Gestión de {{ __('Events') }}</div>
+            <div class="col-md-10">
+                <div class="card border-0 shadow">
+                    <div class="card-header bg-primary text-white">Gestión de {{ __('Events') }}</div>
 
                     <div class="card-body">
                         @if (session('status'))
@@ -14,30 +14,35 @@
                             </div>
                         @endif
 
-                        <div class="container">
-                            <div class="d-flex justify-content-between m-3">
-                                <h2>Eventos</h2>
-                            </div>
+                        <div class="text-center mb-4">
+                            <h2 class="mb-0">Eventos Destacados</h2>
+                            <p>Descubre los próximos eventos</p>
+                        </div>
 
-                            @if($eventos->isEmpty())
-                                <p>No hay eventos disponibles.</p>
-                            @else
-                                <div class="row">
-                                    @foreach($eventos as $evento)
-                                        <div class="col-md-4">
-                                            <div class="card mb-3">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">{{ $evento->name }}</h5>
-                                                    <p class="card-text">{{ $evento->description }}</p>
-                                                    <p class="card-text"><small class="text-muted">Fecha: {{ $evento->fecha }} | Hora: {{ $evento->hora }} </small></p>
-                                                    <p><small>Autor: {{$evento->nombreCreador}}</small></p>
-                                                </div>
+                        @if($eventos->isEmpty())
+                            <div class="alert alert-info">No hay eventos disponibles en este momento.</div>
+                        @else
+                            <div class="row row-cols-1 row-cols-md-3 g-4">
+                                @foreach($eventos as $evento)
+                                    <div class="col">
+                                        <div class="card h-100 border-0">
+                                            <div class="card-body">
+                                                <h5 class="card-title text-primary">{{ $evento->name }}</h5>
+                                                <p class="card-text">{{ $evento->description }}</p>
+                                                <p class="card-text">
+                                                    <small class="text-muted">Fecha: {{ $evento->fecha }}</small> |
+                                                    <small class="text-muted">Hora: {{ $evento->hora }}</small>
+                                                </p>
+                                                <p class="card-text"><small class="text-muted">Autor: {{ $evento->nombreCreador }}</small></p>
+                                            </div>
+                                            <div class="card-footer bg-transparent">
+                                                <a href="#" class="btn btn-outline-primary">Más info</a>
                                             </div>
                                         </div>
-                                    @endforeach
-                                </div>
-                            @endif
-                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>
