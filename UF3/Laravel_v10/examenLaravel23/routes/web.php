@@ -19,4 +19,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/listarTodo', [App\Http\Controllers\ShowController::class, 'listarTodo'])->name('listarTodo');
+Route::get('/listarTodo/{id}', [App\Http\Controllers\ShowController::class, 'listarTodoId'])->name('listarTodoId');
+Route::get('/listarOrdenPrecio', [App\Http\Controllers\ShowController::class, 'listarOrdenPrecio'])->name('listarOrdenPrecio');
+Route::get('/listarCategories', [App\Http\Controllers\CategoryController::class, 'index'])->name('listarCategories');
+Route::get('/listarShowCategory', [App\Http\Controllers\ShowController::class, 'listarShowsVerComentarios'])->name('listarShowsVerComentarios');
