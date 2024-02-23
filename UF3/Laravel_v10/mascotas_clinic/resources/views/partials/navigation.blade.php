@@ -12,7 +12,7 @@
                     </button>
                     <ul class="dropdown-menu dropdown-menu-light">
                         <li><a class="dropdown-item" href="{{route('owner.listAll')}}">List All</a></li>
-                        <li><a class="dropdown-item" href="{{route('owner.searchPet')}}">Search Pet</a></li>
+                        <li><a class="dropdown-item" href="{{route('owner.searchOwner')}}">Search Pet</a></li>
                         <li><a class="dropdown-item" href="{{route('owner.modify')}}">Modify Owner</a></li>
                         <li><a class="dropdown-item" href="{{route('owner.add')}}">Add Owner</a></li>
                     </ul>

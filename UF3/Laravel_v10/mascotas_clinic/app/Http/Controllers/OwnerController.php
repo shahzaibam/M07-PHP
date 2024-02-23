@@ -19,9 +19,23 @@ class OwnerController extends Controller
 
     }
 
-    public function searchPet() {
-        return view('owner.searchPet');
+    public function searchOwner() {
+        return view('owner.searchOwner');
     }
+
+    public function searchByForm(Request $request) {
+        $ownerId = $request->input('ownerId');
+        return redirect()->route('owner.searchOwnerId', ['id' => $ownerId]);
+    }
+
+
+    public function searchOwnerId($id) {
+        $owner = Owner::findOrFail($id);
+
+        return view('owner.showOwnersResult', compact('owner'));
+
+    }
+
 
     public function modify() {
         return view('owner.modify');
@@ -43,7 +57,7 @@ class OwnerController extends Controller
         ]);
 
 
-        $evento = Owner::create($validatedData);
+        $owners = Owner::create($validatedData);
 
         return redirect()->route('owner.listAll')->with('status', 'Evento creado con éxito.');
 
