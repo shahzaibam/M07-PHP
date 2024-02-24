@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Apuntar;
 use App\Models\Autonomo;
 use App\Models\Empresa;
 use App\Models\Evento;
@@ -28,33 +29,36 @@ class HomeController extends Controller
      */
     public function index()
     {
-
         $user = Auth::user();
-
-        $eventos = Evento::where("user_id", $user->id)->get();
-
-        $names = $user->name;
-
-
         $userType = $user->type ?? 'default';
 
+        // Variables comunes que se pasarán a la vista
+        $eventos = Evento::where("user_id", $user->id)->get();
+        $tournaments = Torneo::all(); // Cambiado a all() para mantener consistencia
+        $apuntados = Apuntar::where('user_id', $user->id)->get();
 
-        if($userType == 'empresa') {
-            $tournaments = Torneo::get();
 
-            //esto funciona solo si en el Model de Evento digo que pertenece a User
-            // Agregar el nombre del creador a cada evento como un atributo adicional
-            $tournaments->each(function ($torneo) {
-                $torneo->nombreCreador = $torneo->user->name; // Asumiendo que el usuario tiene un atributo 'name'
-            });
+        $eventos->each(function ($evento) {
+            $evento->nombreCreador = $evento->user->name ?? 'Desconocido';
+        });
+        $tournaments->each(function ($torneo) {
+            $torneo->nombreCreador = $torneo->user->name ?? 'Desconocido';
+        });
 
-            return view('home', compact('eventos', 'names', 'userType', 'tournaments'));
+        if ($userType == 'empresa') {
 
+            return view('home', compact('eventos', 'userType', 'tournaments'));
+
+        } elseif ($userType == 'guest') {
+
+
+            return view('home', compact('userType', 'apuntados'));
+
+        } else {
+
+            return view('home', compact('eventos', 'userType'));
 
         }
-
-
-        return view('home', compact('eventos', 'names', 'userType'));
     }
 
 }

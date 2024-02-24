@@ -35,9 +35,13 @@
                                                 </p>
                                                 <p class="card-text"><small class="text-muted">Organizador: {{ $torneo->nombreCreador }}</small></p>
                                             </div>
-                                            <div class="card-footer bg-transparent">
-                                                <a href="#" class="btn btn-outline-primary">Más info</a>
-                                            </div>
+                                            @if(isset($userType) && $userType == 'guest')
+                                                <form id="apuntar-form-{{ $torneo->id }}"
+                                                      action="{{ route('tournaments.apuntar', $torneo->id) }}" method="GET">
+                                                    @csrf
+                                                    <input type="submit" class="btn btn-outline-primary" value="Apuntar">
+                                                </form>
+                                            @endif
                                         </div>
                                     </div>
                                 @endforeach

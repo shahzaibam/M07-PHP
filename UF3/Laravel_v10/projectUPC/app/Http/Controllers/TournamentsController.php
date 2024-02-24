@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Apuntar;
+use App\Models\Evento;
 use App\Models\Torneo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -11,6 +13,9 @@ class TournamentsController extends Controller
     public function index() {
         $tournaments = Torneo::get();
 
+        $user = Auth::user();
+
+        $userType = $user->type ?? 'default';
 
         //esto funciona solo si en el Model de Evento digo que pertenece a User
         // Agregar el nombre del creador a cada evento como un atributo adicional
@@ -18,7 +23,7 @@ class TournamentsController extends Controller
             $torneo->nombreCreador = $torneo->user->name; // Asumiendo que el usuario tiene un atributo 'name'
         });
 
-        return view('tournaments.index', compact('tournaments'));
+        return view('tournaments.index', compact('tournaments', 'userType'));
     }
 
     /**
@@ -48,6 +53,7 @@ class TournamentsController extends Controller
 
 
 
+
     /**
      * Comprobamos que el usuario activo tenga el mismo id al evento que va a editar, si son iguales redirigo a events.edit (al formulario
      * de actualizar) y le paso todo el evento que tiene que actualizar.
@@ -66,6 +72,30 @@ class TournamentsController extends Controller
         }
 
         return view('tournaments.edit', compact('torneo'));
+    }
+
+
+
+
+    public function apuntarTorneo(Request $request, $id) {
+
+
+        $tournaments = Torneo::get();
+        $eventos = Evento::get();
+
+        $validatedData['user_id'] = Auth::id();
+        $validatedData['torneos_id'] = $id;
+        $validatedData['events_id'] = null;
+
+        $inscripcion = Apuntar::create($validatedData);
+
+        $userType = $user->type ?? 'default';
+
+
+        return view('tournaments.index', compact('eventos', 'tournaments', 'userType'));
+
+
+
     }
 
 

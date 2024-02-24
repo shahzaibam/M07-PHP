@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Apuntar;
 use App\Models\Evento;
 use App\Models\Torneo;
 use Illuminate\Http\Request;
@@ -85,6 +86,30 @@ class EventsController extends Controller
 
         return view('events.edit', compact('evento'));
     }
+
+
+
+    public function apuntarEvento(Request $request, $id) {
+
+
+        $tournaments = Torneo::get();
+        $eventos = Evento::get();
+
+        $validatedData['user_id'] = Auth::id();
+        $validatedData['events_id'] = $id;
+        $validatedData['torneos_id'] = null;
+
+        $inscripcion = Apuntar::create($validatedData);
+
+        $userType = $user->type ?? 'default';
+
+
+        return view('events.index', compact('eventos', 'tournaments', 'userType'));
+
+
+
+    }
+
 
 
     public function update(Request $request, $id)

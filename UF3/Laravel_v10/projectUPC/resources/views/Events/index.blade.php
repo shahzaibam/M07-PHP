@@ -40,9 +40,11 @@
 
 
                                             @if(isset($userType) && $userType == 'guest')
-                                                <div class="card-footer bg-transparent">
-                                                    <a href="#" class="btn btn-outline-primary">Apuntar</a>
-                                                </div>
+                                                <form id="apuntar-form-{{ $evento->id }}"
+                                                      action="{{ route('events.apuntar', $evento->id) }}" method="GET">
+                                                    @csrf
+                                                        <input type="submit" class="btn btn-outline-primary" value="Apuntar">
+                                                </form>
                                             @endif
 
 
