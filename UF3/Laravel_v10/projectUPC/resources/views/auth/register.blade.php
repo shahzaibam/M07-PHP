@@ -39,10 +39,17 @@
                             </div>
                         </div>
 
-                        <select name="type">
-                            <option value="autonomo">Autónomo</option>
-                            <option value="empresa">Empresa</option>
-                        </select>
+                        <div class="row mb-3">
+                            <label for="type" class="col-md-4 col-form-label text-md-end">{{ __('Rol') }}</label>
+                            <div class="col-md-6">
+                                <select name="type" class="form-select form-control">
+                                    <option value="autonomo">Autónomo</option>
+                                    <option value="empresa">Empresa</option>
+                                    <option value="guest">Guest</option>
+                                </select>
+                            </div>
+                        </div>
+
 
                         <div class="row mb-3">
                             <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>

@@ -33,11 +33,19 @@
                                                     <small class="text-muted">Fecha: {{ $evento->fecha }}</small> |
                                                     <small class="text-muted">Hora: {{ $evento->hora }}</small>
                                                 </p>
-                                                <p class="card-text"><small class="text-muted">Autor: {{ $evento->nombreCreador }}</small></p>
+                                                <p class="card-text"><small
+                                                        class="text-muted">Autor: {{ $evento->nombreCreador }}</small>
+                                                </p>
                                             </div>
-                                            <div class="card-footer bg-transparent">
-                                                <a href="#" class="btn btn-outline-primary">Más info</a>
-                                            </div>
+
+
+                                            @if(isset($userType) && $userType == 'guest')
+                                                <div class="card-footer bg-transparent">
+                                                    <a href="#" class="btn btn-outline-primary">Apuntar</a>
+                                                </div>
+                                            @endif
+
+
                                         </div>
                                     </div>
                                 @endforeach
@@ -48,4 +56,5 @@
             </div>
         </div>
     </div>
+
 @endsection

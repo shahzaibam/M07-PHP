@@ -36,12 +36,11 @@ class HomeController extends Controller
         $names = $user->name;
 
 
-        $userType = $user->type;
+        $userType = $user->type ?? 'default';
 
 
         if($userType == 'empresa') {
             $tournaments = Torneo::get();
-
 
             //esto funciona solo si en el Model de Evento digo que pertenece a User
             // Agregar el nombre del creador a cada evento como un atributo adicional
@@ -49,8 +48,9 @@ class HomeController extends Controller
                 $torneo->nombreCreador = $torneo->user->name; // Asumiendo que el usuario tiene un atributo 'name'
             });
 
-
             return view('home', compact('eventos', 'names', 'userType', 'tournaments'));
+
+
         }
 
 

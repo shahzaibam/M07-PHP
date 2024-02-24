@@ -2,6 +2,10 @@
 
 @section('content')
     <div class="container">
+
+        @if($userType == 'empresa' || $userType == 'autonomo')
+
+
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
@@ -103,7 +107,7 @@
                                             <td>{{ $evento->description }}</td>
                                             <td>{{ $evento->fecha }}</td>
                                             <td>{{ $evento->hora }}</td>
-                                            <td>{{ $names }}</td>
+                                            <td>{{ $names ?? 'Desconocido'}}</td>
                                             <td class="d-flex">
 
 
@@ -140,6 +144,9 @@
 
 
         </div>
+
+        @endif
+
 
 
         @if($userType == 'empresa')
@@ -246,7 +253,7 @@
                                                 <td>{{ $torneo->description }}</td>
                                                 <td>{{ $torneo->fecha }}</td>
                                                 <td>{{ $torneo->hora }}</td>
-                                                <td>{{ $names }}</td>
+                                                <td>{{ $names ?? 'Desconocido'}}</td>
                                                 <td class="d-flex">
 
 
@@ -285,5 +292,23 @@
 
             </div>
         @endif
+
+
+
+
+
+        @if($userType == 'guest')
+
+            <div class="row justify-content-center mt-5">
+
+                <h1>apuntados</h1>
+
+
+            </div>
+
+        @endif
+
+
+
     </div>
 @endsection

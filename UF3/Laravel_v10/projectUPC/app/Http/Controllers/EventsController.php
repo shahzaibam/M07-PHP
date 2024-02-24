@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Evento;
+use App\Models\Torneo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -13,6 +14,11 @@ class EventsController extends Controller
     public function index()
     {
 
+        $user = Auth::user();
+
+        $userType = $user->type ?? 'default';
+
+
         $eventos = Evento::get();
 
 
@@ -22,7 +28,19 @@ class EventsController extends Controller
             $evento->nombreCreador = $evento->user->name; // Asumiendo que el usuario tiene un atributo 'name'
         });
 
-        return view('events.index', compact('eventos'));
+
+        if ($userType == 'guest') {
+
+
+            $tournaments = Torneo::get();
+            $eventos = Evento::get();
+
+            return view('events.index', compact('eventos', 'tournaments', 'userType'));
+
+        }else {
+            return view('events.index', compact('eventos'));
+        }
+
     }
 
     /**
@@ -69,7 +87,6 @@ class EventsController extends Controller
     }
 
 
-
     public function update(Request $request, $id)
     {
         // Buscar el evento que deseas actualizar mediante el $id del evento
@@ -93,7 +110,7 @@ class EventsController extends Controller
     }
 
 
-    public function delete( $id)
+    public function delete($id)
     {
         // Buscar el evento que deseas actualizar mediante el id del evento
         $evento = Evento::findOrFail($id);
@@ -110,8 +127,6 @@ class EventsController extends Controller
         //mostrar mensaje de success
         return redirect()->route('home')->with('status', 'Evento eliminado con éxito.');
     }
-
-
 
 
 }
