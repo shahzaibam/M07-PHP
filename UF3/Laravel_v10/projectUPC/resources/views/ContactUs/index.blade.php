@@ -15,10 +15,9 @@
 @extends('layouts.app')
 
 @section('content')
-<!-- Contenedor del formulario -->
 
 <div class="d-flex justify-content-center">
-    <div class="contact-form">
+    <div class="contact-form mt-5">
         <h1 class="text-center">Contacto</h1>
         <form action="#" method="post">
             {{-- Div con el nombre --}}
