@@ -1,0 +1,10 @@
+.main-content {
+    min-height: 100vh; /* altura mínima del contenido principal */
+    display: flex;
+    flex-direction: column;
+}
+.footer {
+    position:absolute;
+    bottom:0;
+    left: 45%;
+}

@@ -124,7 +124,7 @@ class TournamentsController extends Controller
     }
 
 
-    public function delete( $id)
+    public function delete($id)
     {
         // Buscar el evento que deseas actualizar mediante el id del evento
         $torneo = Torneo::findOrFail($id);
