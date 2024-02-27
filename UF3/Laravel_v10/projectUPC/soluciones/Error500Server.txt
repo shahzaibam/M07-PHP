@@ -12,4 +12,6 @@ si no esta copiar y pegar el .env.example y cambiar los paramrtros necesarios pa
 despues ejecutar el comando php artisan key:generate --> este comando sirve para crear una key para el .env ya que lo estamos copiando y pegando
 debe generar el key, asi que lo creamos de esta manera.
 
+y npm run build
+
 y ya deberia funcionar
