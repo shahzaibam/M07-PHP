@@ -34,13 +34,15 @@ class HomeController extends Controller
 
         // Variables comunes que se pasarán a la vista
         $eventos = Evento::where("user_id", $user->id)->get();
-        $tournaments = Torneo::all(); // Cambiado a all() para mantener consistencia
+        $tournaments = Torneo::where("user_id", $user->id)->get();
         $apuntados = Apuntar::where('user_id', $user->id)->get();
 
 
         $eventos->each(function ($evento) {
             $evento->nombreCreador = $evento->user->name ?? 'Desconocido';
         });
+
+
         $tournaments->each(function ($torneo) {
             $torneo->nombreCreador = $torneo->user->name ?? 'Desconocido';
         });

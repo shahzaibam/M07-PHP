@@ -108,7 +108,7 @@
                                                 <td>{{ $evento->description }}</td>
                                                 <td>{{ $evento->fecha }}</td>
                                                 <td>{{ $evento->hora }}</td>
-                                                <td>{{ $names ?? 'Desconocido'}}</td>
+                                                <td>{{ $evento->nombreCreador}}</td>
                                                 <td class="d-flex">
 
 
@@ -255,7 +255,7 @@
                                                 <td>{{ $torneo->description }}</td>
                                                 <td>{{ $torneo->fecha }}</td>
                                                 <td>{{ $torneo->hora }}</td>
-                                                <td>{{ $names ?? 'Desconocido'}}</td>
+                                                <td>{{ $torneo->nombreCreador}}</td>
                                                 <td class="d-flex">
 
 
@@ -299,23 +299,23 @@
 
 
 
-            @if(isset($apuntados) && !$apuntados->isEmpty())
-                <div class="container mt-5">
-                    <h2>Inscripciones</h2>
-                    <table class="table">
-                        <thead>
-                        <tr>
-                            <th>Tipo</th>
-                            <th>Nombre</th>
-                            <th>Descripción</th>
-                            <th>Fecha</th>
-                            <th>Hora</th>
-                            <th>Creado por</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        @foreach($apuntados as $apuntado)
-                            @if($apuntado->evento)
+        @if(isset($apuntados) && !$apuntados->isEmpty())
+            <div class="container mt-5">
+                <h2>Inscripciones</h2>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Tipo</th>
+                        <th>Nombre</th>
+                        <th>Descripción</th>
+                        <th>Fecha</th>
+                        <th>Hora</th>
+                        <th>Creado por</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach($apuntados as $apuntado)
+                        @if($apuntado->evento)
                             <tr>
                                 <td>Evento</td>
                                 <td class="col-2">{{ $apuntado->evento->name }}</td>
@@ -324,9 +324,9 @@
                                 <td>{{ $apuntado->evento->hora }}</td>
                                 <td class="col-2">{{ $apuntado->evento->user->name ?? 'Desconocido' }}</td>
                             </tr>
-                            @endif
+                        @endif
 
-                            @if($apuntado->torneo)
+                        @if($apuntado->torneo)
                             <tr>
                                 <td>Torneo</td>
                                 <td>{{ $apuntado->torneo->name }}</td>
@@ -335,13 +335,13 @@
                                 <td>{{ $apuntado->torneo->hora }}</td>
                                 <td>{{ $apuntado->torneo->user->name ?? 'Desconocido' }}</td>
                             </tr>
-                            @endif
-                        @endforeach
-                        </tbody>
-                    </table>
-                </div>
+                        @endif
+                    @endforeach
+                    </tbody>
+                </table>
+            </div>
 
-            @endif
+        @endif
 
 
 
