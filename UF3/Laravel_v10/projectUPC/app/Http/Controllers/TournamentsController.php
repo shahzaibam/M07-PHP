@@ -78,24 +78,22 @@ class TournamentsController extends Controller
 
 
     public function apuntarTorneo(Request $request, $id) {
+        $user = Auth::user();
+        if (!$user) {
+            return redirect()->route('login')->with('error', 'Necesitas iniciar sesión para apuntarte a un torneo.');
+        }
 
+        $torneo = Torneo::findOrFail($id);
 
-        $tournaments = Torneo::get();
-        $eventos = Evento::get();
+        if ($torneo->usuariosInscritos()->where('user_id', $user->id)->exists()) {
+            // Si el usuario ya está inscrito, redirigir a la página de inicio con el mensaje de error
+            return redirect()->route('home')->with('error', 'Ya estás inscrito en este torneo.');
+        }
 
-        $validatedData['user_id'] = Auth::id();
-        $validatedData['torneos_id'] = $id;
-        $validatedData['events_id'] = null;
+        $torneo->usuariosInscritos()->attach($user->id);
 
-        $inscripcion = Apuntar::create($validatedData);
-
-        $userType = $user->type ?? 'default';
-
-
-        return view('tournaments.index', compact('eventos', 'tournaments', 'userType'));
-
-
-
+        // Solo se redirige con un mensaje de estado, sin pasar eventosApuntados
+        return redirect()->route('home')->with('status', 'Te has apuntado al evento con éxito.');
     }
 
 

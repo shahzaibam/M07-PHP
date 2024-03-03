@@ -16,7 +16,7 @@
 </header>
 
 <div class="hero">
-    <div class="container text-center" style="margin-top: 400px;">
+    <div class="container text-center" style="margin-top: 700px;">
         <h1 id="title"></h1>
     </div>
 </div>
@@ -31,12 +31,12 @@
 <script src="{{ asset('css/bootstrap-4.0.0-dist/js/bootstrap.min.js') }}"></script>
 <script>
     $(document).ready(function() {
-        var text = "Keep pushing, the stars are within reach."; // El texto que quieres animar
+        var text = "Keep pushing, the stars are within reach...";
         var i = 0;
         var speed = 100; // Velocidad en milisegundos
 
         function typeWriter() {
-            console.log('Executing typeWriter', i); // Añade esta línea para depurar
+            console.log('Executing typeWriter', i);
             if (i < text.length) {
                 $('#title').html($('#title').html() + text.charAt(i));
                 i++;

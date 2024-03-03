@@ -11,10 +11,14 @@ class Evento extends Model
 
     protected $fillable = ['name', 'description', 'fecha', 'hora', 'user_id'];
 
-    //indicamos que Evento pertenece a User
+    // Indicamos que cada Evento pertenece a un Usuario
     public function user()
     {
-        return $this->belongsTo('App\Models\User');
+        return $this->belongsTo(User::class);
+    }
+
+    public function usuariosInscritos() {
+        return $this->belongsToMany(User::class);
     }
 
 }

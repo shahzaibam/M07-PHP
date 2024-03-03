@@ -90,25 +90,24 @@ class EventsController extends Controller
 
 
     public function apuntarEvento(Request $request, $id) {
+        $user = Auth::user();
+        if (!$user) {
+            return redirect()->route('login')->with('error', 'Debes iniciar sesión para apuntarte a eventos.');
+        }
 
+        $evento = Evento::findOrFail($id);
 
-        $tournaments = Torneo::get();
-        $eventos = Evento::get();
+        if ($evento->usuariosInscritos()->where('user_id', $user->id)->exists()) {
+            return redirect()->route('home')->with('error', 'Ya estás inscrito en este evento.');
+        }
 
-        $validatedData['user_id'] = Auth::id();
-        $validatedData['events_id'] = $id;
-        $validatedData['torneos_id'] = null;
+        $evento->usuariosInscritos()->attach($user->id);
 
-        $inscripcion = Apuntar::create($validatedData);
-
-        $userType = $user->type ?? 'default';
-
-
-        return view('events.index', compact('eventos', 'tournaments', 'userType'));
-
-
-
+        // Solo se redirige con un mensaje de estado, sin pasar eventosApuntados
+        return redirect()->route('home')->with('status', 'Te has apuntado al evento con éxito.');
     }
+
+
 
 
 

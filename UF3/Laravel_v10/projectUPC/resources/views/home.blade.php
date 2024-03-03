@@ -168,7 +168,6 @@
                                 <div class="d-flex justify-content-between m-3">
                                     <div class="title">
                                         <h2>Tournaments</h2>
-
                                     </div>
 
                                     <div class="buttonAdd">
@@ -298,53 +297,57 @@
 
 
 
+        @if($userType == 'guest')
+            <div class="row justify-content-center mt-5">
+                <div class="col-md-8">
+                    @if(session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
 
-        @if(isset($apuntados) && !$apuntados->isEmpty())
-            <div class="container mt-5">
-                <h2>Inscripciones</h2>
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th>Tipo</th>
-                        <th>Nombre</th>
-                        <th>Descripción</th>
-                        <th>Fecha</th>
-                        <th>Hora</th>
-                        <th>Creado por</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    @foreach($apuntados as $apuntado)
-                        @if($apuntado->evento)
-                            <tr>
-                                <td>Evento</td>
-                                <td class="col-2">{{ $apuntado->evento->name }}</td>
-                                <td class="col-6">{{ $apuntado->evento->description }}</td>
-                                <td class="col-2">{{ $apuntado->evento->fecha }}</td>
-                                <td>{{ $apuntado->evento->hora }}</td>
-                                <td class="col-2">{{ $apuntado->evento->user->name ?? 'Desconocido' }}</td>
-                            </tr>
-                        @endif
+                    @if(session('error'))
+                        <div class="alert alert-danger" role="alert">
+                            {{ session('error') }}
+                        </div>
+                    @endif
 
-                        @if($apuntado->torneo)
-                            <tr>
-                                <td>Torneo</td>
-                                <td>{{ $apuntado->torneo->name }}</td>
-                                <td>{{ $apuntado->torneo->description }}</td>
-                                <td>{{ $apuntado->torneo->fecha }}</td>
-                                <td>{{ $apuntado->torneo->hora }}</td>
-                                <td>{{ $apuntado->torneo->user->name ?? 'Desconocido' }}</td>
-                            </tr>
-                        @endif
-                    @endforeach
-                    </tbody>
-                </table>
+                    @if(isset($eventosApuntados) && !$eventosApuntados->isEmpty())
+                        <div class="card">
+                            <div class="card-header">Eventos Inscritos</div>
+                            <ul class="list-group list-group-flush">
+                                @foreach($eventosApuntados as $evento)
+                                    <li class="list-group-item">
+                                        <h5>{{ $evento->name }}</h5>
+                                        <p>{{ $evento->description }}</p>
+                                        <p>Fecha: {{ $evento->fecha }} | Hora: {{ $evento->hora }}</p>
+                                        <p>Creado por: {{ $evento->user->name ?? 'Desconocido' }}</p>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+
+
+                    @if(isset($torneosApuntados) && !$torneosApuntados->isEmpty())
+                        <div class="card mt-4">
+                            <div class="card-header">Torneos Inscritos</div>
+                            <ul class="list-group list-group-flush">
+                                @foreach($torneosApuntados as $torneo)
+                                    <li class="list-group-item">
+                                        <h5>{{ $torneo->name }}</h5>
+                                        <p>{{ $torneo->description }}</p>
+                                        <p>Fecha: {{ $torneo->fecha }} | Hora: {{ $torneo->hora }}</p>
+                                        <p>Creado por: {{ $torneo->user->name ?? 'Desconocido' }}</p>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+
+
+                </div>
             </div>
-
         @endif
-
-
-
     </div>
-
 @endsection

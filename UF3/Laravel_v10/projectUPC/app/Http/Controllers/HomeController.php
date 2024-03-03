@@ -35,7 +35,8 @@ class HomeController extends Controller
         // Variables comunes que se pasarán a la vista
         $eventos = Evento::where("user_id", $user->id)->get();
         $tournaments = Torneo::where("user_id", $user->id)->get();
-        $apuntados = Apuntar::where('user_id', $user->id)->get();
+        $eventosApuntados = $user->eventosInscritos()->get(); // Obtén los eventos inscritos
+        $torneosApuntados = $user->torneosInscritos()->get(); // Obtén los torneos inscritos
 
 
         $eventos->each(function ($evento) {
@@ -54,7 +55,7 @@ class HomeController extends Controller
         } elseif ($userType == 'guest') {
 
 
-            return view('home', compact('userType', 'apuntados'));
+            return view('home', compact('userType', 'eventosApuntados', 'torneosApuntados'));
 
         } else {
 

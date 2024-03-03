@@ -12,10 +12,15 @@ class Torneo extends Model
     protected $fillable = ['name', 'description', 'fecha', 'hora' ,'user_id'];
 
 
-    //indicamos que Torneo pertenece a User
+    //indicamos que Torneo pertenece a Users
     public function user()
     {
-        return $this->belongsTo('App\Models\User');
+        return $this->belongsTo(User::class);
     }
+
+    public function usuariosInscritos() {
+        return $this->belongsToMany(User::class);
+    }
+
 
 }
