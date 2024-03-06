@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Apuntar;
 use App\Models\Evento;
 use App\Models\Torneo;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -152,5 +153,14 @@ class EventsController extends Controller
         return redirect()->route('home')->with('status', 'Evento eliminado con éxito.');
     }
 
+
+    public function nm() {
+
+        $eventos = Evento::with('usuariosInscritos')->get();
+        $torneos = Torneo::with('usuariosInscritos')->get();
+
+        return view('n_m.nm', compact('eventos', 'torneos'));
+
+    }
 
 }

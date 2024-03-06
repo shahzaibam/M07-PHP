@@ -65,6 +65,10 @@
                         <a class="nav-link text-dark" href="{{ route('contact.index') }}">Contact Us</a>
                     </li>
 
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="{{ route('events.nm') }}">N:M</a>
+                    </li>
+
 
                     <!-- Authentication Links -->
                     @guest

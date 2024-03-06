@@ -53,3 +53,7 @@ Route::get('/aboutus', [\App\Http\Controllers\AboutUsController::class, 'index']
 
 //contact
 Route::get('/contact', [\App\Http\Controllers\ContactUsController::class, 'index'])->name('contact.index');
+
+
+//nm
+Route::get('/nm', [\App\Http\Controllers\EventsController::class, 'nm'])->name('events.nm');
