@@ -50,9 +50,12 @@ class UserController extends Controller
             ]);
 
             if($newUser) {
+                $token = auth('api')->login($newUser);
+
                 return response()->json([
                     'status' => 200,
-                    'message' => 'User Created Successfully!'
+                    'message' => 'User Created Successfully!',
+                    'token' => $token
                 ], 200);
             }else {
                 return response()->json([
