@@ -55,7 +55,8 @@ class UserController extends Controller
                 return response()->json([
                     'status' => 200,
                     'message' => 'User Created Successfully!',
-                    'token' => $token
+                    'token' => $token,
+                    'user' => $newUser
                 ], 200);
             }else {
                 return response()->json([
@@ -81,7 +82,14 @@ class UserController extends Controller
             return response()->json(['error' => 'Unauthorized'], 401);
         }
 
-        return response()->json(['token' => $token]);
+        // Obtener el usuario autenticado
+        $user = Auth::guard('api')->user();
+
+        return response()->json([
+            'token' => $token,
+            'user' => ['name' => $user->name]
+        ]);
     }
+
 
 }

@@ -26,6 +26,7 @@ Route::post('/login', [\App\Http\Controllers\Api\UserController::class, 'login']
 // Rutas protegidas con JWT
 Route::middleware(['jwt.auth'])->group(function () {
     Route::get('/events', [\App\Http\Controllers\Api\EventController::class, 'index'])->name('events.index');
+    Route::get('/my-events', [\App\Http\Controllers\Api\EventController::class, 'myEvents'])->name('events.myEvents');
     Route::post('/events', [\App\Http\Controllers\Api\EventController::class, 'store'])->name('events.store');
 });
 

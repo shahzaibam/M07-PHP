@@ -11,4 +11,10 @@ class Event extends Model
 
     protected $fillable = ['name', 'description', 'date', 'time'];
 
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User'); // Asegúrate de que la ruta del namespace sea correcta
+    }
+
+
 }
