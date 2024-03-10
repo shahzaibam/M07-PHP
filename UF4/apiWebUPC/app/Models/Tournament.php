@@ -13,5 +13,5 @@ class Tournament extends Model
 
     public function user()
     {
-        return $this->belongsTo('App\Models\User'); // Asegúrate de que la ruta del namespace sea correcta
+        return $this->belongsTo('App\Models\User');
     }}
