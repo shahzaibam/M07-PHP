@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Event extends Model
+class Tournament extends Model
 {
     use HasFactory;
 
@@ -14,7 +14,4 @@ class Event extends Model
     public function user()
     {
         return $this->belongsTo('App\Models\User'); // Asegúrate de que la ruta del namespace sea correcta
-    }
-
-
-}
+    }}

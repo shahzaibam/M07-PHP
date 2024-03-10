@@ -3,49 +3,50 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Event;
+use App\Models\Tournament;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Http\Request;
 
-class EventController extends Controller
+class TournamentController extends Controller
 {
     public function index()
     {
 
-        $events = Event::all();
 
-        if ($events->count() > 0) {
+        $tournaments = Tournament::with('user')->get(); //relaciona torneos con usuarios, asi se puede coger el nombre del autor directamente desde el html con tournament.user.name
+
+        if ($tournaments->count() > 0) {
             return response()->json([
                 'status' => 200,
-                'events' => $events
+                'tournaments' => $tournaments,
             ], 200);
         } else {
             return response()->json([
                 'status' => 404,
-                'events' => 'No records found'
+                'tournaments' => 'No records found'
             ], 404);
         }
 
     }
 
-    public function myEvents()
+    public function myTournaments()
     {
         $user = Auth::user();
 
-        $events = $user->events()->with('user')->get(); //recoge solo los eventos del usuario logeado
-        $eventsWithUser = Event::with('user')->get(); //relaciona eventps con usuarios, asi se puede coger el nombre del autor directamente desde el html con tournament.user.name
+        $tournaments = $user->tournaments()->with('user')->get(); //recoge solo los tournaments del usuario logeado
+        $tournamentsWithUser = Tournament::with('user')->get(); //relaciona eventps con usuarios, asi se puede coger el nombre del autor directamente desde el html con tournament.user.name
 
-        if ($events->count() > 0) {
+        if ($tournaments->count() > 0) {
             return response()->json([
                 'status' => 200,
-                'events' => $events,
-                'eventsWithUser' => $eventsWithUser
+                'tournaments' => $tournaments,
+                'tournamentsWithUser' => $tournamentsWithUser
             ], 200);
         } else {
             return response()->json([
                 'status' => 404,
-                'events' => 'No records found'
+                'tournaments' => 'No records found'
             ], 404);
         }
     }
@@ -70,18 +71,18 @@ class EventController extends Controller
 
 
             //de esta manera si guarda el userID
-            $newEvent = new Event();
-            $newEvent->name = $request->input('name');
-            $newEvent->description = $request->input('description');
-            $newEvent->date = $request->input('date');
-            $newEvent->time = $request->input('time');
-            $newEvent->user_id = $usuarioId; // Asignar el ID del usuario al evento
+            $newTournament = new Tournament();
+            $newTournament->name = $request->input('name');
+            $newTournament->description = $request->input('description');
+            $newTournament->date = $request->input('date');
+            $newTournament->time = $request->input('time');
+            $newTournament->user_id = $usuarioId; // Asignar el ID del usuario al tournament
 
-            $newEvent->save();
+            $newTournament->save();
 
 
             //en cambio de esta manera no lo esta guardando, da nullo
-//            $newEvent = Event::create([
+//            $newTournament = Tournament::create([
 //                'name' => $request->name,
 //                'description' => $request->description,
 //                'date' => $request->date,
@@ -90,10 +91,10 @@ class EventController extends Controller
 //            ]);
 
 
-            if ($newEvent) {
+            if ($newTournament) {
                 return response()->json([
                     'status' => 200,
-                    'message' => 'Event Created Successfully!'
+                    'message' => 'Tournament Created Successfully!'
                 ], 200);
             } else {
                 return response()->json([
@@ -108,15 +109,14 @@ class EventController extends Controller
     }
 
 
-
     public function update(Request $request, $id)
     {
-        $evento = Event::find($id);
+        $tournament = Tournament::find($id);
 
-        if (!$evento) {
+        if (!$tournament) {
             return response()->json([
                 'status' => 404,
-                'message' => 'Evento no encontrado'
+                'message' => 'Tournamento no encontrado'
             ], 404);
         }
 
@@ -133,44 +133,44 @@ class EventController extends Controller
             return response()->json($validator->errors(), 400);
         }
 
-        // Actualizar el evento con los nuevos datos
-        $evento->name = $request->input('name');
-        $evento->description = $request->input('description');
-        $evento->date = $request->input('date');
-        $evento->time = $request->input('time');
+        // Actualizar el tournament con los nuevos datos
+        $tournament->name = $request->input('name');
+        $tournament->description = $request->input('description');
+        $tournament->date = $request->input('date');
+        $tournament->time = $request->input('time');
 
-        $evento->save();
+        $tournament->save();
 
         return response()->json([
             'status' => 200,
-            'message' => 'Evento actualizado exitosamente'
+            'message' => 'Tournament actualizado exitosamente'
         ], 200);
     }
 
 
     public function destroy($id)
     {
-        $evento = Event::find($id);
+        $tournament = Tournament::find($id);
 
-        if (!$evento) {
+        if (!$tournament) {
             return response()->json([
                 'status' => 404,
-                'message' => 'Evento no encontrado'
+                'message' => 'Tournament no encontrado'
             ], 404);
         }
 
-        if (Auth::user()->id != $evento->user_id) {
+        if (Auth::user()->id != $tournament->user_id) {
             return response()->json([
                 'status' => 403,
-                'message' => 'No autorizado para eliminar este evento'
+                'message' => 'No autorizado para eliminar este tournament'
             ], 403);
         }
 
-        $evento->delete();
+        $tournament->delete();
 
         return response()->json([
             'status' => 200,
-            'message' => 'Evento eliminado exitosamente'
+            'message' => 'Tournament eliminado exitosamente'
         ], 200);
     }
 

@@ -22,6 +22,7 @@ class User extends Authenticatable implements JWTSubject
         'name',
         'email',
         'dni',
+        'type',
         'password',
     ];
 
@@ -70,5 +71,11 @@ class User extends Authenticatable implements JWTSubject
     {
         return $this->hasMany(Event::class);
     }
+
+    public function tournaments()
+    {
+        return $this->hasMany(Tournament::class);
+    }
+
 
 }
