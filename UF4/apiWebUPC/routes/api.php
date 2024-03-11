@@ -35,6 +35,8 @@ Route::middleware(['jwt.auth'])->group(function () {
     Route::post('/events', [\App\Http\Controllers\Api\EventController::class, 'store'])->name('events.store');
     Route::put('/events/{id}', [\App\Http\Controllers\Api\EventController::class, 'update'])->name('events.update');
     Route::delete('/events/{id}', [\App\Http\Controllers\Api\EventController::class, 'destroy'])->name('events.destroy');
+    Route::post('/events/{id}/register', [\App\Http\Controllers\Api\EventController::class, 'registerForEvent'])->name('events.register');
+    Route::get('/users-with-events', [\App\Http\Controllers\Api\EventController::class, 'getUsersWithEvents'])->name('events.getUser');
 
     Route::get('/tournaments', [\App\Http\Controllers\Api\TournamentController::class, 'index'])->name('events.index');
     Route::get('/my-tournaments', [\App\Http\Controllers\Api\TournamentController::class, 'myTournaments'])->name('events.myTournaments');

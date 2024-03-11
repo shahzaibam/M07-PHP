@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Event;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
@@ -108,6 +109,41 @@ class EventController extends Controller
     }
 
 
+    public function registerForEvent(Request $request, $id)
+    {
+        $user = Auth::user();
+
+        if (!$user) {
+            return response()->json(['error' => 'Unauthenticated'], 401);
+        }
+
+        $event = Event::find($id);
+
+        if (!$event) {
+            return response()->json(['error' => 'Event not found'], 404);
+        }
+
+        // Verificar si el usuario ya está inscrito en el evento
+        if ($event->users()->where('user_id', $user->id)->exists()) {
+            return response()->json(['error' => 'User already registered for this event'], 400);
+        }
+
+        // Inscribir al usuario en el evento
+        $event->users()->attach($user->id);
+
+        return response()->json(['message' => 'User registered for the event successfully'], 200);
+    }
+
+
+
+    public function getUsersWithEvents()
+    {
+        // Obtener todos los usuarios con sus eventos
+        $users = User::with('events')->get();
+
+        // Retornar los usuarios en formato JSON
+        return response()->json($users);
+    }
 
     public function update(Request $request, $id)
     {

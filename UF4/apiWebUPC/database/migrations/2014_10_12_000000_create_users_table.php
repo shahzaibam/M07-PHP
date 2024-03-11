@@ -17,7 +17,8 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('dni');
-            $table->enum('type', ['autonomo', 'empresa']);
+//            $table->enum('type', ['autonomo', 'empresa']);
+            $table->string('type');
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();

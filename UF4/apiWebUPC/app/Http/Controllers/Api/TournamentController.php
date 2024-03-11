@@ -58,6 +58,10 @@ class TournamentController extends Controller
         $usuario = Auth::user();
         $usuarioId = $usuario->id;
 
+        if ($usuario->type !== 'empresa') {
+            return response()->json(['error' => 'Solo los usuarios de tipo "empresa" pueden crear torneos'], 403);
+        }
+
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:191',
             'description' => 'required|string|max:191',

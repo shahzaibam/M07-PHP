@@ -11,10 +11,15 @@ class Event extends Model
 
     protected $fillable = ['name', 'description', 'date', 'time', 'user_id'];
 
+
     public function user()
     {
-        return $this->belongsTo('App\Models\User');
+        return $this->belongsTo(User::class);
     }
 
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'user_event');
+    }
 
 }
