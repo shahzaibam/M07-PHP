@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Tournament;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -110,6 +111,43 @@ class TournamentController extends Controller
         }
 
 
+    }
+
+
+
+    public function registerForTournament(Request $request, $id)
+    {
+        $user = Auth::user();
+
+        if (!$user) {
+            return response()->json(['error' => 'Unauthenticated'], 401);
+        }
+
+        $tournament = Tournament::find($id);
+
+        if (!$tournament) {
+            return response()->json(['error' => 'Tournament not found'], 404);
+        }
+
+        // Verificar si el usuario ya está inscrito en el tournament
+        if ($tournament->users()->where('user_id', $user->id)->exists()) {
+            return response()->json(['error' => 'User already registered for this tournament'], 400);
+        }
+
+        // Inscribir al usuario en el tournament
+        $tournament->users()->attach($user->id);
+
+        return response()->json(['message' => 'User registered for the tournament successfully'], 200);
+    }
+
+
+    public function getUsersWithTournaments()
+    {
+        // Obtener todos los usuarios con sus tournaments
+        $users = User::with('tournaments')->get();
+
+        // Retornar los usuarios en formato JSON
+        return response()->json($users);
     }
 
 

@@ -38,9 +38,12 @@ Route::middleware(['jwt.auth'])->group(function () {
     Route::post('/events/{id}/register', [\App\Http\Controllers\Api\EventController::class, 'registerForEvent'])->name('events.register');
     Route::get('/users-with-events', [\App\Http\Controllers\Api\EventController::class, 'getUsersWithEvents'])->name('events.getUser');
 
-    Route::get('/tournaments', [\App\Http\Controllers\Api\TournamentController::class, 'index'])->name('events.index');
-    Route::get('/my-tournaments', [\App\Http\Controllers\Api\TournamentController::class, 'myTournaments'])->name('events.myTournaments');
-    Route::post('/tournaments', [\App\Http\Controllers\Api\TournamentController::class, 'store'])->name('events.store');
-    Route::put('/tournaments/{id}', [\App\Http\Controllers\Api\TournamentController::class, 'update'])->name('events.update');
-    Route::delete('/tournaments/{id}', [\App\Http\Controllers\Api\TournamentController::class, 'destroy'])->name('events.destroy');
+    Route::get('/tournaments', [\App\Http\Controllers\Api\TournamentController::class, 'index'])->name('tournaments.index');
+    Route::get('/my-tournaments', [\App\Http\Controllers\Api\TournamentController::class, 'myTournaments'])->name('tournaments.myTournaments');
+    Route::post('/tournaments', [\App\Http\Controllers\Api\TournamentController::class, 'store'])->name('tournaments.store');
+    Route::put('/tournaments/{id}', [\App\Http\Controllers\Api\TournamentController::class, 'update'])->name('tournaments.update');
+    Route::delete('/tournaments/{id}', [\App\Http\Controllers\Api\TournamentController::class, 'destroy'])->name('tournaments.destroy');
+    Route::post('/tournaments/{id}/register', [\App\Http\Controllers\Api\TournamentController::class, 'registerForTournament'])->name('tournaments.register');
+    Route::get('/users-with-tournaments', [\App\Http\Controllers\Api\TournamentController::class, 'getUsersWithTournaments'])->name('tournaments.getUser');
+
 });
