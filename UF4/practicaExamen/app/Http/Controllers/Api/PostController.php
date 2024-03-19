@@ -10,12 +10,12 @@ class PostController extends Controller
 {
     public function index()
     {
-        // Aquí deberías implementar la lógica para obtener y devolver todos los posts
-        // pero parece que aún no lo has hecho. Cuando lo hagas, asegúrate de incluir
-        // también las relaciones que necesites, por ejemplo, las categorías.
+
+        $posts = Post::all();
+
         return response()->json([
             'status' => 200,
-            'posts' => "All posts are here" // Esto debería ser reemplazado por la colección de posts.
+            'posts' => $posts
         ], 200);
     }
 
